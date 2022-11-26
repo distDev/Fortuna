@@ -1,6 +1,17 @@
 <template>
-  <div class="flex flex-row justify-center w-full space-x-[30px]">
-    <ProductCard v-for="card in cardsData" :key="card.num" class="basis-1/4" />
+  <div class="w-full overflow-x-scroll lg:overflow-auto pb-[7px]">
+    <div
+      class="flex flex-row flex-nowrap lg:place-content-center space-x-[14px] w-[200%] lg:w-full lg:grid lg:grid-cols-4 lg:gap-[30px]"
+    >
+      <ProductCard
+        v-for="item in data"
+        :key="item.id"
+        :img="item.img"
+        :price="item.price"
+        :title="item.title"
+        class=" lg:w-auto"
+      />
+    </div>
   </div>
 </template>
 
@@ -12,22 +23,7 @@ export default {
     data: Object,
   },
   data() {
-    return {
-      cardsData: [
-        {
-          num: "1",
-        },
-        {
-          num: "2",
-        },
-        {
-          num: "3",
-        },
-        {
-          num: "4",
-        },
-      ],
-    };
+    return {};
   },
   components: { ProductCard },
 };

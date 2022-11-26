@@ -1,10 +1,10 @@
 <template>
   <div
-    class="w-full flex flex-row justify-between items-center bg-black py-5 px-10 fixed top-0 text-white z-50"
+    class="w-full flex flex-row justify-between items-center bg-black lg:py-5 lg:px-10 py-3 px-[15px] fixed top-0 text-white z-50"
   >
     <div class="flex flex-row items-center">
       <NuxtLink class="uppercase text-[22px] font-bold" to="/">FT</NuxtLink>
-      <div class="flex space-x-9 ml-[120px]">
+      <div class="lg:flex space-x-9 ml-[120px] hidden">
         <NuxtLink
           class="uppercase text-sm font-bold"
           v-for="link in links"
@@ -15,9 +15,9 @@
       </div>
     </div>
     <div
-      class="bg-white px-1 flex justify-center items-center text-black cursor-pointer"
+      class="bg-white h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-black cursor-pointer"
     >
-      <p>5</p>
+      <p class="text-sm">5</p>
     </div>
   </div>
 </template>

@@ -1,7 +1,9 @@
 <template>
   <div>
     <Header />
-    <Nuxt />
+    <div class="lg:mt-[73px] mt-[55px]">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
@@ -16,6 +18,5 @@ export default {
 <style>
 body {
   font-family: "Montserrat", sans-serif;
-  margin-top: 73px;
 }
 </style>
