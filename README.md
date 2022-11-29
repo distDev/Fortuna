@@ -4,10 +4,11 @@
 <br> Используемый стек:
 
 Frontend: 
-* Vue
-* Nuxt
+* Vue 2.7
+* Nuxt 2
 * Tailwind
 * Swiper
+* Jest
 
 <br>Backend: 
 * Strappi
