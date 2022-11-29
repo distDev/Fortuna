@@ -5,17 +5,17 @@
     >
       Популярное
     </h2>
-    <ProductCards :data="data" />
+    <SmallProductCards :data="data" />
   </div>
 </template>
 
 <script>
-import ProductCards from "../ProductCards.vue";
+import SmallProductCards from "../SmallProductCards.vue";
 
 export default {
-  components: { ProductCards },
+  components: { SmallProductCards },
   props: {
-    data: Object,
+    data: Array,
   },
 };
 </script>

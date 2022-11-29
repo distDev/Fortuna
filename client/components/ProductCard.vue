@@ -1,15 +1,28 @@
 <template>
   <NuxtLink to="shop/1">
-    <div class="h-[213px] lg:h-[380px] w-300px">
+    <div
+      class="h-[213px]"
+      :class="{
+        'lg:h-[380px]': !large,
+        'w-300px': !large,
+        'lg:h-[520px]': large,
+      }"
+    >
       <img
         src="~assets/images/hoodie.jpg"
         class="h-full w-full object-cover"
         alt=""
       />
     </div>
-    <div class="mt-[14px] lg:mt-5 space-y-[5px] lg:space-y-[7px]">
-      <h4 class="uppercase font-semibold lg:font-bold text-base lg:text-lg">
-        {{ price + ' ₽' }}
+    <div
+      class="mt-[14px] lg:mt-5 space-y-[5px]"
+      :class="{ 'lg:space-y-[7px]': !large, 'lg:space-y-[12px]': large }"
+    >
+      <h4
+        class="uppercase font-semibold lg:font-bold text-base"
+        :class="{ 'lg:text-lg': !large, 'lg:text-[22px]': large }"
+      >
+        {{ price + " ₽" }}
       </h4>
       <p class="uppercase font-medium text-[11px] lg:text-sm">{{ title }}</p>
     </div>
@@ -22,6 +35,12 @@ export default {
     img: String,
     price: String,
     title: String,
+    large: Boolean,
+  },
+  data() {
+    return {
+      largeClass: {},
+    };
   },
 };
 </script>

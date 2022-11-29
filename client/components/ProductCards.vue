@@ -1,17 +1,15 @@
 <template>
-  <div class="w-full overflow-x-scroll lg:overflow-auto pb-[7px]">
-    <div
-      class="flex flex-row flex-nowrap lg:place-content-center space-x-[14px] w-[200%] lg:w-full lg:grid lg:grid-cols-4 lg:gap-[30px]"
-    >
-      <ProductCard
-        v-for="item in data"
-        :key="item.id"
-        :img="item.img"
-        :price="item.price"
-        :title="item.title"
-        class=" lg:w-auto"
-      />
-    </div>
+  <div
+    class="w-full grid grid-cols-1 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[40px]"
+  >
+    <ProductCard
+      v-for="item in data"
+      :key="item.id"
+      :img="item.img"
+      :price="item.price"
+      :title="item.title"
+      :large="large"
+    />
   </div>
 </template>
 
@@ -20,11 +18,10 @@ import ProductCard from "./ProductCard.vue";
 
 export default {
   props: {
-    data: Object,
+    data: Array,
+    large: Boolean,
   },
-  data() {
-    return {};
-  },
+
   components: { ProductCard },
 };
 </script>

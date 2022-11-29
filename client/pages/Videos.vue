@@ -7,11 +7,7 @@
       v-for="item in videosData"
       :key="item.id"
     >
-      <img
-        src="~assets/images/dance.jpg"
-        alt=""
-        class="w-full h-full object-cover"
-      />
+      <img :src="item.img" alt="" class="w-full h-full object-cover" />
       <div class="absolute top-0 opacity-50 bg-black w-full h-full"></div>
     </div>
   </div>

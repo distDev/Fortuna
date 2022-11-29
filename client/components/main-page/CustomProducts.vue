@@ -8,20 +8,21 @@
       >
         Футболки
       </h2>
-      <ProductCards :data="data" />
+      <SmallProductCards :data="data" />
     </div>
-    <div class="bg-violet-500 w-full h-[40px] lg:h-[45px] mt-[50px] lg:mt-[80px]"></div>
+    <div
+      class="bg-violet-500 w-full h-[40px] lg:h-[45px] mt-[50px] lg:mt-[80px]"
+    ></div>
   </div>
 </template>
 
 <script>
-import ProductCards from "../ProductCards.vue";
+import SmallProductCards from "../SmallProductCards.vue";
 
 export default {
-  components: { ProductCards },
+  components: { SmallProductCards },
   props: {
-    data: Object,
-    
+    data: Array,
   },
 };
 </script>
