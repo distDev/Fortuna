@@ -9,28 +9,25 @@
       <div
         class="flex flex-row flex-nowrap lg:place-content-center space-x-[14px] w-[500%] lg:w-full lg:grid lg:grid-cols-3 lg:gap-[20px] lg:space-x-[0px]"
       >
-        <div
+        <VideoItem
           v-for="item in data"
           :key="item.id"
-          class="bg-black h-[228px] relative lg:h-[275px]"
-        >
-          <img
-            src="~assets/images/dance.jpg"
-            alt=""
-            class="w-full h-full object-cover"
-          />
-          <div class="absolute top-0 opacity-40 bg-black w-full h-full"></div>
-        </div>
+          :img="item.img"
+          class="h-[228px] lg:h-[275px]"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import VideoItem from "../VideoItem.vue";
+
 export default {
   props: {
     data: Array,
   },
+  components: { VideoItem },
 };
 </script>
 

@@ -20,7 +20,7 @@ import ProductCard from "./ProductCard.vue";
 
 export default {
   props: {
-    data: Object,
+    data: Array,
   },
   data() {
     return {};

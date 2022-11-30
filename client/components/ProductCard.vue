@@ -19,7 +19,7 @@
       :class="{ 'lg:space-y-[7px]': !large, 'lg:space-y-[12px]': large }"
     >
       <h4
-        class="uppercase font-semibold lg:font-bold text-base"
+        class="uppercase font-semibold lg:font-bold text-sm"
         :class="{ 'lg:text-lg': !large, 'lg:text-[22px]': large }"
       >
         {{ price + " ₽" }}

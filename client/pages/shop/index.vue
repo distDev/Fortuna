@@ -1,10 +1,10 @@
 <template>
   <div>
     <div
-      class="bg-[#222222] h-[270px] flex lg:items-end lg:justify-center lg:p-[40px] relative"
+      class="bg-[#222222] h-[120px] lg:h-[270px] flex items-end lg:justify-center p-[15px] lg:p-[40px] relative "
     >
       <div
-        class="absolute top-[80px] gradient-custom lg:h-[45px] lg:w-[60%]"
+        class="absolute bottom-[30px] lg:bottom-auto right-[90px] lg:right-auto lg:top-[80px] gradient-custom blur-[65px] lg:blur-[115px] h-[25px] lg:h-[45px] w-[70%] lg:w-[60%] rotate-[170deg]"
       ></div>
       <h3 class="uppercase text-violet-500 text-2xl lg:text-[42px] font-bold">
         products
@@ -38,7 +38,5 @@ export default {
     #00a3ff 89.4%,
     #005be3 89.4%
   );
-  filter: blur(106.5px);
-  transform: rotate(169.72deg);
 }
 </style>
