@@ -1,8 +1,8 @@
 <template>
   <div class="w-full lg:h-auto">
-    <div v-swiper:mySwiper="options" :class="[heigth, lgHeight]">
+    <div v-swiper:mySwiper="options" :class="[height, lgHeight]">
       <div class="swiper-wrapper">
-        <slot></slot>
+        <slot class=""></slot>
       </div>
     </div>
   </div>
@@ -12,24 +12,28 @@
 export default {
   data() {
     return {
-      heigth: `h-[${this.h}px]`,
+      height: `h-[${this.h}px]`,
       lgHeight: `lg:h-[${this.lgH}px]`,
       options: {
-        slidesPerView: this.count,
+        slidesPerView: this.lgCount,
         spaceBetween: this.space,
         loop: false,
         breakpoints: {
           // when window width is >= 320px
           320: {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: this.count,
+            spaceBetween: 12,
           },
           // when window width is >= 480px
           480: {
-            slidesPerView: 2.5,
-            spaceBetween: 30,
+            slidesPerView: this.count,
+            spaceBetween: 12,
           },
           // when window width is >= 640px
+          640: {
+            slidesPerView: this.count,
+            spaceBetween: 12,
+          },
         },
         pagination: {
           el: ".swiper-pagination",
@@ -39,6 +43,7 @@ export default {
   },
   props: {
     count: Number,
+    lgCount: Number,
     space: Number,
     h: Number,
     lgH: Number,

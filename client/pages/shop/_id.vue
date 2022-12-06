@@ -1,11 +1,13 @@
 <template>
   <div>
-    <p>Продукт: {{ $route.params.id }}</p>
+    <ProductSlider />
   </div>
 </template>
 
 <script>
-export default {};
+import ProductSlider from "../../components/ProductSlider.vue";
+
+export default { components: { ProductSlider } };
 </script>
 
 <style lang="scss" scoped></style>
