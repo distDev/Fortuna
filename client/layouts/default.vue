@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="lg:mt-[73px] mt-[55px]">
+    <div class="lg:mt-[73px] mt-[97px]">
       <Nuxt />
     </div>
   </div>

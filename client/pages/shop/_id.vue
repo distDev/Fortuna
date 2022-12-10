@@ -12,7 +12,7 @@
 
 <script>
 import ProductSlider from "@/components/ProductSlider.vue";
-import ProductDetails from "@/components/products/ProductDetails.vue";
+import ProductDetails from "@/components/product-page/ProductDetails.vue";
 export default {
   components: { ProductSlider, ProductDetails },
 };

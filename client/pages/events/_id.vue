@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import EventBanner from "@/components/events/EventBanner.vue";
-import EventDescription from "@/components/events/EventDescription.vue";
-import EventAddress from "../../components/events/EventAddress.vue";
-import EventArtists from "../../components/events/EventArtists.vue";
+import EventBanner from "@/components/event-page/EventBanner.vue";
+import EventDescription from "@/components/event-page/EventDescription.vue";
+import EventAddress from "@/components/event-page/EventAddress.vue";
+import EventArtists from "@/components/event-page/EventArtists.vue";
 
 export default {
   data() {
