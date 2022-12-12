@@ -47,6 +47,18 @@
               экологичных волокон и/или устойчивых производственных процессов,
               что снижает негативное воздействие на окружающую среду.
             </p>
+            <ul class="attributes mt-5 lg:mt-6 space-y-[15px]">
+              <li
+                v-for="i in 3"
+                :key="i"
+                class="text-base font-medium text-[#97999B]"
+              >
+                Состав<span
+                  class="attributes-value text-base font-medium text-black"
+                  >Хлопок</span
+                >
+              </li>
+            </ul>
           </div>
           <div v-else>
             <p>Доставка бесплатная</p>
@@ -68,4 +80,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.attributes {
+  padding: 0;
+}
+.attributes li {
+  align-items: baseline;
+  display: flex;
+  margin-bottom: 0.5em;
+}
+.attributes li::before {
+  content: "";
+  border-bottom: 1px dashed #97999b;
+  flex-grow: 1;
+  order: 2;
+  margin: 0 10px;
+}
+.attributes .attributes-value {
+  order: 3;
+}
+</style>

@@ -4,6 +4,7 @@
     <div class="lg:mt-[73px] mt-[97px]">
       <Nuxt />
     </div>
+    <Footer />
   </div>
 </template>
 

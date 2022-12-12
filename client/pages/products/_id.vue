@@ -6,7 +6,9 @@
       <ProductSlider class="w-full lg:w-[60%]" />
       <ProductDetails />
     </div>
-    <div class="bg-black w-full h-[40px] lg:h-[60px] mt-[80px] lg:mt-[130px]"></div>
+    <div
+      class="bg-black w-full h-[40px] lg:h-[60px] mt-[80px] lg:mt-[130px]"
+    ></div>
   </div>
 </template>
 

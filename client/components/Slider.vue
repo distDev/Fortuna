@@ -15,24 +15,32 @@ export default {
       height: `h-[${this.h}px]`,
       lgHeight: `lg:h-[${this.lgH}px]`,
       options: {
+        slidesPerColumn: this.lgGrid,
         slidesPerView: this.lgCount,
         spaceBetween: this.space,
         loop: false,
+
         breakpoints: {
           // when window width is >= 320px
           320: {
             slidesPerView: this.count,
             spaceBetween: 12,
+
+            slidesPerColumn: this.grid,
           },
           // when window width is >= 480px
           480: {
             slidesPerView: this.count,
             spaceBetween: 12,
+
+            slidesPerColumn: this.grid,
           },
           // when window width is >= 640px
           640: {
             slidesPerView: this.count,
             spaceBetween: 12,
+
+            slidesPerColumn: this.grid,
           },
         },
         pagination: {
@@ -47,6 +55,8 @@ export default {
     space: Number,
     h: Number,
     lgH: Number,
+    grid: Number,
+    lgGrid: Number,
   },
 };
 </script>

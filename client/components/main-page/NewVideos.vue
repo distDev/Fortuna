@@ -1,34 +1,45 @@
 <template>
-  <div class="flex flex-col justify-center pl-[15px] lg:px-10 lg:items-center">
+  <div
+    class="flex flex-col justify-center pl-[15px] lg:px-10 lg:items-center pb-[100px]"
+  >
     <h2
       class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"
     >
       Новые видео
     </h2>
-    <div class="w-full overflow-x-scroll lg:overflow-auto pb-[7px]">
-      <div
-        class="flex flex-row flex-nowrap lg:place-content-center space-x-[14px] w-[500%] lg:w-full lg:grid lg:grid-cols-3 lg:gap-[20px] lg:space-x-[0px]"
-      >
+    <div class="w-full">
+      <Slider :count="1.2" :lg-grid="2" :lg-count="3" :space="20">
         <VideoItem
           v-for="item in data"
           :key="item.id"
           :img="item.img"
-          class="h-[228px] lg:h-[275px]"
+          class="swiper-slide"
         />
-      </div>
+      </Slider>
     </div>
   </div>
 </template>
 
 <script>
+import Slider from "../Slider.vue";
 import VideoItem from "../VideoItem.vue";
 
 export default {
   props: {
     data: Array,
   },
-  components: { VideoItem },
+  components: { VideoItem, Slider },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.swiper-slide {
+  height: 276px;
+}
+
+@media (max-width: 520px) {
+  .swiper-slide {
+    height: 220px;
+  }
+}
+</style>

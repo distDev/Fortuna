@@ -5,19 +5,41 @@
     >
       Популярное
     </h2>
-    <SmallProductCards :data="data" />
+    <div class="w-full">
+      <Slider :count="2" :lgCount="4" :space="30" class="w-full">
+        <ProductCard
+          v-for="item in data"
+          :key="item.id"
+          :img="item.img"
+          :price="item.price"
+          :title="item.title"
+          :large="false"
+          class="swiper-slide"
+        />
+      </Slider>
+    </div>
   </div>
 </template>
 
 <script>
-import SmallProductCards from "../SmallProductCards.vue";
-
+import Slider from "../../components/Slider.vue";
+import ProductCard from "../ProductCard.vue";
 export default {
-  components: { SmallProductCards },
+  components: { Slider, ProductCard },
   props: {
     data: Array,
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.swiper-slide {
+  min-height: 478px;
+}
+
+@media (max-width: 520px) {
+  .swiper-slide {
+    min-height: 265px;
+  }
+}
+</style>

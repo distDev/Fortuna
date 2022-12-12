@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="bg-[#222222] h-[120px] lg:h-[270px] flex items-end lg:justify-center p-[15px] lg:p-[40px] relative "
+      class="bg-[#222222] h-[120px] lg:h-[270px] flex items-end lg:justify-center p-[15px] lg:p-[40px] relative"
     >
       <div
         class="absolute bottom-[30px] lg:bottom-auto right-[90px] lg:right-auto lg:top-[80px] gradient-custom blur-[65px] lg:blur-[115px] h-[25px] lg:h-[45px] w-[70%] lg:w-[60%] rotate-[170deg]"
@@ -10,8 +10,17 @@
         products
       </h3>
     </div>
-    <div class="mt-[25px] lg:mt-[60px] mx-[15px] lg:mx-[40px]">
-      <ProductCards :data="data" :large="true" />
+    <div class="mt-[15px] lg:mt-[30px] mx-[15px] lg:mx-[40px] space-y-[25px] lg:space-y-[40px]">
+      <div>
+        <p class="uppercase text-[#97999B] text-sm lg:text-base font-medium">
+          всего товаров:  12
+        </p>
+      </div>
+      <ProductCards
+        :data="data"
+        :large="true"
+        class="grid grid-cols-2 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[40px]"
+      />
     </div>
   </div>
 </template>

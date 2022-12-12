@@ -8,7 +8,17 @@
       >
         Футболки
       </h2>
-      <SmallProductCards :data="data" />
+      <div class="flex flex-row justify-center space-x-[30px] w-full">
+        <ProductCard
+          v-for="item in data"
+          :key="item.id"
+          :img="item.img"
+          :price="item.price"
+          :title="item.title"
+          :large="false"
+          class="basis-1/2 lg:basis-1/4"
+        />
+      </div>
     </div>
     <div
       class="bg-violet-500 w-full h-[40px] lg:h-[45px] mt-[50px] lg:mt-[80px]"
@@ -17,14 +27,18 @@
 </template>
 
 <script>
-import SmallProductCards from "../SmallProductCards.vue";
+import ProductCard from "../ProductCard.vue";
+import Slider from "../Slider.vue";
+
 
 export default {
-  components: { SmallProductCards },
+  components: {  Slider, ProductCard },
   props: {
     data: Array,
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+
+</style>

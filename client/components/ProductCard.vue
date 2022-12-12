@@ -1,10 +1,9 @@
 <template>
-  <NuxtLink to="shop/1">
+  <NuxtLink to="/products/1">
     <div
       class="h-[213px]"
       :class="{
         'lg:h-[380px]': !large,
-        'w-300px': !large,
         'lg:h-[520px]': large,
       }"
     >
@@ -16,7 +15,7 @@
     </div>
     <div
       class="mt-[14px] lg:mt-5 space-y-[5px]"
-      :class="{ 'lg:space-y-[7px]': !large, 'lg:space-y-[12px]': large }"
+      :class="{  'lg:space-y-[12px]': large }"
     >
       <h4
         class="uppercase font-semibold lg:font-bold text-sm"

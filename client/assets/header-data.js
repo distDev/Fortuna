@@ -9,7 +9,7 @@ export const headerLinks = [
   },
   {
     name: "Магазин",
-    path: "/shop",
+    path: "/products",
   },
   {
     name: "Мероприятия",
