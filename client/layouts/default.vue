@@ -19,5 +19,6 @@ export default {
 <style>
 body {
   font-family: "Montserrat", sans-serif;
+  position: relative;
 }
 </style>

@@ -14,6 +14,19 @@
   "attributes": {
     "content": {
       "type": "richtext"
+    },
+    "title": {
+      "type": "string"
+    },
+    "trumb": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

@@ -18,7 +18,10 @@ export default {
   css: ["@/assets/css/main.css", "swiper/swiper-bundle.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "@/plugins/vue-swiper.js", ssr: false }],
+  plugins: [
+    { src: "@/plugins/vue-swiper.js", ssr: false },
+    { src: "@/plugins/vue-teleport.js", ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

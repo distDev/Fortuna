@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_products_attributs",
+  "info": {
+    "displayName": "attribut"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  }
+}

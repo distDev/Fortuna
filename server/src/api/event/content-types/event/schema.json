@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "price": {
+      "type": "biginteger"
+    },
+    "tags": {
+      "displayName": "tag",
+      "type": "component",
+      "repeatable": false,
+      "component": "tags.tag"
+    },
+    "description": {
+      "type": "text"
+    },
+    "artists": {
+      "displayName": "artist",
+      "type": "component",
+      "repeatable": true,
+      "component": "artists.artist"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "poster": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

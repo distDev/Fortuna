@@ -7,9 +7,9 @@
       class="w-[10%] hidden lg:block"
     >
       <div class="swiper-wrapper">
-        <div v-for="i in 5" :key="i" class="swiper-slide h-[50px] lg:h-[50px]">
+        <div v-for="i in 4" :key="i" class="swiper-slide h-[50px] lg:h-[50px]">
           <img
-            :src="`https://picsum.photos/800/600?random=${i}`"
+            src="~assets/images/hoodie.jpg"
             class="w-full h-full object-cover"
           />
         </div>
@@ -24,12 +24,12 @@
     >
       <div class="swiper-wrapper">
         <div
-          v-for="i in 5"
+          v-for="i in 4"
           :key="i"
           class="swiper-slide h-[120px] lg:h-[170px]"
         >
           <img
-            :src="`https://picsum.photos/800/600?random=${i}`"
+            src="~assets/images/hoodie.jpg"
             class="w-full h-full object-cover"
           />
         </div>
@@ -44,7 +44,8 @@ export default {
     return {
       optionsTop: {
         spaceBetween: 10,
-        effect: "fade",
+        effect: "slide",
+        breakpoints: {},
       },
       optionsBot: {
         spaceBetween: 10,
@@ -54,6 +55,7 @@ export default {
         slideToClickedSlide: true,
         virtualTranslate: true,
         direction: "vertical",
+        slideActiveClass: "slide-active",
       },
     };
   },
@@ -74,4 +76,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.slide-active {
+  box-shadow: 0px 2px 0px #8B5CF6;
+}
+</style>
