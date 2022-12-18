@@ -24,12 +24,6 @@
     "price": {
       "type": "biginteger"
     },
-    "tags": {
-      "displayName": "tag",
-      "type": "component",
-      "repeatable": false,
-      "component": "tags.tag"
-    },
     "description": {
       "type": "text"
     },
@@ -60,6 +54,27 @@
         "videos",
         "audios"
       ]
+    },
+    "ageRestriction": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "концерт",
+        "театр",
+        "выставка",
+        "конкурс"
+      ]
+    },
+    "fortunaPerform": {
+      "type": "boolean"
+    },
+    "city": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "string"
     }
   }
 }

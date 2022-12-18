@@ -8,28 +8,30 @@
       class="bottom-gradient absolute bottom-0 w-full h-[170px] lg:h-[250px] z-[15]"
     ></div>
     <img
-      src="~assets/images/12.jpg"
+      :src="poster.data.attributes.url"
       alt=""
       class="absolute right-0 h-full w-full lg:w-[73%] object-cover z-10"
     />
     <div
       class="flex flex-col-reverse lg:flex-col px-[15px] py-[20px] lg:px-[160px] lg:py-[60px] z-30 relative space-y-[7px] lg:space-y-[20px]"
     >
+      <!-- Хэштеги -->
       <div class="flex space-x-[10px] lg:space-x-[15px] mt-[7px] lg:mt-auto">
-        <p
-          v-for="(item, index) in arrData"
-          class="text-[#97999B] text-xs lg:text-sm"
-        >
-          {{ item }}
+        <p class="text-[#97999B] text-xs lg:text-sm">{{ price }} ₽</p>
+        <p class="text-[#97999B] text-xs lg:text-sm">
+          {{ type }}
         </p>
+        <p class="text-[#97999B] text-xs lg:text-sm">{{ age }}+</p>
+        <p class="text-[#97999B] text-xs lg:text-sm" v-if="fortuna">Фортуна</p>
       </div>
+      <!-- Описание -->
       <h1
         class="text-white font-bold text-lg lg:text-[48px] lg:w-[900px] lg:leading-[59px]"
       >
-        Не покидай свою планету
+        {{ title }}
       </h1>
       <p class="lg:text-xl lg:font-medium hidden lg:inline-block text-white">
-        Спектакль в Москве: 20 ноября в 19:00
+        Спектакль в городе {{ city }}: {{ date }}
       </p>
     </div>
   </div>
@@ -41,6 +43,16 @@ export default {
     return {
       arrData: ["Бесплатно", "Конкурс"],
     };
+  },
+  props: {
+    title: String,
+    date: String,
+    type: String,
+    fortuna: Boolean,
+    city: String,
+    poster: Object,
+    age: String,
+    price: Number,
   },
 };
 </script>

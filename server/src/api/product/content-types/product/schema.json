@@ -40,6 +40,12 @@
       "type": "component",
       "repeatable": true,
       "component": "products.attribut"
+    },
+    "inStock": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

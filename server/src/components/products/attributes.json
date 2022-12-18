@@ -11,9 +11,6 @@
     },
     "count": {
       "type": "integer"
-    },
-    "inStock": {
-      "type": "boolean"
     }
   }
 }

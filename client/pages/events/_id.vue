@@ -1,20 +1,34 @@
 <template>
-  <div class="event">
-    <EventBanner class="mb-[40px] lg:mb-[60px]" />
-    <div class="px-[15px] lg:px-[160px] space-y-[40px] lg:space-y-[60px]">
-      <div class="flex flex-col space-y-[15px] lg:hidden">
-        <div class="flex space-x-[12px]">
-          <font-awesome-icon :icon="['fas', 'calendar']" />
-          <p class="text-sm">20 ноября, воскресенье, 19:00</p>
+  <div>
+    <div v-for="{ id, attributes } in data" :key="id" class="event">
+      <EventBanner
+        class="mb-[40px] lg:mb-[60px]"
+        :title="attributes.title"
+        :age="attributes.ageRestriction"
+        :city="attributes.city"
+        :date="attributes.date"
+        :type="attributes.type"
+        :poster="attributes.poster"
+        :price="attributes.price"
+      />
+      <div class="px-[15px] lg:px-[160px] space-y-[40px] lg:space-y-[60px]">
+        <div class="flex flex-col space-y-[15px] lg:hidden">
+          <div class="flex space-x-[12px]">
+            <font-awesome-icon :icon="['fas', 'calendar']" />
+            <p class="text-sm">{{ attributes.date }}</p>
+          </div>
+          <div class="flex space-x-[12px]">
+            <font-awesome-icon :icon="['fas', 'location-pin']" />
+            <p class="text-sm">{{ attributes.adress }}</p>
+          </div>
         </div>
-        <div class="flex space-x-[12px]">
-          <font-awesome-icon :icon="['fas', 'location-pin']" />
-          <p class="text-sm">Театральная пл., 1, Москва</p>
-        </div>
+        <EventDescription
+          :images="attributes.images"
+          :description="attributes.description"
+        />
+        <EventArtists :artists="attributes.artists"/>
+        <EventAddress />
       </div>
-      <EventDescription />
-      <EventArtists />
-      <EventAddress />
     </div>
   </div>
 </template>
@@ -24,10 +38,13 @@ import EventBanner from "@/components/event-page/EventBanner.vue";
 import EventDescription from "@/components/event-page/EventDescription.vue";
 import EventAddress from "@/components/event-page/EventAddress.vue";
 import EventArtists from "@/components/event-page/EventArtists.vue";
+import { realEvents } from "../../assets/data";
 
 export default {
   data() {
-    return {};
+    return {
+      data: realEvents,
+    };
   },
   components: { EventBanner, EventDescription, EventArtists, EventAddress },
 };

@@ -7,11 +7,12 @@
       class="w-[10%] hidden lg:block"
     >
       <div class="swiper-wrapper">
-        <div v-for="i in 4" :key="i" class="swiper-slide h-[50px] lg:h-[50px]">
-          <img
-            src="~assets/images/hoodie.jpg"
-            class="w-full h-full object-cover"
-          />
+        <div
+          v-for="i in images"
+          :key="i.id"
+          class="swiper-slide h-[50px] lg:h-[50px]"
+        >
+          <img :src="i.attributes.url" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
@@ -24,14 +25,11 @@
     >
       <div class="swiper-wrapper">
         <div
-          v-for="i in 4"
-          :key="i"
+          v-for="i in images"
+          :key="i.id"
           class="swiper-slide h-[120px] lg:h-[170px]"
         >
-          <img
-            src="~assets/images/hoodie.jpg"
-            class="w-full h-full object-cover"
-          />
+          <img :src="i.attributes.url" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
@@ -72,12 +70,14 @@ export default {
       swiperThumbs.controller.control = swiperTop;
     });
   },
-  props: {},
+  props: {
+    images: Object,
+  },
 };
 </script>
 
 <style scoped>
 .slide-active {
-  box-shadow: 0px 2px 0px #8B5CF6;
+  box-shadow: 0px 2.5px 0px #8b5cf6;
 }
 </style>

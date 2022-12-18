@@ -3,24 +3,32 @@
     class="w-full lg:w-[35%] mt-[20px] lg:mt-[0px] space-y-[30px] lg:space-y-[85px]"
   >
     <div class="space-y-[7px] lg:space-y-[10px]">
-      <h1 class="uppercase font-bold lg:text-[28px]">ФУТБОЛКА “ФОРТУНА”</h1>
-      <h2 class="uppercase font-bold lg:text-[28px]">1500 ₽</h2>
+      <h1 class="uppercase font-bold lg:text-[28px]">{{ name }}</h1>
+      <h2 class="uppercase font-bold lg:text-[28px]">{{ price }} ₽</h2>
     </div>
     <div class="space-y-[40px]">
       <div class="space-y-[15px] lg:space-y-[20px]">
         <select
+          v-if="inStock && options"
           name="options"
           class="h-[50px] w-full lg:w-[75%] border-[1px] border-black"
           v-model="selectedSize"
         >
-          <option value="" disabled selected>выберете размер</option>
-          <option value="M">M</option>
-          <option value="L">XL</option>
+          <option value="" disabled>выберете размер</option>
+          <option
+            v-for="i in options"
+            :key="i.id"
+            :value="i.size"
+            :disabled="i.count === 0"
+          >
+            {{ i.size }}
+          </option>
         </select>
         <button
-          class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%]"
+          :disabled="!inStock"
+          class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%] disabled:bg-[#97999B]"
         >
-          в корзину
+          {{ isDisabled }}
         </button>
       </div>
       <div class="space-y-[20px] lg:space-y-[25px]">
@@ -43,19 +51,18 @@
         <div>
           <div v-if="activeTab === 'Детали'">
             <p>
-              Изделия с отметкой Committed изготовлены с использованием
-              экологичных волокон и/или устойчивых производственных процессов,
-              что снижает негативное воздействие на окружающую среду.
+              {{ description }}
             </p>
             <ul class="attributes mt-5 lg:mt-6 space-y-[15px]">
               <li
-                v-for="i in 3"
-                :key="i"
+                v-for="i in attributes"
+                :key="i.id"
                 class="text-base font-medium text-[#97999B]"
               >
-                Состав<span
+                {{ i.name
+                }}<span
                   class="attributes-value text-base font-medium text-black"
-                  >Хлопок</span
+                  >{{ i.value }}</span
                 >
               </li>
             </ul>
@@ -76,6 +83,19 @@ export default {
       selectedSize: null,
       activeTab: "Детали",
     };
+  },
+  computed: {
+    isDisabled() {
+      return this.inStock ? "В корзину" : "Нет в наличии";
+    },
+  },
+  props: {
+    name: String,
+    price: String,
+    inStock: Boolean,
+    options: Array,
+    attributes: Array,
+    description: String,
   },
 };
 </script>
