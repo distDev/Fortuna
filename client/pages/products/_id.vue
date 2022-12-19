@@ -16,6 +16,8 @@
         :options="attributes.options"
         :attributes="attributes.attributes"
         :description="attributes.description"
+        :images="attributes.images.data"
+        :id="id"
       />
     </div>
     <div
@@ -35,6 +37,7 @@ export default {
       data: realProduct,
     };
   },
+
   components: { ProductSlider, ProductDetails },
 };
 </script>

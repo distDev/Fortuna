@@ -20,11 +20,7 @@
         </div>
       </div>
       <div class="flex space-x-[15px]">
-        <div
-          class="bg-white h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-black cursor-pointer"
-        >
-          <p class="text-sm">5</p>
-        </div>
+        <Cart />
         <MobileMenu />
       </div>
     </div>

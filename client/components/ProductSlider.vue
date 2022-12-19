@@ -71,7 +71,7 @@ export default {
     });
   },
   props: {
-    images: Object,
+    images: Array,
   },
 };
 </script>

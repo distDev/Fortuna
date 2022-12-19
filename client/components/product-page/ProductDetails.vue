@@ -27,6 +27,17 @@
         <button
           :disabled="!inStock"
           class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%] disabled:bg-[#97999B]"
+          @click="
+            addToCart({
+              id: id,
+              variantId: id + selectedSize,
+              name: name,
+              price: price,
+              size: selectedSize,
+              totalCount: selectedSizeCount,
+              image: productImage,
+            })
+          "
         >
           {{ isDisabled }}
         </button>
@@ -77,6 +88,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   data() {
     return {
@@ -84,9 +97,27 @@ export default {
       activeTab: "Детали",
     };
   },
+  methods: {
+    addProduct() {},
+    ...mapMutations({
+      addToCart: "cart/addToCart",
+    }),
+  },
   computed: {
     isDisabled() {
       return this.inStock ? "В корзину" : "Нет в наличии";
+    },
+    selectedSizeCount() {
+      return this.options
+        .filter((e) => e.size === this.selectedSize)
+        .map((e) => e.count)
+        .join("");
+    },
+    productImage() {
+      return this.images
+        .map((e) => e.attributes.url)
+        .slice(0, 1)
+        .join("");
     },
   },
   props: {
@@ -96,6 +127,8 @@ export default {
     options: Array,
     attributes: Array,
     description: String,
+    id: Number,
+    images: Array,
   },
 };
 </script>
