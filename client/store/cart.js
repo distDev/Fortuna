@@ -31,6 +31,13 @@ export const mutations = {
     }
   },
 
+  // Удаление из корзины
+  removeFromCart(state, payload) {
+    return (state.list = state.list.filter(
+      (e) => e.variantId !== payload.variantId
+    ));
+  },
+
   // Увеличение числа товаров в корзине
   incrementCount(state, payload) {
     return state.list.map((e) => {
@@ -43,11 +50,25 @@ export const mutations = {
     });
   },
 
+  // Уменьшение числа товаров в корзине
+  decrementCount(state, payload) {
+    return state.list.map((e) => {
+      if (e.variantId === payload.variantId) {
+        return {
+          ...e,
+          countInCart: (e.countInCart -= 1),
+        };
+      }
+    });
+  },
+
   // Открытие/Закрытие корзины
   handleShowCart(state) {
     return (state.isOpen = !state.isOpen);
   },
 };
+
+
 
 export const getters = {
   // Количество товаров в корзине
@@ -61,9 +82,13 @@ export const getters = {
   // Сумма товаров в корзине *изменить
   getCartTotalPrice(state) {
     return state.list.length > 1
-      ? state.list.reduce((a, b) => a.totalPrice + b.totalPrice)
+      ? Number(
+          state.list
+            .map((e) => e.countInCart * e.price)
+            .reduce((acc, item) => acc + item)
+        )
       : state.list.length === 1
-      ? Number(state.list.map((e) => e.totalPrice).join(""))
+      ? Number(state.list.map((e) => e.price * e.countInCart).join(""))
       : 0;
   },
 };

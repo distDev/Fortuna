@@ -59,7 +59,14 @@
                   </p>
                 </div>
                 <div class="flex items-center space-x-[10px]">
-                  <button class="h-[30px] w-[30px] bg-[#97999B] text-black">
+                  <button
+                    class="h-[30px] w-[30px] bg-[#97999B] text-black"
+                    @click="
+                      item.countInCart !== 1
+                        ? decrementCount({ variantId: item.variantId })
+                        : removeFromCart({ variantId: item.variantId })
+                    "
+                  >
                     -
                   </button>
                   <p class="text-white text-base font-medium">
@@ -105,9 +112,14 @@ export default {
   },
 
   methods: {
+    handleTest() {
+      console.log("Товар удален");
+    },
     ...mapMutations({
       handleShow: "cart/handleShowCart",
       incrementCount: "cart/incrementCount",
+      decrementCount: "cart/decrementCount",
+      removeFromCart: "cart/removeFromCart",
     }),
   },
 };
