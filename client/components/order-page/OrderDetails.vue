@@ -5,19 +5,21 @@
         class="lg:block space-y-5 px-[15px] py-5 lg:py-0 lg:px-[0] lg:space-y-[25px] border-b-[1px] border-b-[#ECECEC] lg:pb-[30px]"
         :class="openStyles"
       >
-        <div v-for="i in 3" :key="i" class="flex justify-between items-center">
+        <div
+          v-for="i in products"
+          :key="i.variantId"
+          class="flex justify-between items-center"
+        >
           <div class="flex items-center space-x-[10px]">
-            <div class="w-[65px] h-[65px] rounded-[7px]">
-              <img
-                src="~assets/images/hoodie.jpg"
-                alt=""
-                class="h-full w-full object-cover"
-              />
+            <div
+              class="w-[65px] h-[65px] border-[1px] border-[#D6D0E7] rounded-[7px] overflow-hidden"
+            >
+              <img :src="i.image" alt="" class="h-full w-full object-cover" />
             </div>
-            <p>Футболка “Фортуна”</p>
+            <p>{{ i.name }}</p>
           </div>
           <div>
-            <p>4249 ₽</p>
+            <p>{{ i.price }} ₽</p>
           </div>
         </div>
       </div>
@@ -25,15 +27,17 @@
         class="px-[15px] lg:px-0 bg-[#E6E3F9] lg:bg-transparent py-[20px] lg:py-0 lg:mt-[30px] flex items-center justify-between cursor-pointer lg:cursor-auto"
         @click="isOpen = !isOpen"
       >
-        <p class="lg:text-xl font-medium hidden lg:block">Итого:</p>
-        <p class="lg:text-xl font-medium block lg:hidden">{{ OpenStatus }}</p>
-        <p class="lg:text-xl font-medium">9924 ₽</p>
+        <p class="lg:text-xl font-semibold hidden lg:block">Итого:</p>
+        <p class="lg:text-xl lg:font-semibold block lg:hidden">{{ OpenStatus }}</p>
+        <p class="lg:text-xl font-semibold">{{ orderTotal }} ₽</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -41,6 +45,12 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      orderTotal: "cart/getCartTotalPrice",
+    }),
+    products() {
+      return this.$store.state.cart.list;
+    },
     openStyles() {
       return this.isOpen === true ? "block" : "hidden";
     },

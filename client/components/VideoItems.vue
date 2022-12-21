@@ -10,14 +10,23 @@
       :link="item.link"
     >
     </VideoItem>
+    <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" :show="true" />
   </div>
 </template>
 
 <script>
 import VideoItem from "./VideoItem.vue";
+import VideoModal from "./VideoModal.vue";
 
 export default {
-  components: { VideoItem },
+  data() {
+    return {
+      link: "",
+      show: false,
+    };
+  },
+  methods: {},
+  components: { VideoItem, VideoModal },
   props: {
     data: Array,
   },

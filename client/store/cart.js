@@ -25,7 +25,7 @@ export const mutations = {
         size: payload.size,
         name: payload.name,
         countInCart: 1,
-        totalCount: payload.totalCount,
+        totalCount: Number(payload.totalCount),
         image: payload.image,
       });
     }
@@ -68,18 +68,16 @@ export const mutations = {
   },
 };
 
-
-
 export const getters = {
   // Количество товаров в корзине
   getCartValue(state) {
     return state.list.length > 1
-      ? state.list.reduce((a, b) => a.countInCart + b.countInCart)
+      ? state.list.map((e) => e.countInCart).reduce((a, b) => a + b)
       : state.list.length === 1
       ? Number(state.list.map((e) => e.countInCart).join(""))
       : 0;
   },
-  // Сумма товаров в корзине *изменить
+  // Сумма товаров в корзине
   getCartTotalPrice(state) {
     return state.list.length > 1
       ? Number(

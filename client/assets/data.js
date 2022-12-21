@@ -105,37 +105,37 @@ export const videosData = [
   {
     id: "ghthrjtrjrtjtje2325",
     img: "https://avatars.dzeninfra.ru/get-zen_doc/1362552/pub_61e490c96e15de344350c24a_61e491dd1410166533df2384/scale_1200",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
   {
     id: "2e121fakyukw",
     img: "https://static.1tv.ru/uploads/video/material/splash/2021/09/24/683460/big/683460_big_413aa58d50.jpg",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
   {
     id: "2kykye121faw",
     img: "https://avatars.dzeninfra.ru/get-zen_doc/1362552/pub_61e490c96e15de344350c24a_61e491dd1410166533df2384/scale_1200",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
   {
     id: "2e12kyk1faw",
     img: "http://i.mycdn.me/getVideoPreview?id=1770074802769&idx=10&type=39&tkn=alcCa5YYKWx_gPRDcSD7fIuLzyk&fn=vid_x",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
   {
     id: "2e12kkyy1faw",
     img: "https://static.1tv.ru/uploads/video/material/splash/2021/09/24/683460/big/683460_big_413aa58d50.jpg",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
   {
     id: "2e1kykk21faw",
     img: "https://pic.rutubelist.ru/userappearance/c2/46/c246e4abbb765bc4ee3c6d23ff8a984e.jpeg",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
   {
     id: "2eky121faw",
     img: "https://static.1tv.ru/uploads/video/material/splash/2021/09/24/683460/big/683460_big_413aa58d50.jpg",
-    link: "htts",
+    link: "https://www.youtube.com/watch?v=ZQFQfjtDE6k",
   },
 ];
 
@@ -315,11 +315,16 @@ export const realProduct = [
         {
           id: 2,
           size: "M",
-          count: 13,
+          count: 8,
         },
         {
           id: 3,
           size: "XL",
+          count: 5,
+        },
+        {
+          id: 4,
+          size: "S",
           count: 5,
         },
       ],

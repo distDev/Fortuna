@@ -40,38 +40,38 @@
 
 <script>
 import { headerLinks } from "../assets/header-data";
+import Cart from "./cart/Cart.vue";
 
 export default {
-  data() {
-    return {
-      links: headerLinks,
-      showHeader: true,
-      scrollOffset: 97,
-      lastScrollPosition: 0,
-    };
-  },
-  methods: {
-    onScroll() {
-      if (window.pageYOffset < 0) {
-        return;
-      }
-      if (
-        Math.abs(window.pageYOffset - this.lastScrollPosition) <
-        this.scrollOffset
-      ) {
-        return;
-      }
-      this.showHeader = window.pageYOffset < this.lastScrollPosition;
-      this.lastScrollPosition = window.pageYOffset;
+    data() {
+        return {
+            links: headerLinks,
+            showHeader: true,
+            scrollOffset: 97,
+            lastScrollPosition: 0,
+        };
     },
-  },
-  mounted() {
-    this.lastScrollPosition = window.pageYOffset;
-    window.addEventListener("scroll", this.onScroll);
-  },
-  beforeDestroy() {
-    window.removeEventListener("scroll", this.onScroll);
-  },
+    methods: {
+        onScroll() {
+            if (window.pageYOffset < 0) {
+                return;
+            }
+            if (Math.abs(window.pageYOffset - this.lastScrollPosition) <
+                this.scrollOffset) {
+                return;
+            }
+            this.showHeader = window.pageYOffset < this.lastScrollPosition;
+            this.lastScrollPosition = window.pageYOffset;
+        },
+    },
+    mounted() {
+        this.lastScrollPosition = window.pageYOffset;
+        window.addEventListener("scroll", this.onScroll);
+    },
+    beforeDestroy() {
+        window.removeEventListener("scroll", this.onScroll);
+    },
+    components: { Cart }
 };
 </script>
 
