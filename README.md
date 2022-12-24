@@ -8,7 +8,7 @@ Frontend:
 * Nuxt 2
 * Tailwind
 * Swiper
-* Jest
+* PhotosWipe
 
 <br>Backend: 
 * Strappi
