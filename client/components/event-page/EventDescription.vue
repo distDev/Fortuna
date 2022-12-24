@@ -15,15 +15,20 @@
       </div>
     </div>
     <div class="w-full">
-      <Slider :count="2.3" :lg-count="4" :h="120" :lg-h="170" :space="30">
-        <div
-          v-for="i in images.data"
-          :key="i.id"
-          class="swiper-slide h-[120px] lg:h-[170px]"
-        >
-          <img :src="i.attributes.url" class="w-full h-full object-cover" />
-        </div>
-      </Slider>
+      <Photoswipe
+        ><Slider :count="2.3" :lg-count="4" :h="120" :lg-h="170" :space="30">
+          <div
+            v-for="i in images.data"
+            :key="i.id"
+            class="swiper-slide h-[120px] lg:h-[170px]"
+          >
+            <img
+              :src="i.attributes.url"
+              v-pswp="i.attributes.url"
+              class="w-full h-full object-cover"
+            />
+          </div> </Slider
+      ></Photoswipe>
     </div>
   </div>
 </template>
@@ -43,7 +48,7 @@ export default {
     eventDescription() {
       return this.showDescription
         ? this.description
-        : this.description.slice(0, 250) + '...';
+        : this.description.slice(0, 250) + "...";
     },
     descriptionStatus() {
       return this.showDescription ? "Скрыть описание" : "Читать далее";

@@ -21,6 +21,7 @@ export default {
   plugins: [
     { src: "@/plugins/vue-swiper.js", ssr: false },
     { src: "@/plugins/vue-teleport.js", ssr: false },
+    { src: "@/plugins/vue-photoswipe.js", ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -10,7 +10,7 @@
       :link="item.link"
     >
     </VideoItem>
-    <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" :show="true" />
+    <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" />
   </div>
 </template>
 

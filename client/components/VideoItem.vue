@@ -1,5 +1,5 @@
 <template>
-  <div class="relative cursor-pointer">
+  <div class="relative cursor-pointer" @click="handleShow({ url: link })">
     <img :src="img" alt="" class="w-full h-full object-cover" />
     <div class="absolute top-0 opacity-50 bg-black w-full h-full"></div>
     <div
@@ -11,7 +11,14 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
+  methods: {
+    ...mapMutations({
+      handleShow: "video/handleShow",
+    }),
+  },
   props: {
     img: String,
     link: String,
@@ -25,13 +32,12 @@ export default {
   height: 20%;
   color: #9671ff;
   cursor: pointer;
-   transition-duration: 0.2s;
+  transition-duration: 0.2s;
 }
 
 .play-icon:hover svg {
   width: 25%;
   height: 25%;
   color: white;
-
 }
 </style>
