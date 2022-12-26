@@ -8,7 +8,7 @@ Frontend:
 * Nuxt 2
 * Tailwind
 * Swiper
-* PhotosWipe
+* vue-pswipe (Photoswipe)
 
 <br>Backend: 
 * Strappi
