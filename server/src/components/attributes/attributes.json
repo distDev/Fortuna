@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_products_attributs",
+  "collectionName": "components_attributes_attributes",
   "info": {
-    "displayName": "attribut"
+    "displayName": "attributes"
   },
   "options": {},
   "attributes": {

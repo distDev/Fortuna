@@ -198,13 +198,13 @@ export const eventsData = [
   },
 ];
 
-export const article = [
+export const articleData = [
   {
     id: "art4124124",
     time: "12 декабря",
     blocks: [
       {
-        id: "headerr4121",
+        id: "42121rqrqrq",
         type: "header",
         data: {
           text: "Идейные соображения высшего порядка, а также рамки и место обучения кадров в значительной степени обуславливает создание",
@@ -221,7 +221,7 @@ export const article = [
         id: "img4121",
         type: "image",
         data: {
-          link: "",
+          link: "https://i.ytimg.com/vi/6it0h2ImX_w/maxresdefault.jpg",
         },
       },
       {
@@ -290,7 +290,7 @@ export const realProduct = [
   {
     id: 1,
     attributes: {
-      name: 'Кружка "Фортуна"',
+      name: 'Product',
       price: "1200",
       description:
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",

@@ -4,8 +4,7 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product",
-    "description": ""
+    "displayName": "Product"
   },
   "options": {
     "draftAndPublish": true
@@ -16,36 +15,35 @@
       "type": "string"
     },
     "price": {
-      "type": "biginteger"
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "inStock": {
+      "type": "boolean"
     },
     "images": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "type": "media",
+      "multiple": true
     },
     "options": {
+      "displayName": "options",
+      "type": "component",
+      "repeatable": true,
+      "component": "options.options"
+    },
+    "attributes": {
       "displayName": "attributes",
       "type": "component",
       "repeatable": true,
-      "component": "products.attributes"
-    },
-    "attributes": {
-      "displayName": "attribut",
-      "type": "component",
-      "repeatable": true,
-      "component": "products.attribut"
-    },
-    "inStock": {
-      "type": "boolean"
-    },
-    "description": {
-      "type": "text"
+      "component": "attributes.attributes"
     }
   }
 }

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * event router
+ * prize router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::event.event');
+module.exports = createCoreRouter('api::prize.prize');

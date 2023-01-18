@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_options_options",
+  "info": {
+    "displayName": "options"
+  },
+  "options": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "size": {
+      "type": "string"
+    }
+  }
+}
