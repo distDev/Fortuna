@@ -14,7 +14,7 @@
                     </div>
 
                 </div>
-                <div class="lg:ml-[70px] lg:max-w-[900px]">
+                <div class="lg:ml-[70px] lg:w-[900px]">
                     <Nuxt />
                 </div>
 
