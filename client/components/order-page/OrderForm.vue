@@ -6,19 +6,19 @@
       <div class="space-y-[20px]">
         <h4 class="text-base font-medium">Контактная иформация</h4>
         <div class="space-y-[15px]">
-          <Input placeholder="Номер телефона" :type="'text'" />
-          <Input placeholder="Имя получателя" :type="'text'" />
+          <Input placeholder="Номер телефона" type="text" />
+          <Input placeholder="Имя получателя" type="text" />
         </div>
       </div>
       <div class="space-y-[20px]">
         <h4 class="text-base font-medium">Адрес получения</h4>
         <div class="space-y-[15px]">
-          <Input placeholder="Край/Область" :type="'text'" />
-          <Input placeholder="Город" :type="'text'" />
-          <Input placeholder="Адрес" :type="'text'" />
+          <Input placeholder="Край/Область" type="text" />
+          <Input placeholder="Город" type="text" />
+          <Input placeholder="Адрес" type="text" />
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-[15px]">
-            <Input placeholder="Квартира" :type="'text'" />
-            <Input placeholder="Индекс" :type="'text'" />
+            <Input placeholder="Квартира" type="text" />
+            <Input placeholder="Индекс" type="text" />
           </div>
         </div>
       </div>

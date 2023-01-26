@@ -5,7 +5,7 @@
       :class="cartValue ? 'bg-violet-500' : 'bg-white'"
       @click="handleShow"
     >
-      <p class="text-sm">{{ cartValue }}</p>
+      <p class="text-sm" :class="countStyle">{{ cartValue }}</p>
     </div>
 
     <!-- Корзина -->
@@ -32,6 +32,9 @@ export default {
   computed: {
     isOpen() {
       return this.$store.state.cart.isOpen;
+    },
+    countStyle() {
+      return this.cartValue > 0 ? 'text-white' : 'text-black'
     },
     ...mapGetters({
       cartValue: "cart/getCartValue",

@@ -5,7 +5,7 @@ export const customerServicesData = [
   },
   {
     name: "Обратная связь",
-    path: "/contactus",
+    path: "/contact-us",
   },
   {
     name: "ДОСТАВКА",

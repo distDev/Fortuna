@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/products/1">
+  <NuxtLink :to="'/products/' + id">
     <div
       class="h-[213px]"
       :class="{
@@ -35,6 +35,7 @@ export default {
     price: String,
     title: String,
     large: Boolean,
+    id: String,
   },
   data() {
     return {

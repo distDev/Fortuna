@@ -15,7 +15,7 @@
         :price="price"
         :size="size"
         :inStock="inStock"
-        :options="options"
+        :totalCount="totalCount"
       />
       <ProductInfo :attributes="attributes" :description="description" />
     </div>
@@ -31,7 +31,7 @@ export default {
     name: String,
     price: String,
     inStock: Boolean,
-    options: Array,
+    totalCount: Number,
     attributes: Array,
     description: String,
     id: Number,

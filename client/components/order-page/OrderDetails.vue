@@ -3,30 +3,29 @@
     <div class="lg:w-[442px] lg:ml-[50px] flex flex-col-reverse lg:flex-col">
       <div
         class="lg:block space-y-5 px-[15px] py-5 lg:py-0 lg:px-[0] lg:space-y-[25px] border-b-[1px] border-b-[#ECECEC] lg:pb-[30px]"
-        :class="openStyles"
-      >
-        <div
-          v-for="i in products"
-          :key="i.variantId"
-          class="flex justify-between items-center"
-        >
-          <div class="flex items-center space-x-[10px]">
-            <div
-              class="w-[65px] h-[65px] border-[1px] border-[#D6D0E7] rounded-[7px] overflow-hidden"
-            >
-              <img :src="i.image" alt="" class="h-full w-full object-cover" />
+        :class="openStyles">
+        <div v-for="i in products" :key="i.variantId" class="flex justify-between items-center">
+          <div class="flex items-center space-x-[10px] w-[85%]">
+            <div class="w-[65px] h-[65px] border-[1px] bg-violet-500 border-[rgb(214,208,231)] rounded-[7px] relative">
+              <img :src="i.image" alt="" class="h-full w-full object-cover rounded-[7px]" />
+              <div
+                class="px-[7px] py-[3px] rounded-[50%] bg-[#737373] text-white absolute right-[-8px] top-[-8px] z-70">
+                <p class="text-xs ">
+                  {{ i.countInCart }}
+                </p>
+              </div>
             </div>
-            <p>{{ i.name }}</p>
+            <p class="w-[70%]">{{ i.name }}</p>
           </div>
-          <div>
+          <div class="w-[15%] flex justify-end">
             <p>{{ i.price }} ₽</p>
           </div>
+
         </div>
       </div>
       <div
         class="px-[15px] lg:px-0 bg-[#E6E3F9] lg:bg-transparent py-[20px] lg:py-0 lg:mt-[30px] flex items-center justify-between cursor-pointer lg:cursor-auto"
-        @click="isOpen = !isOpen"
-      >
+        @click="isOpen = !isOpen">
         <p class="lg:text-xl font-semibold hidden lg:block">Итого:</p>
         <p class="lg:text-xl lg:font-semibold block lg:hidden">{{ OpenStatus }}</p>
         <p class="lg:text-xl font-semibold">{{ orderTotal }} ₽</p>
@@ -61,4 +60,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

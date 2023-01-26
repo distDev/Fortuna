@@ -52,19 +52,19 @@ export const newsData = [
 
 export const productsData = [
   {
-    id: "1442fawfq1",
+    id: "32rphthtrhq00432",
     img: "hoodie.jpg",
     title: "Футболка 'ФОРТНУА'",
     price: "2414",
   },
   {
-    id: "144f21",
+    id: "12421fegweg",
     img: "hoodie.jpg",
     title: "Футболка 'ФОРТНУА'",
     price: "2414",
   },
   {
-    id: "144af21",
+    id: "21er3t2",
     img: "hoodie.jpg",
     title: "Худи 'ФОРТНУА'",
     price: "2414",
@@ -286,15 +286,16 @@ export const realEvents = [
   },
 ];
 
-export const realProduct = [
+export const realProducts = [
   {
-    id: 1,
+    id: '32rphthtrhq00432',
     attributes: {
-      name: 'Product',
+      name: "Кружка 'Фортуна'",
       price: "1200",
       description:
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
       inStock: true,
+      totalCount: 5,
       images: {
         data: [
           {
@@ -311,23 +312,6 @@ export const realProduct = [
           },
         ],
       },
-      options: [
-        {
-          id: 2,
-          size: "M",
-          count: 8,
-        },
-        {
-          id: 3,
-          size: "XL",
-          count: 5,
-        },
-        {
-          id: 4,
-          size: "S",
-          count: 5,
-        },
-      ],
       attributes: [
         {
           id: 1,
@@ -342,4 +326,91 @@ export const realProduct = [
       ],
     },
   },
+
+  {
+    id: '12421fegweg',
+    attributes: {
+      name: "Сумка женская AFINA кросс боди через плечо",
+      price: "6121",
+      description:
+        "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
+      inStock: true,
+      totalCount: 5,
+      images: {
+        data: [
+          {
+            id: 6,
+            attributes: {
+              url: "https://ir.ozone.ru/s3/multimedia-i/wc1000/6384659802.jpg",
+            },
+          },
+          {
+            id: 7,
+            attributes: {
+              url: "https://ir.ozone.ru/s3/multimedia-l/wc1000/6446692449.jpg",
+            },
+          },
+        ],
+      },
+      attributes: [
+        {
+          id: 1,
+          name: "Объем, мл",
+          value: "400",
+        },
+        {
+          id: 2,
+          name: "Вес товара, г",
+          value: "400",
+        },
+      ],
+    },
+  },
+
+  {
+    id: '21er3t2',
+    attributes: {
+      name: "кружка синяя CoolPodarok Трансформеры Бамбелби Бамбелби",
+      price: "1200",
+      description:
+        "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
+      inStock: true,
+      totalCount: 5,
+      images: {
+        data: [
+          {
+            id: 6,
+            attributes: {
+              url: "https://ir.ozone.ru/s3/multimedia-c/wc1000/6355843344.jpg",
+            },
+          },
+          {
+            id: 7,
+            attributes: {
+              url: "https://ir.ozone.ru/s3/multimedia-k/wc1000/6355843388.jpg",
+            },
+          },
+          {
+            id: 8,
+            attributes: {
+              url: "https://ir.ozone.ru/s3/multimedia-u/wc1000/6355843398.jpg",
+            },
+          },
+        ],
+      },
+      attributes: [
+        {
+          id: 1,
+          name: "Объем, мл",
+          value: "400",
+        },
+        {
+          id: 2,
+          name: "Вес товара, г",
+          value: "400",
+        },
+      ],
+    },
+  },
+  
 ];

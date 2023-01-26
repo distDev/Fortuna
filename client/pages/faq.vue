@@ -15,14 +15,8 @@ export default {
     data() {
         return {
             data: customerServicesFaqDara,
-
         };
     },
-
     components: { FaqItem }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -1,23 +1,13 @@
 <template>
   <div class="space-y-[15px] mt-[15px]">
-    <div
-      v-for="item in products"
-      :key="item.variantId"
-      class="flex space-x-[15px] w-full"
-    >
+    <div v-for="item in products" :key="item.id" class="flex space-x-[15px] w-full">
       <div class="h-[130px] w-[105px]">
-        <img
-          :src="item.image"
-          :alt="item.name"
-          class="h-full w-full object-cover"
-        />
+        <img :src="item.image" :alt="item.name" class="h-full w-full object-cover" />
       </div>
       <div class="flex flex-col justify-between lg:w-[60%]">
         <div class="flex flex-col space-y-[5px]">
-          <NuxtLink
-            :to="'/products/' + item.id"
-            class="uppercase text-xs font-semibold text-white hover:text-violet-500"
-          >
+          <NuxtLink :to="'/products/' + item.id"
+            class="uppercase text-xs font-semibold text-white hover:text-violet-500">
             {{ item.name }}
           </NuxtLink>
           <p class="uppercase text-xs font-semibold text-white">
@@ -28,28 +18,19 @@
           </p>
         </div>
         <!-- управление количеством -->
-        <div
-          class="flex items-center space-x-[10px]"
-          v-if="Number(item.totalCount) > 0"
-        >
-          <button
-            class="h-[30px] w-[30px] bg-[#97999B] text-black"
-            @click="
-              item.countInCart !== 1
-                ? decrementCount({ variantId: item.variantId })
-                : removeFromCart({ variantId: item.variantId })
-            "
-          >
+        <div class="flex items-center space-x-[10px]" v-if="Number(item.totalCount) > 0">
+          <button class="h-[30px] w-[30px] bg-[#97999B] text-black" @click="
+            item.countInCart !== 1
+              ? decrementCount({ id: item.id })
+              : removeFromCart({ id: item.id })
+          ">
             -
           </button>
           <p class="text-white text-base font-medium">
             {{ item.countInCart }}
           </p>
-          <button
-            class="h-[30px] w-[30px] bg-[#97999B] text-black disabled:bg-[#666869]"
-            @click="incrementCount({ variantId: item.variantId })"
-            :disabled="Number(item.countInCart) === Number(item.totalCount)"
-          >
+          <button class="h-[30px] w-[30px] bg-[#97999B] text-black disabled:bg-[#666869]"
+            @click="incrementCount({ id: item.id })" :disabled="Number(item.countInCart) === Number(item.totalCount)">
             +
           </button>
         </div>
@@ -57,10 +38,7 @@
           <p class="uppercase text-xs font-semibold text-[#97999B]">
             нет в наличии
           </p>
-          <div
-            class="del-icon"
-            @click="removeFromCart({ variantId: item.variantId })"
-          >
+          <div class="del-icon" @click="removeFromCart({ id: item.id })">
             <font-awesome-icon :icon="('fas', 'trash')" />
           </div>
         </div>
@@ -79,7 +57,7 @@ export default {
       decrementCount: "cart/decrementCount",
       removeFromCart: "cart/removeFromCart",
     }),
-    increment() {},
+    increment() { },
   },
   computed: {
     products() {
@@ -96,6 +74,7 @@ export default {
   color: #97999b;
   cursor: pointer;
 }
+
 .del-icon svg:hover {
   color: #f95584;
 }

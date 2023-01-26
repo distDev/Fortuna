@@ -18,7 +18,7 @@
     <!-- Кнопка оформления -->
     <button
       class="flex items-center justify-center w-full mt-[30px] bg-white text-black text-base font-medium uppercase py-[15px] box-border"
-      @click="cartTotal ? placeOrder() : handleShow()"
+      @click="cartTotal ? placeOrder() : handleSwitchShow()"
     >
       {{ cartTotal ? "перейти к оформлению" : "продолжить покупки" }}
     </button>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     ...mapMutations({
-      handleShow: "cart/handleShowCart",
+      handleSwitchShow: "cart/handleShowCart",
     }),
     placeOrder() {
       this.$router.push({ path: "/order" });

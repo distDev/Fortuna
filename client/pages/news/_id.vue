@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
 import { articleData } from "../../assets/data";
 
 export default {
@@ -35,6 +36,10 @@ export default {
       }))[0].join('')
 
     }
+  },
+  mounted() {
+    
+    console.log(this.$route)
   }
 };
 </script>
