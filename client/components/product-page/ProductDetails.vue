@@ -36,6 +36,7 @@ export default {
     description: String,
     id: Number,
     images: Array,
+    size: String,
   },
   components: { ProductControls, ProductInfo },
 };

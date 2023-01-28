@@ -8,7 +8,7 @@
         <div class="flex flex-col space-y-[5px]">
           <NuxtLink :to="'/products/' + item.id"
             class="uppercase text-xs font-semibold text-white hover:text-violet-500">
-            {{ item.name }}
+            {{ item.name.slice(0, 50) }}
           </NuxtLink>
           <p class="uppercase text-xs font-semibold text-white">
             {{ item.price }} ₽

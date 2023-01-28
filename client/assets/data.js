@@ -288,7 +288,7 @@ export const realEvents = [
 
 export const realProducts = [
   {
-    id: '32rphthtrhq00432',
+    id: "32rphthtrhq00432",
     attributes: {
       name: "Кружка 'Фортуна'",
       price: "1200",
@@ -296,6 +296,7 @@ export const realProducts = [
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
       inStock: true,
       totalCount: 5,
+      size: "M",
       images: {
         data: [
           {
@@ -328,7 +329,7 @@ export const realProducts = [
   },
 
   {
-    id: '12421fegweg',
+    id: "12421fegweg",
     attributes: {
       name: "Сумка женская AFINA кросс боди через плечо",
       price: "6121",
@@ -336,6 +337,7 @@ export const realProducts = [
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
       inStock: true,
       totalCount: 5,
+      size: "S",
       images: {
         data: [
           {
@@ -368,14 +370,15 @@ export const realProducts = [
   },
 
   {
-    id: '21er3t2',
+    id: "21er3t2",
     attributes: {
-      name: "кружка синяя CoolPodarok Трансформеры Бамбелби Бамбелби",
+      name: "кружка синяя Бамбелби",
       price: "1200",
       description:
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
       inStock: true,
       totalCount: 5,
+      size: "250мл",
       images: {
         data: [
           {
@@ -412,5 +415,4 @@ export const realProducts = [
       ],
     },
   },
-  
 ];

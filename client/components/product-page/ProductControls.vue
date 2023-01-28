@@ -1,13 +1,6 @@
 <template>
   <div class="space-y-[15px] lg:space-y-[20px]">
-    <!-- <select v-if="inStock && options" name="options"
-      class="h-[50px] w-full lg:w-[75%] px-2 border-[1px] border-black text-black" v-model="selectedSize">
-      <option value="" disabled>Выберете размер</option>
-      <option v-for="i in options" :key="i.id" :value="i.size" :disabled="i.count === 0">
-        {{ i.size }}
-      </option>
-    </select> -->
-    <button :disabled="!inStock || (options && !Boolean(selectedSize))"
+    <button :disabled="!inStock || checkAvailableCount"
       class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%] disabled:bg-[#97999B]"
       @click="addProduct">
       {{ isDisabled }}
@@ -30,7 +23,7 @@ export default {
         id: this.id,
         name: this.name,
         price: Number(this.price),
-        size: null,
+        size: this.size,
         totalCount: this.totalCount,
         image: this.productImage,
       });
@@ -45,7 +38,12 @@ export default {
 
   computed: {
     isDisabled() {
-      return this.inStock ? "В корзину" : "Нет в наличии";
+      if (!this.inStock || this.checkAvailableCount) {
+        return 'Нет в наличии'
+      }
+      return 'В корзину'
+      
+    
     },
     selectedSizeCount() {
       return this.options
@@ -59,7 +57,27 @@ export default {
         .slice(0, 1)
         .join("");
     },
+    checkAvailableCount() {
+      let check = this.products.filter((e) => e.id === this.$route.params.id)
+      if (check.length > 0) {
+        if (check[0].countInCart >= this.totalCount) {
+          return true
+        }
+        else {
+          return false
+        }
+
+      }
+      else {
+        return false
+      }
+
+    },
+    products() {
+      return this.$store.state.cart.list;
+    },
   },
+
 
   props: {
     name: String,
@@ -68,6 +86,7 @@ export default {
     totalCount: Number,
     id: Number,
     images: Array,
+    size: String,
   },
 };
 </script>
