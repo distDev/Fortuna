@@ -16,6 +16,7 @@
           class="swiper-slide"
         />
       </Slider>
+      <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" />
     </div>
   </div>
 </template>
@@ -23,12 +24,13 @@
 <script>
 import Slider from "../Slider.vue";
 import VideoItem from "../VideoItem.vue";
+import VideoModal from "../VideoModal.vue";
 
 export default {
   props: {
     data: Array,
   },
-  components: { VideoItem, Slider },
+  components: { VideoItem, Slider, VideoModal },
 };
 </script>
 

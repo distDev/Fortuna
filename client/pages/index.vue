@@ -1,9 +1,9 @@
 <template>
   <div class="space-y-[50px] lg:space-y-[90px] h-auto flex flex-col">
     <MainBanner />
-    <PopularPoducts :data="popularProducts" />
+    <PopularPoducts :data="popularProducts" title="популярное" />
     <LastNews :data="lastNews" />
-    <CustomProducts :data="customProducts" />
+    <CustomProducts :data="customProducts" title="своими руками"/>
     <NewVideos :data="newVideos" />
   </div>
 </template>
@@ -11,7 +11,7 @@
 <script>
 import { productsData, newsData, videosData } from "../assets/data";
 import MainBanner from "../components/main-page/MainBanner.vue";
-import PopularPoducts from "../components/main-page/PopularPoducts.vue";
+import PopularPoducts from "../components/PopularPoducts.vue";
 import ProductCards from "../components/ProductCards.vue";
 import CustomProducts from "../components/main-page/CustomProducts.vue";
 import LastNews from "../components/main-page/LastNews.vue";

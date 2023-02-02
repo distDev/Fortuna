@@ -10,7 +10,7 @@ import OrderDetails from "../components/order-page/OrderDetails.vue";
 import OrderForm from "../components/order-page/OrderForm.vue";
 import Input from "../components/UI/Input.vue";
 
-export default { components: { Input, OrderForm, OrderDetails } };
+export default { layout: "order", components: { Input, OrderForm, OrderDetails } };
 </script>
 
 <style scoped>

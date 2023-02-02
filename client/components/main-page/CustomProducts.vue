@@ -6,7 +6,7 @@
       <h2
         class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"
       >
-        Футболки
+        {{ title }}
       </h2>
       <div class="flex flex-row justify-center space-x-[30px] w-full">
         <ProductCard
@@ -35,6 +35,7 @@ export default {
   components: {  Slider, ProductCard },
   props: {
     data: Array,
+    title: String,
   },
 };
 </script>

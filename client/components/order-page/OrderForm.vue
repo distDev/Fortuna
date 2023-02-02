@@ -5,19 +5,20 @@
       <div class="space-y-[20px]">
         <h4 class="text-base font-medium">Контактная иформация</h4>
         <div class="space-y-[15px]">
-          <Input placeholder="Номер телефона" type="text" name="phone" :error-status="false" :errors="[]" v-model="name"/>
-          <Input placeholder="Имя получателя" type="text" :error-status="false" :errors="[]" v-model="name"/>
+          <Input placeholder="Номер телефона" type="text" name="phone" :error-status="false" :errors="[]"
+            v-model="name" />
+          <Input placeholder="Имя получателя" type="text" :error-status="false" :errors="[]" v-model="name" />
         </div>
       </div>
       <div class="space-y-[20px]">
         <h4 class="text-base font-medium">Адрес получения</h4>
         <div class="space-y-[15px]">
-          <Input placeholder="Край/Область" type="text" :error-status="false" :errors="[]" v-model="name"/>
-          <Input placeholder="Город" type="text" :error-status="false" :errors="[]" v-model="name"/>
-          <Input placeholder="Адрес" type="text" :error-status="false" :errors="[]" v-model="name"/>
+          <Input placeholder="Край/Область" type="text" :error-status="false" :errors="[]" v-model="name" />
+          <Input placeholder="Город" type="text" :error-status="false" :errors="[]" v-model="name" />
+          <Input placeholder="Адрес" type="text" :error-status="false" :errors="[]" v-model="name" />
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-[15px]">
-            <Input placeholder="Квартира" type="text" :error-status="false" :errors="[]" v-model="name"/>
-            <Input placeholder="Индекс" type="text" :error-status="false" :errors="[]" v-model="name"/>
+            <Input placeholder="Квартира" type="text" :error-status="false" :errors="[]" v-model="name" />
+            <Input placeholder="Индекс" type="text" :error-status="false" :errors="[]" v-model="name" />
           </div>
         </div>
       </div>
@@ -34,6 +35,7 @@
 <script>
 import Input from "../UI/Input.vue";
 
+
 export default {
   data() {
     return {
@@ -43,7 +45,17 @@ export default {
       city: '',
       home: '',
       dbod: '',
+      token: 'bf0f28283f3d7c15ac2c9bf0b522c2249dd50ec7',
+      isBrowser: false,
     };
+  },
+  methods: {
+    handleChange() {
+      console.log('ку')
+    }
+  },
+  mounted() {
+    this.isBrowser = process.browser
   },
   components: { Input },
 };

@@ -39,14 +39,11 @@
           <h3 class="uppercase font-bold text-[#97999B] text-sm">помощь</h3>
           <div class="flex flex-col space-y-[15px]">
             <NuxtLink
-              to="/"
+              v-for="i in helpLinksData"
+              :key="i.name"
+              :to="i.path"
               class="uppercase text-xs text-white font-medium hover:text-violet-500"
-              >Доставка</NuxtLink
-            >
-            <NuxtLink
-              to="/"
-              class="uppercase text-xs text-white font-medium hover:text-violet-500"
-              >Контакты</NuxtLink
+              >{{ i.name }}</NuxtLink
             >
           </div>
         </div>
@@ -85,12 +82,13 @@
 </template>
 
 <script>
-import { headerLinks } from "../assets/header-data";
+import { footerHelpLinks, headerLinks } from "../assets/nav-data";
 
 export default {
   data() {
     return {
       linksData: headerLinks,
+      helpLinksData: footerHelpLinks,
     };
   },
 };

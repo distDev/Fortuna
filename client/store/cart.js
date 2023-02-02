@@ -11,7 +11,6 @@ export const mutations = {
       return state.list.map(
         (e) =>
           e.id === payload.id && {
-            ...e,
             countInCart: e.countInCart++,
           }
       );
@@ -40,7 +39,6 @@ export const mutations = {
     return state.list.map((e) => {
       if (e.id === payload.id) {
         return {
-          ...e,
           countInCart: e.countInCart++,
         };
       }
@@ -52,7 +50,6 @@ export const mutations = {
     return state.list.map((e) => {
       if (e.id === payload.id) {
         return {
-          ...e,
           countInCart: (e.countInCart -= 1),
         };
       }
@@ -74,7 +71,8 @@ export const getters = {
       ? Number(state.list.map((e) => e.countInCart).join(""))
       : 0;
   },
-  // Сумма товаров в корзине
+  
+// Сумма товаров в корзине
   getCartTotalPrice(state) {
     return state.list.length > 1
       ? Number(

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ContactForm from '../components/contact-us/ContactForm.vue';
+import ContactForm from '../components/contact-us-page/ContactForm.vue';
 
 export default {
     layout: "customer",

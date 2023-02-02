@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import FaqItem from '../components/faq/FaqItem.vue';
+import FaqItem from '../components/faq-page/FaqItem.vue';
 import { customerServicesFaqDara } from '../assets/customer-services'
 
 

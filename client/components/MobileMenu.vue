@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { headerLinks } from "../assets/header-data";
+import { headerLinks } from "../assets/nav-data";
 
 export default {
   data() {
