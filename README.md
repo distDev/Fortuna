@@ -9,6 +9,7 @@ Frontend:
 * Tailwind
 * Swiper
 * Photoswipe
+* Dadata
 
 <br>Backend: 
 * Strappi
