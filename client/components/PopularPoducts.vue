@@ -1,9 +1,12 @@
 <template>
-  <div v-if="data.length > 0" class="flex flex-col lg:items-center justify-center pl-[15px] lg:px-10" >
+  <div
+    v-if="data.length > 0"
+    class="flex flex-col lg:items-center justify-center pl-[15px] lg:px-10"
+  >
     <h2
       class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"
     >
-     {{ title }}
+      {{ title }}
     </h2>
     <div class="w-full">
       <Slider
@@ -23,7 +26,6 @@
           class="swiper-slide"
         />
       </Slider>
-      
     </div>
   </div>
 </template>
@@ -39,13 +41,12 @@ export default {
   },
   computed: {
     productValue() {
-     let currentValue = this.data.length
-     if (currentValue > 3) {
-      return 4
-     }
-     else {
-      return currentValue
-     }
+      let currentValue = this.data.length;
+      if (currentValue > 3) {
+        return 4;
+      } else {
+        return currentValue;
+      }
     },
   },
   components: { Slider, ProductCard },

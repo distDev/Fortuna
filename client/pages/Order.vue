@@ -7,7 +7,7 @@
 
 <script>
 import OrderDetails from "../components/order-page/OrderDetails.vue";
-import OrderForm from "../components/order-page/OrderForm.vue";
+import OrderForm from "../components/order-page/order-form/OrderForm.vue";
 import Input from "../components/UI/Input.vue";
 
 export default { layout: "order", components: { Input, OrderForm, OrderDetails } };

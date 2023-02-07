@@ -34,7 +34,7 @@ export default {
       return this.$store.state.cart.isOpen;
     },
     countStyle() {
-      return this.cartValue > 0 ? 'text-white' : 'text-black'
+      return this.cartValue > 0 ? "text-white" : "text-black";
     },
     ...mapGetters({
       cartValue: "cart/getCartValue",

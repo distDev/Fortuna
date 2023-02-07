@@ -15,7 +15,7 @@
     </div>
     <div
       class="mt-[14px] lg:mt-5 space-y-[5px]"
-      :class="{  'lg:space-y-[12px]': large }"
+      :class="{ 'lg:space-y-[12px]': large }"
     >
       <h4
         class="uppercase font-semibold lg:font-bold text-sm"

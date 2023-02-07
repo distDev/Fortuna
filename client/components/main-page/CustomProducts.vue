@@ -30,9 +30,8 @@
 import ProductCard from "../ProductCard.vue";
 import Slider from "../Slider.vue";
 
-
 export default {
-  components: {  Slider, ProductCard },
+  components: { Slider, ProductCard },
   props: {
     data: Array,
     title: String,
@@ -40,6 +39,4 @@ export default {
 };
 </script>
 
-<style  scoped>
-
-</style>
+<style scoped></style>

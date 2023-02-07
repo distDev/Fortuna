@@ -1,6 +1,20 @@
 export const state = () => ({
-  list: [],
+  list: [
+    {
+      countInCart: 1,
+      id: "12421fegweg",
+      image: "https://ir.ozone.ru/s3/multimedia-i/wc1000/6384659802.jpg",
+      name: "Сумка женская AFINA кросс боди через плечо",
+      price: 2121,
+      size: "S",
+      totalCount: 5,
+    },
+  ],
   isOpen: false,
+  shippingInfo: {
+    cost: null,
+    company: null,
+  },
 });
 
 export const mutations = {
@@ -60,6 +74,22 @@ export const mutations = {
   handleShowCart(state) {
     return (state.isOpen = !state.isOpen);
   },
+
+  // Изменение цены доставки и компании
+  handleChangeShippingCost(state, payload) {
+    if (payload.info === "Почта России") {
+      return (state.shippingInfo = {
+        cost: 250,
+        company: "Почта России",
+      });
+    }
+    if (payload.info === "CDEK") {
+      return (state.shippingInfo = {
+        cost: 350,
+        company: "CDEK",
+      });
+    }
+  },
 };
 
 export const getters = {
@@ -71,8 +101,8 @@ export const getters = {
       ? Number(state.list.map((e) => e.countInCart).join(""))
       : 0;
   },
-  
-// Сумма товаров в корзине
+
+  // Сумма товаров в корзине
   getCartTotalPrice(state) {
     return state.list.length > 1
       ? Number(
