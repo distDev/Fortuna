@@ -104,14 +104,17 @@ export const getters = {
 
   // Сумма товаров в корзине
   getCartTotalPrice(state) {
-    return state.list.length > 1
-      ? Number(
-          state.list
-            .map((e) => e.countInCart * e.price)
-            .reduce((acc, item) => acc + item)
-        )
-      : state.list.length === 1
-      ? Number(state.list.map((e) => e.price * e.countInCart).join(""))
-      : 0;
+    if (state.list.length > 1) {
+      return Number(
+        state.list
+          .map((e) => e.countInCart * e.price)
+          .reduce((acc, item) => acc + item)
+      );
+    }
+    if (state.list.length === 1) {
+      return Number(state.list.map((e) => e.price * e.countInCart).join(""));
+    }
+
+    return 0;
   },
 };

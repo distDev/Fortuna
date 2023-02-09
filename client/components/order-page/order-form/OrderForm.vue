@@ -2,6 +2,7 @@
   <div
     class="lg:w-[57%] w-full px-[15px] lg:px-0 py-[30px] lg:py-auto lg:h-[90vh] bg-[#FAF9FF] flex lg:justify-end lg:pt-[60px]"
   >
+    <pre>{{ name }}</pre>
     <OrderFormInfo
       v-if="step === 'info'"
       :name="name"
@@ -11,6 +12,7 @@
       :postal="postal"
       :region="region"
       :address="address"
+      @next-step="handleNext"
     />
     <OrderFormConfirm
       v-if="step === 'confirm'"
@@ -21,11 +23,14 @@
       :postal="postal"
       :region="region"
       :address="address"
+      @back="handleReturn"
+      @submit-form="handleSubmit"
     />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Input from "../../UI/Input.vue";
 import OrderFormConfirm from "./OrderFormConfirm.vue";
 import OrderFormInfo from "./OrderFormInfo.vue";
@@ -40,11 +45,52 @@ export default {
       apart: "",
       postal: "",
       address: "",
-      step: "confirm",
+      step: "info",
     };
   },
-  
- 
+
+  methods: {
+    // отправка формы в tg и на сервер
+    handleSubmit() {
+      console.log(
+        this.products,
+        this.totalCost,
+        this.name,
+        this.address,
+        this.phone,
+        this.region
+      );
+    },
+
+    // возврат к 1 шагу
+    handleReturn() {
+      this.step = "info";
+    },
+
+    // переход к 2 шагу
+    handleNext() {
+      this.step = "confirm";
+    },
+  },
+
+  computed: {
+    ...mapGetters({
+      orderTotal: "cart/getCartTotalPrice",
+    }),
+    products() {
+      return this.$store.state.cart.list;
+    },
+    shippingCost() {
+      return this.$store.state.cart.shippingInfo.cost;
+    },
+    totalCost() {
+      if (typeof this.shippingCost === "number") {
+        return this.orderTotal + this.shippingCost;
+      }
+      return this.orderTotal;
+    },
+  },
+
   components: { Input, OrderFormInfo, OrderFormConfirm },
 };
 </script>

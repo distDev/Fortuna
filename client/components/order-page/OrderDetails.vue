@@ -46,7 +46,13 @@
           </div>
           <div class="flex justify-between">
             <p>Доставка</p>
-            <p>{{ shippingCost }} ₽</p>
+            <p>
+              {{
+                typeof shippingCost === "number"
+                  ? shippingCost + "₽"
+                  : shippingCost
+              }}
+            </p>
           </div>
         </div>
       </div>
@@ -60,7 +66,7 @@
         <p class="lg:text-xl lg:font-semibold block lg:hidden">
           {{ OpenStatus }}
         </p>
-        <p class="lg:text-xl font-semibold">{{ orderTotal }} ₽</p>
+        <p class="lg:text-xl font-semibold">{{ totalCost }} ₽</p>
       </div>
     </div>
   </div>
@@ -75,23 +81,36 @@ export default {
       isOpen: false,
     };
   },
+
   computed: {
     ...mapGetters({
       orderTotal: "cart/getCartTotalPrice",
       cartValue: "cart/getCartValue",
     }),
+
     products() {
       return this.$store.state.cart.list;
     },
+
     openStyles() {
       return this.isOpen === true ? "block" : "hidden";
     },
+
     OpenStatus() {
       return this.isOpen === true ? "Скрыть заказ" : "Показать заказ";
     },
+
+    // итоговая цена с доставкой
+    totalCost() {
+      if (typeof this.shippingCost === "number") {
+        return this.orderTotal + this.shippingCost;
+      }
+      return this.orderTotal;
+    },
+
     shippingCost() {
       if (this.orderTotal > 5000) {
-        return 'Бесплатно';
+        return "Бесплатно";
       }
       if (!this.$store.state.cart.shippingInfo.cost) {
         return "Рассчитывается позже";
@@ -99,6 +118,8 @@ export default {
       return this.$store.state.cart.shippingInfo.cost;
     },
   },
+
+  emits: ["submit-form"],
 };
 </script>
 

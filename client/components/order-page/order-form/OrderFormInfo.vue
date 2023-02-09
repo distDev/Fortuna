@@ -6,7 +6,6 @@
         <Input
           placeholder="Номер телефона"
           type="text"
-          name="phone"
           :error-status="false"
           :errors="[]"
           v-model="phone"
@@ -14,7 +13,6 @@
         <Input
           placeholder="Имя получателя"
           type="text"
-          name="name"
           :error-status="false"
           :errors="[]"
           v-model="name"
@@ -65,6 +63,7 @@
     </div>
     <div class="w-full flex lg:justify-end">
       <button
+        @click="$emit('next-step')"  
         class="bg-black w-full lg:w-auto text-white py-[15px] lg:px-[30px] font-medium lg:text-base"
       >
         Продолжить заказ
@@ -89,6 +88,7 @@ export default {
     postal: String,
     address: String,
   },
+  emits: ["nextStep"],
   components: { Input },
 };
 </script>

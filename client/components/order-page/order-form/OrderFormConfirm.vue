@@ -13,7 +13,9 @@
             <p class="w-[83%] text-sm">d.staver@bk.ru</p>
           </div>
           <div class="w-[16%] flex justify-end">
-            <button class="text-xs text-[#97999B]">Изменить</button>
+            <button @click="$emit('back')" class="text-xs text-[#97999B]">
+              Изменить
+            </button>
           </div>
         </div>
         <div class="flex justify-between items-start py-[20px]">
@@ -24,7 +26,9 @@
             </p>
           </div>
           <div class="w-[16%] flex justify-end">
-            <button class="text-xs text-[#97999B]">Изменить</button>
+            <button @click="$emit('back')" class="text-xs text-[#97999B]">
+              Изменить
+            </button>
           </div>
         </div>
       </div>
@@ -47,6 +51,7 @@
     </div>
     <div class="w-full flex lg:justify-end">
       <button
+        @click="$emit('submit-form')"
         class="bg-black w-full lg:w-auto text-white rounded-[4px] py-[15px] lg:px-[30px] font-medium lg:text-base"
       >
         Оформить заказ
@@ -91,7 +96,7 @@ export default {
     },
   },
   mounted() {
-    this.shipping = 'Почта России'
+    this.shipping = "Почта России";
   },
   props: {
     name: String,
@@ -103,6 +108,7 @@ export default {
     address: String,
     shippingMethod: String,
   },
+  emits: ["back", "submit-form"],
   components: { Input },
 };
 </script>
