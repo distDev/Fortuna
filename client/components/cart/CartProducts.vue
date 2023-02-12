@@ -5,18 +5,18 @@
       :key="item.id"
       class="flex space-x-[15px] w-full"
     >
-      <div class="h-[130px] w-[105px]">
+      <div class="h-[130px] w-[30%] xs:w-[40%] lg:w-[105px]">
         <img
           :src="item.image"
           :alt="item.name"
           class="h-full w-full object-cover"
         />
       </div>
-      <div class="flex flex-col justify-between lg:w-[60%]">
+      <div class="flex flex-col justify-between w-[60%] lg:w-[60%]">
         <div class="flex flex-col space-y-[5px]">
           <NuxtLink
             :to="'/products/' + item.id"
-            class="uppercase text-xs font-semibold text-white hover:text-violet-500"
+            class="uppercase text-xs font-semibold text-white hover:text-primary"
           >
             {{ item.name.slice(0, 50) }}
           </NuxtLink>

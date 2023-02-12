@@ -5,11 +5,11 @@
   >
     <!-- Основная шапка -->
     <div
-      class="w-full flex flex-row justify-between items-center lg:py-5 lg:px-10 py-3 px-[15px]"
+      class="w-full flex flex-row justify-between items-center box-border lg:py-5 lg:px-10 py-3 px-[15px]"
     >
       <div class="flex flex-row items-center">
         <NuxtLink class="uppercase text-[22px] font-bold" to="/">FT</NuxtLink>
-        <div class="lg:flex space-x-9 ml-[120px] hidden">
+        <div class="lg:flex space-x-9 lg:ml-[120px] hidden">
           <NuxtLink
             class="uppercase text-sm font-bold"
             v-for="link in links"
@@ -26,7 +26,9 @@
     </div>
 
     <!-- Мобильное дополнение шапки -->
-    <div class="custom-border h-[40px] flex items-center mx-15px lg:hidden">
+    <div
+      class="custom-border h-[40px] flex items-center mx-[15px] xs:mx-[10px] lg:hidden"
+    >
       <NuxtLink
         class="uppercase text-[10px] font-medium px-[10px]"
         v-for="link in links"

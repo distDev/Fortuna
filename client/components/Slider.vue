@@ -1,6 +1,6 @@
 <template>
   <div class="w-full lg:h-auto">
-    <div v-swiper:mySwiper="options" :class="[height, lgHeight]">
+    <div v-swiper:mySwiper="options">
       <div class="swiper-wrapper">
         <slot class=""></slot>
       </div>
@@ -12,8 +12,6 @@
 export default {
   data() {
     return {
-      height: `h-[${this.h}px]`,
-      lgHeight: `lg:h-[${this.lgH}px]`,
       options: {
         slidesPerColumn: this.lgGrid,
         slidesPerView: this.lgCount,
@@ -23,11 +21,16 @@ export default {
         breakpoints: {
           // when window width is >= 320px
           320: {
-            slidesPerView: this.count,
+            slidesPerView: this.xsCount,
             spaceBetween: 12,
-
             slidesPerColumn: this.grid,
           },
+          375: {
+            slidesPerView: this.xsCount,
+            spaceBetween: 12,
+            slidesPerColumn: this.grid,
+          },
+
           // when window width is >= 480px
           480: {
             slidesPerView: this.count,
@@ -52,6 +55,7 @@ export default {
   props: {
     count: Number,
     lgCount: Number,
+    xsCount: Number,
     space: Number,
     h: Number,
     lgH: Number,

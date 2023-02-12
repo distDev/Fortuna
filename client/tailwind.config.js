@@ -8,7 +8,18 @@ module.exports = {
     "./nuxt.config.{js,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#9671FF",
+        grey: "#97999B",
+        "purple-grey": "#BBB5D8",
+        "main-black": "#2E2E2E",
+        error: "#E33473",
+      },
+      screens: {
+        xs: { min: "320px", max: "376px" },
+      },
+    },
   },
   plugins: [],
 };

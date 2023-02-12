@@ -34,7 +34,7 @@ export default {
     totalCount: Number,
     attributes: Array,
     description: String,
-    id: Number,
+    id: String,
     images: Array,
     size: String,
   },

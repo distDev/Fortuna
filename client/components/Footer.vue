@@ -27,7 +27,7 @@
               v-for="i in linksData"
               :key="i.name"
               :to="i.path"
-              class="uppercase text-xs text-white font-medium hover:text-violet-500"
+              class="uppercase text-xs text-white font-medium hover:text-primary"
               >{{ i.name }}</NuxtLink
             >
           </div>
@@ -42,7 +42,7 @@
               v-for="i in helpLinksData"
               :key="i.name"
               :to="i.path"
-              class="uppercase text-xs text-white font-medium hover:text-violet-500"
+              class="uppercase text-xs text-white font-medium hover:text-primary"
               >{{ i.name }}</NuxtLink
             >
           </div>
@@ -57,12 +57,12 @@
           <div class="flex flex-col space-y-[15px]">
             <a
               href="/"
-              class="uppercase text-xs text-white font-medium hover:text-violet-500"
+              class="uppercase text-xs text-white font-medium hover:text-primary"
               >@staverson</a
             >
             <a
               href="/"
-              class="uppercase text-xs text-white font-medium hover:text-violet-500"
+              class="uppercase text-xs text-white font-medium hover:text-primary"
               >staver@bk.ru</a
             >
           </div>
@@ -73,7 +73,7 @@
     <div class="flex lg:justify-between lg:items-center mt-[30px] lg:mt-[40px]">
       <div>
         <p class="text-[#97999B] text-sm lg:text-base">
-          Сайт разработан: <a class="text-violet-500" href="/">@Distcom</a>
+          Сайт разработан: <a class="text-primary" href="/">@Distcom</a>
         </p>
       </div>
       <div></div>

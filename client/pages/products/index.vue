@@ -6,7 +6,7 @@
       <div
         class="absolute bottom-[30px] lg:bottom-auto right-[90px] lg:right-auto lg:top-[80px] gradient-custom blur-[65px] lg:blur-[115px] h-[25px] lg:h-[45px] w-[70%] lg:w-[60%] rotate-[170deg]"
       ></div>
-      <h3 class="uppercase text-violet-500 text-2xl lg:text-[42px] font-bold">
+      <h3 class="uppercase text-primary text-2xl lg:text-[42px] font-bold">
         products
       </h3>
     </div>
@@ -19,7 +19,7 @@
       <ProductCards
         :data="data"
         :large="true"
-        class="grid grid-cols-2 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[40px]"
+        class="grid grid-cols-2 xs:grid-cols-1 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[40px]"
       />
     </div>
   </div>

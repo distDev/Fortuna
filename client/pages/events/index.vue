@@ -6,7 +6,7 @@
       <div
         class="absolute bottom-[30px] lg:bottom-auto right-[90px] lg:right-auto lg:top-[80px] gradient-custom blur-[65px] lg:blur-[115px] h-[25px] lg:h-[45px] w-[70%] lg:w-[60%] rotate-[170deg] lg:rotate-[11deg]"
       ></div>
-      <h3 class="uppercase text-violet-500 text-2xl lg:text-[42px] font-bold">
+      <h3 class="uppercase text-primary text-2xl lg:text-[42px] font-bold">
         events
       </h3>
     </div>

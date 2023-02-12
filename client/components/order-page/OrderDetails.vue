@@ -13,7 +13,7 @@
           >
             <div class="flex items-center space-x-[10px] w-[85%]">
               <div
-                class="w-[65px] h-[65px] border-[1px] bg-violet-500 border-[rgb(214,208,231)] rounded-[7px] relative"
+                class="w-[65px] h-[65px] border-[1px] bg-primary border-[rgb(214,208,231)] rounded-[7px] relative"
               >
                 <img
                   :src="i.image"
@@ -38,10 +38,10 @@
 
         <!-- доставка -->
         <div
-          class="mt-[23px] pb-[23px] space-y-[15px] border-b-[1px] border-b-[#ECECEC]"
+          class="px-[15px] lg:px-0 mt-[23px] pb-[23px] space-y-[15px] border-b-[1px] border-b-[#ECECEC]"
         >
           <div class="flex justify-between">
-            <p>Товары({{ cartValue }})</p>
+            <p>Товары ({{ cartValue }})</p>
             <p>{{ orderTotal }} ₽</p>
           </div>
           <div class="flex justify-between">
@@ -54,6 +54,12 @@
               }}
             </p>
           </div>
+        </div>
+        <div
+          class="px-[15px] lg:px-0 lg:bg-transparent py-[20px] lg:py-0 lg:mt-[23px] flex items-center justify-between cursor-pointer lg:cursor-auto lg:hidden"
+        >
+          <p class="lg:text-xl font-semibold">Итого:</p>
+          <p class="lg:text-xl font-semibold">{{ totalCost }} ₽</p>
         </div>
       </div>
 

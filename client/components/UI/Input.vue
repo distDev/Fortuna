@@ -28,7 +28,7 @@ export default {
       if (!this.errorStatus && this.value.length > 3) {
         return "bg-white border-black text-black";
       }
-      return "text-black  border-[#97999B]";
+      return "text-black  border-[#BBB5D8]";
     },
   },
 };

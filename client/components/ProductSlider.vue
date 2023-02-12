@@ -22,7 +22,7 @@
       <div
         v-swiper:mySwiperTop="optionsTop"
         ref="swiperTop"
-        class="w-full lg:w-[90%] h-[390px] lg:h-[670px]"
+        class="w-full lg:w-[90%] h-[390px] xs:h-[320px] lg:h-[670px]"
       >
         <div class="swiper-wrapper">
           <div

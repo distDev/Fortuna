@@ -17,7 +17,7 @@
           </p>
           <NuxtLink
             to="news/1"
-            class="text-white uppercase font-bold text-base lg:text-[28px] hover:text-violet-500"
+            class="text-white uppercase font-bold text-base lg:text-[28px] hover:text-primary"
             >{{ item.title.slice(0, 55) + "..." }}</NuxtLink
           >
         </div>

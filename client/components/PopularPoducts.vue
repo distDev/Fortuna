@@ -11,6 +11,7 @@
     <div class="w-full">
       <Slider
         :count="2"
+        :xs-count="1.4"
         :lgCount="productValue"
         :space="30"
         class="w-full flex justify-center"

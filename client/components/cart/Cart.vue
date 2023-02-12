@@ -2,7 +2,7 @@
   <div>
     <div
       class="h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-black cursor-pointer"
-      :class="cartValue ? 'bg-violet-500' : 'bg-white'"
+      :class="cartValue ? 'bg-primary' : 'bg-white'"
       @click="handleShow"
     >
       <p class="text-sm" :class="countStyle">{{ cartValue }}</p>

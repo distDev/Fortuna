@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-[500px] lg:h-[90vh] overflow-hidden relative flex justify-center items-end"
+    class="w-full h-[500px] lg:h-[90vh] xs:h-[400px] overflow-hidden relative flex justify-center items-end"
   >
     <div class="w-full h-full absolute top-0 bg-black opacity-40 z-10"></div>
     <div class="h-[240px] w-full absolute bottom-0 z-30 linear-bg"></div>
