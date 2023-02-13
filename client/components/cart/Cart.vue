@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-black cursor-pointer"
+      class="h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-main-black cursor-pointer"
       :class="cartValue ? 'bg-primary' : 'bg-white'"
       @click="handleShow"
     >
@@ -34,7 +34,7 @@ export default {
       return this.$store.state.cart.isOpen;
     },
     countStyle() {
-      return this.cartValue > 0 ? "text-white" : "text-black";
+      return this.cartValue > 0 ? "text-white" : "text-main-black";
     },
     ...mapGetters({
       cartValue: "cart/getCartValue",

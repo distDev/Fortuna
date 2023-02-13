@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-[15px] lg:space-y-[20px]">
     <button :disabled="!inStock || checkAvailableCount"
-      class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%] disabled:bg-[#97999B]"
+      class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%] disabled:bg-grey"
       @click="addProduct">
       {{ isDisabled }}
     </button>

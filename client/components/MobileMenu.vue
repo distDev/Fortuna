@@ -19,15 +19,18 @@
           >
             <font-awesome-icon :icon="['fas', 'xmark']" class="fill-white" />
           </div>
-          <div class="flex flex-col space-y-[30px] mt-[140px] text-white">
-            <NuxtLink
-              v-for="i in links"
-              :key="i.name"
-              :to="i.path"
-              class="text-lg font-bold"
-              >{{ i.name }}</NuxtLink
-            >
-          </div>
+          <nav class="mt-[140px] text-white">
+            <ul class="flex flex-col space-y-[30px]">
+              <li
+                v-for="i in links"
+                :key="i.name"
+                class="text-lg font-bold"
+                @click="() => handleNavigate(i.path)"
+              >
+                {{ i.name }}
+              </li>
+            </ul>
+          </nav>
         </div>
         <div
           class="absolute left-0 top-0 w-full h-full bg-black opacity-50 z-20"
@@ -47,6 +50,12 @@ export default {
       show: false,
       links: headerLinks,
     };
+  },
+  methods: {
+    handleNavigate(path) {
+      this.$router.push({ path });
+      this.show = !this.show;
+    },
   },
 };
 </script>

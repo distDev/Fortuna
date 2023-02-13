@@ -33,7 +33,7 @@
           v-if="Number(item.totalCount) > 0"
         >
           <button
-            class="h-[30px] w-[30px] bg-[#97999B] text-black"
+            class="h-[30px] w-[30px] bg-grey text-main-black"
             @click="
               item.countInCart !== 1
                 ? decrementCount({ id: item.id })
@@ -46,7 +46,7 @@
             {{ item.countInCart }}
           </p>
           <button
-            class="h-[30px] w-[30px] bg-[#97999B] text-black disabled:bg-[#666869]"
+            class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
             @click="incrementCount({ id: item.id })"
             :disabled="Number(item.countInCart) === Number(item.totalCount)"
           >
@@ -54,7 +54,7 @@
           </button>
         </div>
         <div v-else class="flex justify-between w-full items-end">
-          <p class="uppercase text-xs font-semibold text-[#97999B]">
+          <p class="uppercase text-xs font-semibold text-grey">
             нет в наличии
           </p>
           <div class="del-icon" @click="removeFromCart({ id: item.id })">

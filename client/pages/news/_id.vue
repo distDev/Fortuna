@@ -1,46 +1,101 @@
 <template>
   <div class="article pt-[25px] lg:pt-[60px]">
-    <div class="w-full lg:w-[850px] m-auto space-y-[20px] lg:space-y-auto">
-      <div v-html="parsedArticle" class="flex flex-col items-center"></div>
+    <div class="w-full lg:w-[850px] m-auto">
+      <Photoswipe>
+        <h1
+          class="text-[22px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-bold lg:text-center mx-[15px] lg:mx-0 my-[24px]"
+        >
+          {{ articleTitle }}
+        </h1>
+        <div v-for="{ blocks, id } in data" :key="id" class="space-y-[12px]">
+          <div
+            v-for="block in blocks"
+            :key="block.id"
+            class="w-full lg:w-[640px] m-auto"
+          >
+            <!-- Заголовок 2 -->
+            <h2
+              v-if="block.type === 'header' && block.data.level === (1 || 2)"
+              class="text-[20px] lg:text-[20px] leading-[26px] lg:leading-[38px] font-bold mx-[15px] lg:mx-0 my-[24px]"
+            >
+              {{ block.data.text }}
+            </h2>
+
+            <!-- Заголовок 3 -->
+            <h2
+              v-if="block.type === 'header' && block.data.level === 3"
+              class="text-[17px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-semibold mx-[15px] my-[24px] lg:mx-0"
+            >
+              {{ block.data.text }}
+            </h2>
+
+            <!-- Параграф -->
+            <p
+              v-else-if="block.type === 'paragraph'"
+              class="text-base lg:text-lg leading-[26px] lg:leading-[30px] max-w-[640px] mx-[15px] lg:m-0"
+            >
+              {{ block.data.text }}
+            </p>
+
+            <!-- Список -->
+            <ul
+              v-else-if="
+                block.type === 'list' && block.data.style === 'unordered'
+              "
+            >
+              <li v-for="li in block.data.items">{{ li }}</li>
+            </ul>
+
+            <!-- Список нумерованный -->
+            <ul
+              v-else-if="
+                block.type === 'list' && block.data.style === 'ordered'
+              "
+            >
+              <li v-for="li in block.data.items">{{ li }}</li>
+            </ul>
+
+            <!-- Цитата -->
+            <blockquote v-else-if="block.type === 'quote'">
+              <div>
+                <p>{{ block.data.text }}</p>
+                <p>{{ block.data.caption }}</p>
+              </div>
+            </blockquote>
+
+            <!-- Изображение -->
+            <img
+              v-else-if="block.type === 'image'"
+              class="w-full lg:max-w-[640px] my-[24px]"
+              v-pswp="block.data.link"
+              :src="block.data.link"
+              alt=""
+            />
+          </div>
+        </div>
+      </Photoswipe>
     </div>
-    <p class="text-base lg:text-lg leading-[30px] max-w-[640px]"></p>
   </div>
 </template>
 
 <script>
-import { onMounted } from "vue";
 import { articleData } from "../../assets/data";
 
 export default {
   data() {
     return {
-
+      data: articleData,
     };
   },
 
   computed: {
-    parsedArticle() {
-      return articleData.map((e) => e.blocks.map((item) => {
-        switch (item.type) {
-          case 'paragraph':
-            return `<p class='text-base lg:text-lg leading-[26px] lg:leading-[30px] max-w-[640px] mx-[15px] mb-[20px] lg:mb-[40px] lg:m-0'>${item.data.text}</p>`
-            break;
-          case 'header':
-            return `<h1 class='text-[17px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-bold lg:text-center mx-[15px] lg:mx-0 mb-[20px] lg:mb-10'>${item.data.text}</h1>`
-            break;
-          case 'image':
-            return `<img class='w-full lg:max-w-[640px] mb-[20px] lg:mb-[40px]' src=${item.data.link} alt="">`
-            break;
-
-        }
-      }))[0].join('')
-
-    }
+    articleTitle() {
+      return articleData.map((e) => e.title).join("");
+    },
   },
   mounted() {
-    
-    console.log(this.$route)
-  }
+    console.log(this.$route);
+  },
 };
 </script>
 

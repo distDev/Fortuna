@@ -8,7 +8,7 @@
         }}
       </p>
       <p
-        class="uppercase text-[#97999B] text-sm font-semibold"
+        class="uppercase text-grey text-sm font-semibold"
         v-if="cartTotal"
       >
         ({{ cartValue }} позиций)
@@ -17,7 +17,7 @@
 
     <!-- Кнопка оформления -->
     <button
-      class="flex items-center justify-center w-full mt-[30px] bg-white text-black text-base font-medium uppercase py-[15px] box-border"
+      class="flex items-center justify-center w-full mt-[30px] bg-white text-main-black text-base font-medium uppercase py-[15px] box-border"
       @click="cartTotal ? placeOrder() : handleSwitchShow()"
     >
       {{ cartTotal ? "перейти к оформлению" : "продолжить покупки" }}
@@ -41,7 +41,7 @@ export default {
     }),
     placeOrder() {
       this.$router.push({ path: "/order" });
-      this.handleShow();
+      this.handleSwitchShow();
     },
   },
 };

@@ -24,7 +24,7 @@
     </div>
     <div class="bg-primary w-full h-[40px] lg:h-[45px] mt-[50px] lg:mt-[80px]">
       <client-only placeholder="loading...">
-        <p>хуй</p>
+       
       </client-only>
     </div>
   </div>

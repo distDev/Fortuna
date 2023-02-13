@@ -22,8 +22,8 @@
       />
     </div>
     <div class="space-y-[5px] lg:space-y-[7px]">
-      <h3 class="uppercase text-base font-bold text-black">{{ name }}</h3>
-      <p class="uppercase text-xs text-[#97999B]">
+      <h3 class="uppercase text-base font-bold text-main-black">{{ name }}</h3>
+      <p class="uppercase text-xs text-grey">
         {{ date }} * {{ location }}
       </p>
     </div>

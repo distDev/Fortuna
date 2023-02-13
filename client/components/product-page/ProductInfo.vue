@@ -4,14 +4,14 @@
       <h4
         @click="activeTab = 'Детали'"
         class="uppercase lg:text-xl font-bold cursor-pointer"
-        :class="activeTab === 'Детали' ? 'text-black' : 'text-[#97999B]'"
+        :class="activeTab === 'Детали' ? 'text-main-black' : 'text-grey'"
       >
         детали
       </h4>
       <h4
         @click="activeTab = 'Доставка'"
         class="uppercase lg:text-xl font-bold cursor-pointer"
-        :class="activeTab === 'Доставка' ? 'text-black' : 'text-[#97999B]'"
+        :class="activeTab === 'Доставка' ? 'text-main-black' : 'text-grey'"
       >
         доставка
       </h4>
@@ -25,10 +25,10 @@
           <li
             v-for="i in attributes"
             :key="i.id"
-            class="text-base font-medium text-[#97999B]"
+            class="text-base font-medium text-grey"
           >
             {{ i.name
-            }}<span class="attributes-value text-base font-medium text-black">{{
+            }}<span class="attributes-value text-base font-medium text-main-black">{{
               i.value
             }}</span>
           </li>

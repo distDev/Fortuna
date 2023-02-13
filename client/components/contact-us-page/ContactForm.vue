@@ -67,7 +67,7 @@
     <div class="flex justify-center pt-[20px]">
       <button
         type="submit"
-        class="bg-black text-white py-[15px] lg:px-[60px] w-full lg:w-auto disabled:bg-[#97999B]"
+        class="bg-black text-white py-[15px] lg:px-[60px] w-full lg:w-auto disabled:bg-grey"
         :disabled="$v.$invalid"
       >
         Отправить

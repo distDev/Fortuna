@@ -9,7 +9,7 @@
       <!-- Часть с лого -->
       <div class="space-y-[15px] mt-[30px] lg:mt-0">
         <NuxtLink to="/" class="text-[22px] font-bold">FT</NuxtLink>
-        <p class="text-[#97999B] text-sm lg:text-base">
+        <p class="text-grey text-sm lg:text-base">
           Официальный сайт <br />
           Коллектива “Фортуна” 2022©
         </p>
@@ -21,7 +21,7 @@
         <div
           class="space-y-[20px] lg:space-y-[25px] pb-[30px] lg:pb-0 border-b-[1px] border-[#313131] lg:border-none"
         >
-          <h3 class="uppercase font-bold text-[#97999B] text-sm">фортуна</h3>
+          <h3 class="uppercase font-bold text-grey text-sm">фортуна</h3>
           <div class="flex flex-col space-y-[15px]">
             <NuxtLink
               v-for="i in linksData"
@@ -36,7 +36,7 @@
         <div
           class="space-y-[20px] lg:space-y-[25px] pb-[30px] lg:pb-0 border-b-[1px] border-[#313131] lg:border-none"
         >
-          <h3 class="uppercase font-bold text-[#97999B] text-sm">помощь</h3>
+          <h3 class="uppercase font-bold text-grey text-sm">помощь</h3>
           <div class="flex flex-col space-y-[15px]">
             <NuxtLink
               v-for="i in helpLinksData"
@@ -51,7 +51,7 @@
         <div
           class="space-y-[20px] lg:space-y-[25px] pb-[30px] lg:pb-0 border-b-[1px] border-[#313131] lg:border-none"
         >
-          <h3 class="uppercase font-bold text-[#97999B] text-sm">
+          <h3 class="uppercase font-bold text-grey text-sm">
             сотрудничество
           </h3>
           <div class="flex flex-col space-y-[15px]">
@@ -72,7 +72,7 @@
     <!-- Нижняя часть -->
     <div class="flex lg:justify-between lg:items-center mt-[30px] lg:mt-[40px]">
       <div>
-        <p class="text-[#97999B] text-sm lg:text-base">
+        <p class="text-grey text-sm lg:text-base">
           Сайт разработан: <a class="text-primary" href="/">@Distcom</a>
         </p>
       </div>

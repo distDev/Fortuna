@@ -22,7 +22,6 @@ export default {
     { src: "@/plugins/vue-swiper.js", ssr: false },
     { src: "@/plugins/vue-teleport.js", ssr: false },
     { src: "@/plugins/vue-photoswipe.js", ssr: false },
-    { src: "@/plugins/vue-dadata.js", ssr: false },
     { src: "@/plugins/vuelidate.js", ssr: false },
   ],
 

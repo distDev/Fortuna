@@ -12,7 +12,7 @@
     </div>
     <div class="mt-[15px] lg:mt-[30px] mx-[15px] lg:mx-[40px] space-y-[25px] lg:space-y-[40px]">
       <div>
-        <p class="uppercase text-[#97999B] text-sm lg:text-base font-medium">
+        <p class="uppercase text-grey text-sm lg:text-base font-medium">
           всего товаров:  12
         </p>
       </div>

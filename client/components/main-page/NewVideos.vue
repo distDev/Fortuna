@@ -45,4 +45,10 @@ export default {
   }
 }
 
+@media (max-width: 375px) {
+  .swiper-slide {
+    height: 190px;
+  }
+}
+
 </style>

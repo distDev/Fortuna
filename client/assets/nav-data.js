@@ -20,26 +20,26 @@ export const headerLinks = [
 export const footerHelpLinks = [
   {
     name: "FAQ",
-    path: "/videos",
+    path: "/faq",
   },
   {
     name: "ДОСТАВКА",
-    path: "/videos",
+    path: "/shipping",
   },
   {
     name: "ВОЗВРАТ",
-    path: "/videos",
+    path: "/returns",
   },
   {
     name: "Обратная связь",
-    path: "/videos",
+    path: "/contact-us",
   },
   {
     name: "публичная оферта",
-    path: "/videos",
+    path: "/public-offer",
   },
   {
     name: "политика конф-ти",
-    path: "/videos",
+    path: "/privacy-policy",
   },
 ];

@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="w-full">
-      <Photoswipe
-        ><Slider :count="2.3" :lg-count="4" :h="120" :lg-h="170" :space="30">
+      <Photoswipe>
+        <Slider :count="2.3" :lg-count="4" :space="30">
           <div
             v-for="i in images.data"
             :key="i.id"
@@ -27,8 +27,9 @@
               v-pswp="i.attributes.url"
               class="w-full h-full object-cover"
             />
-          </div> </Slider
-      ></Photoswipe>
+          </div>
+        </Slider>
+      </Photoswipe>
     </div>
   </div>
 </template>
@@ -46,9 +47,11 @@ export default {
   props: { images: Array, description: String },
   computed: {
     eventDescription() {
-      return this.showDescription
-        ? this.description
-        : this.description.slice(0, 250) + "...";
+      if (this.showDescription) {
+        return this.description;
+      } else {
+        return this.description.slice(0, 250) + "...";
+      }
     },
     descriptionStatus() {
       return this.showDescription ? "Скрыть описание" : "Читать далее";
@@ -57,4 +60,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.swiper-slide {
+  height: 170px;
+}
+
+@media (max-width: 520px) {
+  .swiper-slide {
+    height: 120px;
+  }
+}
+</style>

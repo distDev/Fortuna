@@ -15,7 +15,7 @@
         <div class="flex flex-col space-y-[15px] lg:hidden">
           <div class="flex space-x-[12px]">
             <font-awesome-icon :icon="['fas', 'calendar']" />
-            <p class="text-sm">{{ attributes.date }}</p>
+            <p class="text-sm">{{ formatDate }}</p>
           </div>
           <div class="flex space-x-[12px]">
             <font-awesome-icon :icon="['fas', 'location-pin']" />
@@ -26,7 +26,7 @@
           :images="attributes.images"
           :description="attributes.description"
         />
-        <EventArtists :artists="attributes.artists"/>
+        <EventArtists :artists="attributes.artists" />
         <EventAddress />
       </div>
     </div>
@@ -38,6 +38,8 @@ import EventBanner from "@/components/event-page/EventBanner.vue";
 import EventDescription from "@/components/event-page/EventDescription.vue";
 import EventAddress from "@/components/event-page/EventAddress.vue";
 import EventArtists from "@/components/event-page/EventArtists.vue";
+import * as dayjs from "dayjs";
+import * as locale from "dayjs/locale/ru";
 import { realEvents } from "../../assets/data";
 
 export default {
@@ -45,6 +47,13 @@ export default {
     return {
       data: realEvents,
     };
+  },
+  computed: {
+    formatDate() {
+      let date = this.data.map((e) => e.attributes.date).join("");
+      let formatDate = dayjs(date).locale("ru").format("D MMMM, h:mm").replace(",", " в");
+      return formatDate
+    },
   },
   components: { EventBanner, EventDescription, EventArtists, EventAddress },
 };

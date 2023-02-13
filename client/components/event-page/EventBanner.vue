@@ -17,12 +17,12 @@
     >
       <!-- Хэштеги -->
       <div class="flex space-x-[10px] lg:space-x-[15px] mt-[7px] lg:mt-auto">
-        <p class="text-[#97999B] text-xs lg:text-sm">{{ price }} ₽</p>
-        <p class="text-[#97999B] text-xs lg:text-sm">
+        <p class="text-grey text-xs lg:text-sm">{{ price }} ₽</p>
+        <p class="text-grey text-xs lg:text-sm">
           {{ type }}
         </p>
-        <p class="text-[#97999B] text-xs lg:text-sm">{{ age }}+</p>
-        <p class="text-[#97999B] text-xs lg:text-sm" v-if="fortuna">Фортуна</p>
+        <p class="text-grey text-xs lg:text-sm">{{ age }}+</p>
+        <p class="text-grey text-xs lg:text-sm" v-if="fortuna">Фортуна</p>
       </div>
       <!-- Описание -->
       <h1
@@ -31,18 +31,32 @@
         {{ title }}
       </h1>
       <p class="lg:text-xl lg:font-medium hidden lg:inline-block text-white">
-        Спектакль в городе {{ city }}: {{ date }}
+        Спектакль в г. {{ city }}: {{ formatDate }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
+import * as dayjs from "dayjs";
+import * as locale from "dayjs/locale/ru";
+
 export default {
   data() {
     return {
       arrData: ["Бесплатно", "Конкурс"],
     };
+  },
+  computed: {
+    formatDate() {
+      return dayjs(this.date)
+        .locale("ru")
+        .format("D MMMM, h:mm")
+        .replace(",", " в");
+    },
+  },
+  mounted() {
+    console.log(this.formatDate);
   },
   props: {
     title: String,

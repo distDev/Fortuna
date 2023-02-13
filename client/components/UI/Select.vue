@@ -26,9 +26,9 @@ export default {
         return "border-red-500 text-red-500";
       }
       if (!this.errorStatus && this.value.length > 3) {
-        return "bg-white border-black text-black";
+        return "bg-white border-black text-main-black";
       }
-      return "text-black placeholder:text-[#97999B] border-[#97999B]";
+      return "text-main-black placeholder:text-grey border-grey";
     },
   },
 };

@@ -38,4 +38,13 @@ export default {
 .shadow-artist {
   box-shadow: 0px 5px 20px rgba(193, 193, 193, 0.4);
 }
+.swiper-slide {
+  height: 90px;
+}
+
+@media (max-width: 520px) {
+  .swiper-slide {
+    height: 70px;
+  }
+}
 </style>

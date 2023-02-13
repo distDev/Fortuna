@@ -3,7 +3,7 @@
     <input
       :value="value"
       @input="$emit('input', $event.target.value)"
-      class="w-full border-[1px] bg-transparent p-4 lg:text-sm placeholder:text-[#97999B]"
+      class="w-full border-[1px] bg-transparent p-4 lg:text-sm placeholder:text-grey"
       :placeholder="placeholder"
       :class="statusStyles"
     />
@@ -26,9 +26,9 @@ export default {
         return "border-red-500 text-red-500";
       }
       if (!this.errorStatus && this.value.length > 3) {
-        return "bg-white border-black text-black";
+        return "bg-white border-black text-main-black";
       }
-      return "text-black  border-[#BBB5D8]";
+      return "text-main-black  border-[#BBB5D8]";
     },
   },
 };
