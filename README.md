@@ -9,7 +9,7 @@ Frontend:
 * Tailwind
 * Swiper
 * Photoswipe
-* Dadata
+* Day js
 
 <br>Backend: 
 * Strappi
