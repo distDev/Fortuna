@@ -376,6 +376,12 @@ export const realProducts = [
               url: "https://ir.ozone.ru/s3/multimedia-l/wc1000/6446692449.jpg",
             },
           },
+          {
+            id: 8,
+            attributes: {
+              url: "https://ir.ozone.ru/s3/multimedia-i/wc1000/6384659802.jpg",
+            },
+          },
         ],
       },
       attributes: [

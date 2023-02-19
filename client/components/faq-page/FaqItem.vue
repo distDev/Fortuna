@@ -4,9 +4,8 @@
       @click="handleChangeVisible"
       class="flex justify-between items-center w-full hover:cursor-pointer hover:text-[#8B5CF6]"
     >
-      <h2 class="uppercase text-[18px] font-bold">{{ title }}</h2>
+      <h2 class="uppercase text-[18px] xs:text-[14px] font-bold">{{ title }}</h2>
       <font-awesome-icon
-        class="w-full"
         :class="rotateStyle"
         :icon="['fas', 'arrow-down']"
       />
@@ -17,14 +16,14 @@
         :key="block.id"
         class="space-y-[20px] flex flex-col"
       >
-        <p class="text-lg">
+        <p class="text-lg xs:text-base">
           {{ block.desc }}
         </p>
         <ul v-if="block.subBlocks" class="space-y-[10px]">
           <li
             v-for="subblock in block.subBlocks"
             :key="subblock.id"
-            class="text-lg"
+            class="text-lg xs:text-base"
           >
             {{ subblock.desc }}
           </li>

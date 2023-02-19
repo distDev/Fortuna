@@ -1,45 +1,50 @@
 <template>
-  <Photoswipe>
-    <div class="w-full lg:space-x-[10px] flex lg:h-auto">
-      <!-- Слайдер с миниатюрами -->
-      <div
-        v-swiper:mySwiperBot="optionsBot"
-        ref="swiperThumbs"
-        class="w-[10%] hidden lg:block"
-      >
-        <div class="swiper-wrapper">
-          <div
-            v-for="i in images"
-            :key="i.id"
-            class="swiper-slide h-[50px] lg:h-[50px]"
-          >
-            <img :src="i.attributes.url" class="w-full h-full object-cover" />
+  <client-only>
+    <Photoswipe>
+      <div class="w-full lg:space-x-[10px] flex lg:h-auto">
+        <!-- Слайдер с миниатюрами -->
+        <div
+          v-swiper:mySwiperBot="optionsBot"
+          ref="swiperThumbs"
+          class="w-[10%] hidden lg:block"
+        >
+          <div class="swiper-wrapper">
+            <div
+              v-for="i in images"
+              :key="i.id"
+              class="swiper-slide h-[50px] lg:h-[50px]"
+            >
+              <img :src="i.attributes.url" class="w-full h-full object-cover" />
+            </div>
           </div>
+        </div>
+
+        <!-- Главный слайдер -->
+        <div
+          v-swiper:mySwiperTop="optionsTop"
+          ref="swiperTop"
+          class="w-full lg:w-[90%] h-[390px] xs:h-[320px] lg:h-[670px] relative"
+        >
+          <div class="swiper-wrapper">
+            <div
+              v-for="i in images"
+              :key="i.id"
+              class="swiper-slide h-[120px] lg:h-[170px]"
+            >
+              <img
+                :key="i.id"
+                :src="i.attributes.url"
+                v-pswp="i.attributes.url"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="swiper-pagination lg:hidden" slot="pagination"></div>
         </div>
       </div>
-
-      <!-- Главный слайдер -->
-      <div
-        v-swiper:mySwiperTop="optionsTop"
-        ref="swiperTop"
-        class="w-full lg:w-[90%] h-[390px] xs:h-[320px] lg:h-[670px]"
-      >
-        <div class="swiper-wrapper">
-          <div
-            v-for="i in images"
-            :key="i.id"
-            class="swiper-slide h-[120px] lg:h-[170px]"
-          >
-            <img
-              :key="i.id"
-              :src="i.attributes.url"
-              v-pswp="i.attributes.url"
-              class="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </div></div
-  ></Photoswipe>
+    </Photoswipe>
+  </client-only>
 </template>
 
 <script>
@@ -50,6 +55,9 @@ export default {
         spaceBetween: 10,
         effect: "slide",
         breakpoints: {},
+        pagination: {
+          el: ".swiper-pagination",
+        },
       },
       optionsBot: {
         spaceBetween: 10,
@@ -69,12 +77,14 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      const swiperTop = this.$refs.swiperTop.swiper;
-      const swiperThumbs = this.$refs.swiperThumbs.swiper;
-      swiperTop.controller.control = swiperThumbs;
-      swiperThumbs.controller.control = swiperTop;
-    });
+    setTimeout(() => {
+      this.$nextTick(() => {
+        const swiperTop = this.$refs.swiperTop.swiper;
+        const swiperThumbs = this.$refs.swiperThumbs.swiper;
+        swiperTop.controller.control = swiperThumbs;
+        swiperThumbs.controller.control = swiperTop;
+      });
+    }, 500);
   },
   props: {
     images: Array,

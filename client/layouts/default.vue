@@ -21,4 +21,7 @@ body {
   font-family: "Montserrat", sans-serif;
   position: relative;
 }
+* {
+  box-sizing: border-box;
+}
 </style>
