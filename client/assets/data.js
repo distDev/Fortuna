@@ -53,51 +53,67 @@ export const newsData = [
 export const productsData = [
   {
     id: "32rphthtrhq00432",
-    img: "hoodie.jpg",
+    img: "/.nuxt/assets/images/hoodie.jpg",
     title: "Футболка 'ФОРТНУА'",
     price: "2414",
+    inStock: false,
+    newIn: false,
   },
   {
     id: "12421fegweg",
-    img: "hoodie.jpg",
+    img: "https://ir.ozone.ru/s3/multimedia-4/wc1000/6015650248.jpg",
     title: "Футболка 'ФОРТНУА'",
     price: "2414",
+    inStock: true,
+    newIn: true,
   },
   {
     id: "21er3t2",
-    img: "hoodie.jpg",
+    img: "https://ir.ozone.ru/s3/multimedia-y/wc1000/6390253138.jpg",
     title: "Худи 'ФОРТНУА'",
     price: "2414",
+    inStock: true,
+    newIn: false,
   },
   {
     id: "14421",
-    img: "hoodie.jpg",
+    img: "/_nuxt/assets/images/hoodie.jpg",
     title: "Конфеты от Александры",
     price: "2414",
+    inStock: false,
+    newIn: false,
   },
   {
     id: "1fafgg4g421",
-    img: "hoodie.jpg",
+    img: "/_nuxt/assets/images/hoodie.jpg",
     title: "Конфеты от Александры",
     price: "2414",
+    inStock: true,
+    newIn: false,
   },
   {
     id: "14fafb3421",
-    img: "hoodie.jpg",
+    img: "/_nuxt/assets/images/hoodie.jpg",
     title: "Видео привет",
     price: "2414",
+    inStock: true,
+    newIn: false,
   },
   {
     id: "144FWF21",
-    img: "hoodie.jpg",
+    img: "/_nuxt/assets/images/hoodie.jpg",
     title: "видео поздравления",
     price: "2414",
+    inStock: true,
+    newIn: false,
   },
   {
     id: "144FF321",
-    img: "hoodie.jpg",
+    img: "/_nuxt/assets/images/hoodie.jpg",
     title: "Футболка 'ФОРТНУА'",
     price: "2414",
+    inStock: true,
+    newIn: false,
   },
 ];
 
@@ -202,7 +218,8 @@ export const articleData = [
   {
     id: "art4124124",
     time: "12 декабря",
-    title: 'Полная история игровой вселенной «Гарри Поттера»: часть 3 — «Путь к Hogwarts Legacy»',
+    title:
+      "Полная история игровой вселенной «Гарри Поттера»: часть 3 — «Путь к Hogwarts Legacy»",
     blocks: [
       {
         id: "42121rqhthrqrq",
@@ -247,7 +264,7 @@ export const articleData = [
           text: "Седьмая и последняя книга про Гарри Поттера по количеству страниц получилась короче, чем «Принц-полукровка», но она так насыщена событиями, что за один фильм не удалось бы нормально рассказать весь сюжет. Это совсем не «Орден Феникса» и «Принц-полукровка», которые смогли сократить без серьёзного вреда для основной истории. Поэтому будущую экранизацию, как и игры по «Дарам», решили разбить на две логических части.",
         },
       },
-      
+
       {
         id: "pa1wr441121",
         type: "paragraph",
@@ -314,25 +331,26 @@ export const realProducts = [
   {
     id: "32rphthtrhq00432",
     attributes: {
-      name: "Кружка 'Фортуна'",
+      name: "Мужская куртка The North Face Lhotse Jacket",
       price: "1200",
       description:
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
-      inStock: true,
+      inStock: false,
       totalCount: 5,
+      new: false,
       size: "M",
       images: {
         data: [
           {
             id: 6,
             attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-r/wc1000/6014880231.jpg",
+              url: "https://static.street-beat.ru/upload/iblock/c74/c747623db5e8efc39bbbb418f6a1c859.jpg",
             },
           },
           {
             id: 7,
             attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-6/wc1000/6014296182.jpg",
+              url: "https://static.street-beat.ru/upload/iblock/e3b/e3b6ea77fd610a9469525011cdad9f65.jpg",
             },
           },
         ],
@@ -355,31 +373,26 @@ export const realProducts = [
   {
     id: "12421fegweg",
     attributes: {
-      name: "Сумка женская AFINA кросс боди через плечо",
+      name: "Шапка The North Face Cragmont Fleece Beanie",
       price: "6121",
       description:
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
       inStock: true,
       totalCount: 5,
+      new: false,
       size: "S",
       images: {
         data: [
           {
-            id: 6,
-            attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-i/wc1000/6384659802.jpg",
-            },
-          },
-          {
-            id: 7,
-            attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-l/wc1000/6446692449.jpg",
-            },
-          },
-          {
             id: 8,
             attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-i/wc1000/6384659802.jpg",
+              url: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/a1361518c2944a67b475ae88014679c8_9366/adidas_Adventure_Winter_Crewneck_Sweatshirt_White_HK5017_01_laydown.jpg",
+            },
+          },
+          {
+            id: 9,
+            attributes: {
+              url: "https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/0d6643051d09418cb9faae8801463fea_9366/adidas_Adventure_Winter_Crewneck_Sweatshirt_White_HK5017_21_model.jpg",
             },
           },
         ],
@@ -402,31 +415,218 @@ export const realProducts = [
   {
     id: "21er3t2",
     attributes: {
-      name: "кружка синяя Бамбелби",
+      name: "Перчатки The North Face Cragmont Gloves",
       price: "1200",
       description:
         "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
       inStock: true,
       totalCount: 5,
+      new: false,
       size: "250мл",
       images: {
         data: [
           {
-            id: 6,
+            id: 10,
             attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-c/wc1000/6355843344.jpg",
+              url: "https://static.street-beat.ru/upload/iblock/10b/10b03c04fc96960de9f2004e62588573.jpg",
             },
           },
           {
-            id: 7,
+            id: 17,
             attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-k/wc1000/6355843388.jpg",
+              url: "https://static.street-beat.ru/upload/iblock/4af/4afe75cb515ee975578757f65675591a.jpg",
             },
           },
           {
-            id: 8,
+            id: 82,
             attributes: {
-              url: "https://ir.ozone.ru/s3/multimedia-u/wc1000/6355843398.jpg",
+              url: "https://static.street-beat.ru/upload/iblock/cdc/cdc0457b05b5fe06d732f3c0b1927a35.jpg",
+            },
+          },
+        ],
+      },
+      attributes: [
+        {
+          id: 1,
+          name: "Объем, мл",
+          value: "400",
+        },
+        {
+          id: 2,
+          name: "Вес товара, г",
+          value: "400",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "21ehtjrqrfjr3t2",
+    attributes: {
+      name: "Мужская толстовка The North Face",
+      price: "1200",
+      description:
+        "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
+      inStock: true,
+      totalCount: 5,
+      new: true,
+      size: "250мл",
+      images: {
+        data: [
+          {
+            id: 8542,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/7a5/7a5382ea21c1b0c1a2cd7169195a69b5.jpg",
+            },
+          },
+          {
+            id: 952,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/f21/f2192a90d4dee3dc69cbb4659caf2c5e.jpg",
+            },
+          },
+        ],
+      },
+      attributes: [
+        {
+          id: 1,
+          name: "Объем, мл",
+          value: "400",
+        },
+        {
+          id: 2,
+          name: "Вес товара, г",
+          value: "400",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "21ehta22gjrqrfjr3t2",
+    attributes: {
+      name: "Мужская футболка The North Face",
+      price: "1200",
+      description:
+        "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
+      inStock: true,
+      totalCount: 5,
+      new: false,
+      size: "250мл",
+      images: {
+        data: [
+          {
+            id: 85325,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/aad/aadb0ef9f7967f297b57c609db9a812d.jpg",
+            },
+          },
+          {
+            id: 9523525,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/fa1/fa11302f450136989d1095c33f49e9e6.jpg",
+            },
+          },
+          {
+            id: 10523,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/4ba/4ba5537fc05fbf41408aa89870ad4fa2.jpg",
+            },
+          },
+        ],
+      },
+      attributes: [
+        {
+          id: 1,
+          name: "Объем, мл",
+          value: "400",
+        },
+        {
+          id: 2,
+          name: "Вес товара, г",
+          value: "400",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "jyjyeqrfjr3t2",
+    attributes: {
+      name: "Мужская футболка The North Face NSE Tee",
+      price: "1200",
+      description:
+        "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
+      inStock: true,
+      totalCount: 5,
+      new: false,
+      size: "250мл",
+      images: {
+        data: [
+          {
+            id: 2358,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/2ed/2ed28386de31bfd34e48a9a0e57cafe4.jpg",
+            },
+          },
+          {
+            id: 22559,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/422/422d60848466faf5a3ba0d44be70ba53.jpg",
+            },
+          },
+          {
+            id: 55310,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/f09/f095cc64de70ed0cede44a6c3844c87e.jpg",
+            },
+          },
+          {
+            id: 33511,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/d07/d07a8ccc56eee8bdf6fa31d508b7308c.jpg",
+            },
+          },
+        ],
+      },
+      attributes: [
+        {
+          id: 1,
+          name: "Объем, мл",
+          value: "400",
+        },
+        {
+          id: 2,
+          name: "Вес товара, г",
+          value: "400",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "21fw4tehkuyt2",
+    attributes: {
+      name: "Мужской жилет The North Face Royal Arch Vest",
+      price: "1200",
+      description:
+        "Изделия с отметкой Committed изготовлены с использованием экологичных волокон и/или устойчивых производственных процессов, что снижает негативное воздействие на окружающую среду.",
+      inStock: true,
+      totalCount: 5,
+      new: true,
+      size: "250мл",
+      images: {
+        data: [
+          {
+            id: 2238,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/3f5/3f5e27c948126534bd9ca5b03493efc6.jpg",
+            },
+          },
+          {
+            id: 2339,
+            attributes: {
+              url: "https://static.street-beat.ru/upload/iblock/aa1/aa11e67c2761cbd408be8c3f6b1c2c12.jpg",
             },
           },
         ],

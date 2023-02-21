@@ -1,18 +1,22 @@
 <template>
   <!-- Шапка корзины -->
   <div>
-    <div class="flex items-center space-x-[10px]">
-      <p class="uppercase text-base font-semibold">
-        {{
-          cartTotal ? "Корзина: &nbsp" + cartTotal + "₽" : "Ваша корзина пуста"
-        }}
-      </p>
-      <p
-        class="uppercase text-grey text-sm font-semibold"
-        v-if="cartTotal"
-      >
-        ({{ cartValue }} позиций)
-      </p>
+    <div class="flex justify-between">
+      <div class="flex items-center space-x-[10px]">
+        <p class="uppercase text-base font-semibold">
+          {{
+            cartTotal
+              ? "Корзина: &nbsp" + cartTotal + "₽"
+              : "Ваша корзина пуста"
+          }}
+        </p>
+        <p class="uppercase text-grey text-sm font-semibold" v-if="cartTotal">
+          ({{ cartValue }} позиций)
+        </p>
+      </div>
+      <div class="burger-menu-close cursor-pointer" @click="handleSwitchShow">
+        <font-awesome-icon :icon="['fas', 'xmark']" class="fill-white" />
+      </div>
     </div>
 
     <!-- Кнопка оформления -->
@@ -47,4 +51,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+
+.burger-menu-close svg {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+.burger-menu-close svg:hover {
+  color: #9671FF;
+}
+</style>

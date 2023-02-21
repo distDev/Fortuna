@@ -3,11 +3,12 @@
     <ProductCard
       v-for="item in data"
       :key="item.id"
-      :img="item.img"
-      :price="item.price"
-      :title="item.title"
-      :large="large"
       :id="item.id"
+      :name="item.attributes.name"
+      :price="item.attributes.price"
+      :inStock="item.attributes.inStock"
+      :newIn="item.attributes.new"
+      :images="item.attributes.images.data"
     />
   </div>
 </template>
@@ -19,6 +20,11 @@ export default {
   props: {
     data: Array,
     large: Boolean,
+  },
+  computed:  {
+    imgData() {
+      return this.data.map((e) => e.attributes.images.data).slice(0, 2)
+    }
   },
 
   components: { ProductCard },

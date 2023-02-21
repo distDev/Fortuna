@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col space-y-[40px] w-full">
+    <div class="flex flex-col space-y-[20px] w-full">
         <FaqItem :visible="checkVisible" v-for="item in data" :key="item.id" :blocks="item.blocks"
             :title="item.title" />
     </div>

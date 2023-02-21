@@ -4,20 +4,21 @@
 </template>
 
 <script>
-import { productsData } from "../../assets/data";
+import { realProducts } from "../../assets/data";
 import MainProductsContent from "../../components/product-page/MainProductsContent.vue";
 import EmptyProductsContent from "../../components/product-page/EmptyProductsContent.vue";
 import ProductCards from "../../components/ProductCards.vue";
 export default {
   data() {
     return {
-      data: productsData,
+      data: realProducts,
     };
   },
   computed: {
     isProducts() {
       return this.data.length > 0 ? true : false;
     },
+    
   },
   components: { ProductCards, MainProductsContent, EmptyProductsContent },
 };

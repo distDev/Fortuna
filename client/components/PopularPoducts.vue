@@ -20,10 +20,11 @@
           v-for="item in data"
           :key="item.id"
           :id="item.id"
-          :img="item.img"
-          :price="item.price"
-          :title="item.title"
-          :large="false"
+          :name="item.attributes.name"
+          :price="item.attributes.price"
+          :inStock="item.attributes.inStock"
+          :newIn="item.attributes.new"
+          :images="item.attributes.images.data"
           class="swiper-slide"
         />
       </Slider>

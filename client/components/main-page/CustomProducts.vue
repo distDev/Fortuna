@@ -14,18 +14,18 @@
         <ProductCard
           v-for="item in data"
           :key="item.id"
-          :img="item.img"
-          :price="item.price"
-          :title="item.title"
-          :large="false"
+          :id="item.id"
+          :name="item.attributes.name"
+          :price="item.attributes.price"
+          :inStock="item.attributes.inStock"
+          :newIn="item.attributes.new"
+          :images="item.attributes.images.data"
           class="basis-1/2 lg:basis-1/4 xs:basis-0"
         />
       </div>
     </div>
     <div class="bg-primary w-full h-[40px] lg:h-[45px] mt-[50px] lg:mt-[80px]">
-      <client-only placeholder="loading...">
-       
-      </client-only>
+      <client-only placeholder="loading..."> </client-only>
     </div>
   </div>
 </template>

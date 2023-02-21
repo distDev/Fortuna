@@ -21,7 +21,7 @@
       <ProductCards
         :data="data"
         :large="true"
-        class="grid grid-cols-2 xs:grid-cols-1 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[40px]"
+        class="grid grid-cols-2 xs:grid-cols-1 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[70px]"
       />
     </div>
   </div>
