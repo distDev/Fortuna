@@ -54,7 +54,7 @@
           <label :for="value" class="flex justify-between p-4 cursor-pointer">
             <input type="radio" :value="value" :id="value" v-model="shipping" />
             <h3>{{ value }}</h3>
-            <p>{{ price }} p</p>
+            <p>{{ orderTotal >= 5000 ? "Бесплатно" : price + " ₽" }}</p>
           </label>
         </div>
       </div>
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import Input from "../../UI/Input.vue";
 
 export default {
@@ -92,6 +92,7 @@ export default {
       ],
     };
   },
+
   methods: {
     changeShippingInfo(info) {
       this.changeShippingCost({ info: info });
@@ -100,14 +101,24 @@ export default {
       changeShippingCost: "cart/handleChangeShippingCost",
     }),
   },
+
+  computed: {
+    ...mapGetters({
+      orderTotal: "cart/getCartTotalPrice",
+    }),
+  },
+
   watch: {
     shipping: function (val) {
       this.changeShippingInfo(val);
     },
   },
+
   mounted() {
     this.shipping = "Почта России";
+    console.log(this.shippingData);
   },
+
   props: {
     name: String,
     phone: String,
@@ -118,7 +129,9 @@ export default {
     address: String,
     shippingMethod: String,
   },
+
   emits: ["back", "submit-form"],
+
   components: { Input },
 };
 </script>

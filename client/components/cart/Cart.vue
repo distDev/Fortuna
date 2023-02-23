@@ -32,6 +32,12 @@ import { mapGetters, mapMutations } from "vuex";
 import CartBody from "./CartBody.vue";
 
 export default {
+  data() {
+    return {
+      pcView: false,
+    };
+  },
+
   computed: {
     isOpen() {
       return this.$store.state.cart.isOpen;
@@ -43,6 +49,7 @@ export default {
       cartValue: "cart/getCartValue",
     }),
   },
+
   methods: {
     ...mapMutations({
       handleShow: "cart/handleShowCart",
@@ -50,6 +57,27 @@ export default {
       decrementCount: "cart/decrementCount",
       removeFromCart: "cart/removeFromCart",
     }),
+  },
+
+  watch: {
+    isOpen: function () {
+      if (!this.pcView) {
+        if (this.isOpen) {
+          document.documentElement.style.overflow = "hidden";
+          return;
+        }
+
+        document.documentElement.style.overflow = "auto";
+      }
+    },
+  },
+
+  mounted() {
+    if (window.innerWidth > 763) {
+      this.pcView = true;
+    } else {
+      this.pcView = false;
+    }
   },
   components: { CartBody },
 };

@@ -20,13 +20,13 @@
       </div>
 
       <div
-        class="absolute top-[8px] left-[8px] flex justify-center items-center lg:w-[120px] bg-black py-[7px] text-white lg:text-xs font-semibold uppercase"
+        class="absolute top-[8px] left-[8px] flex justify-center items-center w-[auto] lg:w-[120px] bg-black px-[10px] lg:px-0 py-[5px] lg:py-[7px] text-white text-[8px] lg:text-xs font-medium lg:font-semibold uppercase"
         v-if="!inStock"
       >
         распродано
       </div>
       <div
-        class="absolute top-[8px] left-[8px] flex justify-center items-center lg:w-[120px] bg-primary px-[15px] py-[8px] text-white lg:text-xs font-semibold uppercase"
+        class="absolute top-[8px] left-[8px] flex justify-center items-center w-[auto] lg:w-[120px] bg-primary py-[5px] px-[10px] lg:px-0 lg:py-[7px] text-white text-[8px] lg:text-xs font-medium lg:font-semibold uppercase"
         v-if="newIn && inStock"
       >
         Новинка

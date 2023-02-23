@@ -17,6 +17,37 @@ export const headerLinks = [
   },
 ];
 
+export const mobileMenuLinks = [
+  {
+    name: "Видео",
+    path: "/videos",
+  },
+  {
+    name: "Новости",
+    path: "/news",
+  },
+  {
+    name: "Магазин",
+    path: "/products",
+  },
+  {
+    name: "Мероприятия",
+    path: "/events",
+  },
+  {
+    name: "Доставка",
+    path: "/shipping",
+  },
+  {
+    name: "Обратная связь",
+    path: "/contact-us",
+  },
+  {
+    name: "FAQ",
+    path: "/faq",
+  },
+]
+
 export const footerHelpLinks = [
   {
     name: "FAQ",

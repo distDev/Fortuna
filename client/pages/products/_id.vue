@@ -41,14 +41,12 @@
 <script>
 import ProductSlider from "@/components/ProductSlider.vue";
 import ProductDetails from "@/components/product-page/ProductDetails.vue";
-import { productsData } from "../../assets/data";
 import { realProducts } from "../../assets/data";
 import PopularPoducts from "../../components/PopularPoducts.vue";
 
 export default {
   data() {
     return {
-      productsData,
       data: realProducts,
     };
   },
@@ -57,7 +55,9 @@ export default {
       return realProducts.filter((e) => e.id === this.$route.params.id);
     },
     popularProducts() {
-      return this.productsData.slice(0, 3);
+      return this.data
+        .filter((e) => e.id !== this.$route.params.id)
+        .slice(0, 3);
     },
   },
 

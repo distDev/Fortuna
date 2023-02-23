@@ -1,5 +1,7 @@
 <template>
-  <div class="space-y-[15px] mt-[15px]">
+  <div
+    class="space-y-[15px] mt-[15px] lg:max-h-[380px] overflow-y-scroll cart-body"
+  >
     <div
       v-for="item in products"
       :key="item.id"
@@ -54,9 +56,7 @@
           </button>
         </div>
         <div v-else class="flex justify-between w-full items-end">
-          <p class="uppercase text-xs font-semibold text-grey">
-            нет в наличии
-          </p>
+          <p class="uppercase text-xs font-semibold text-grey">нет в наличии</p>
           <div class="del-icon" @click="removeFromCart({ id: item.id })">
             <font-awesome-icon :icon="('fas', 'trash')" />
           </div>
@@ -87,6 +87,9 @@ export default {
 </script>
 
 <style scoped>
+.cart-body::-webkit-scrollbar {
+  width: 0px;
+}
 .del-icon svg {
   width: 13px;
   height: 13px;

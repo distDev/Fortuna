@@ -57,6 +57,7 @@ export default {
         breakpoints: {},
         pagination: {
           el: ".swiper-pagination",
+          bulletActiveClass: "custom-active-slide",
         },
       },
       optionsBot: {
@@ -92,8 +93,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .slide-active {
   box-shadow: 0px 2.5px 0px #8b5cf6;
 }
+.custom-active-slide {
+  background: black;
+  opacity: 1;
+}
+
 </style>

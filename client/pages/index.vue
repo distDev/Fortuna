@@ -1,9 +1,17 @@
 <template>
-  <div class="space-y-[50px] lg:space-y-[90px] h-auto flex flex-col">
+  <div class="h-auto flex flex-col">
     <MainBanner />
-    <PopularPoducts :data="popularProducts" title="популярное" />
+    <PopularPoducts
+      :data="popularProducts"
+      title="популярное"
+      class="py-[50px] lg:py-[90px]"
+    />
     <LastNews :data="lastNews" />
-    <CustomProducts :data="customProducts" title="своими руками" />
+    <CustomProducts
+      :data="customProducts"
+      title="своими руками"
+      class="py-[50px] lg:py-[90px]"
+    />
     <NewVideos :data="newVideos" />
   </div>
 </template>
@@ -32,10 +40,14 @@ export default {
   },
   computed: {
     popularProducts() {
-      return this.realProducts.slice(0, 4);
+      if (Array.isArray(this.realProducts)) {
+        return this.realProducts.slice(0, 4);
+      }
     },
     customProducts() {
-      return this.realProducts.slice(0, 2);
+      if (Array.isArray(this.realProducts)) {
+        return this.realProducts.slice(0, 2);
+      }
     },
     lastNews() {
       return this.newsData.slice(0, 4);

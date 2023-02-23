@@ -8,11 +8,18 @@
       Новые видео
     </h2>
     <div class="w-full">
-      <Slider :count="1.2" :xs-count="1.1" :lg-grid="2" :lg-count="3" :space="20">
+      <Slider
+        :count="1.2"
+        :xs-count="1.1"
+        :lg-grid="2"
+        :lg-count="3"
+        :space="20"
+      >
         <VideoItem
           v-for="item in data"
           :key="item.id"
           :img="item.img"
+          :link="item.link"
           class="swiper-slide"
         />
       </Slider>
@@ -50,5 +57,4 @@ export default {
     height: 190px;
   }
 }
-
 </style>
