@@ -14,6 +14,9 @@ import CartProducts from "./CartProducts.vue";
 
 export default {
   methods: {
+    checkClick() {
+      console.log('Клик')
+    },
     ...mapMutations({
       handleShow: "cart/handleShowCart",
     }),

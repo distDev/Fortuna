@@ -12,7 +12,7 @@
         >
           <font-awesome-icon :icon="['fas', 'xmark']" class="fill-white" />
         </button>
-        <div class="thumb-wrap z-[50]">
+        <div class="thumb-wrap z-[50]" v-click-outside="handleClose">
           <iframe
             :src="url"
             width="853"
@@ -24,10 +24,7 @@
         </div>
       </div>
 
-      <div
-        class="bg-black opacity-80 w-full h-full absolute top-0 z-40"
-        @click="handleClose"
-      ></div>
+      <div class="bg-black opacity-80 w-full h-full absolute top-0 z-40"></div>
     </div>
   </Teleport>
 </template>

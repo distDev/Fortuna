@@ -21,19 +21,7 @@
         :size="attributes.size"
       />
     </div>
-    <div
-      class="flex items-center justify-between lg:px-[130px] text-white bg-black w-full h-[40px] lg:h-[60px] mt-[80px] lg:mt-[130px] mb-[50px] lg:mb-[80px] overflow-hidden"
-    >
-      <p class="text-base xs:text-sm font-semibold xs:font-medium uppercase">
-        📦 бесплатная доставка от 5 000 ₽
-      </p>
-      <p class="text-base xs:text-sm font-semibold xs:font-medium uppercase">
-        🔒 безопасная оплата
-      </p>
-      <p class="text-base xs:text-sm font-semibold xs:font-medium uppercase">
-        🚀 быстрая доставка
-      </p>
-    </div>
+    <ProductTicker />
     <PopularPoducts :data="popularProducts" title="может понравиться" />
   </div>
 </template>
@@ -41,8 +29,9 @@
 <script>
 import ProductSlider from "@/components/ProductSlider.vue";
 import ProductDetails from "@/components/product-page/ProductDetails.vue";
-import { realProducts } from "../../assets/data";
 import PopularPoducts from "../../components/PopularPoducts.vue";
+import ProductTicker from "../../components/product-page/ProductTicker.vue";
+import { realProducts } from "../../assets/data";
 
 export default {
   data() {
@@ -61,8 +50,23 @@ export default {
     },
   },
 
-  components: { ProductSlider, ProductDetails, PopularPoducts },
+  components: { ProductSlider, ProductDetails, PopularPoducts, ProductTicker },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+@media (max-width: 768) {
+  .ticker-item {
+    animation: ticker 5s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% {
+      transform: translateZ(0);
+    }
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+}
+</style>

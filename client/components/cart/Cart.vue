@@ -20,8 +20,8 @@
       </Transition>
       <div
         v-if="isOpen"
-        class="absolute left-0 top-0 w-full h-[100vh] bg-black opacity-50 z-20"
         @click="handleShow"
+        class="absolute left-0 top-0 w-full h-[100vh] bg-black opacity-50 z-20"
       ></div>
     </Teleport>
   </div>

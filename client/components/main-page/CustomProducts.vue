@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex flex-col justify-center pl-[15px] xs:pr-[15px] lg:items-center lg:px-10 w-full"
+      class="flex flex-col justify-center px-[15px] xs:px-[15px] lg:items-center lg:px-10 w-full"
     >
       <h2
         class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"
@@ -9,7 +9,7 @@
         {{ title }}
       </h2>
       <div
-        class="flex flex-row xs:flex-col justify-center space-x-[30px] xs:space-x-0 xs:space-y-[20px] w-full"
+        class="flex flex-row xs:flex-col justify-center space-x-[15px] xs:space-x-0 xs:space-y-[20px] w-full"
       >
         <ProductCard
           v-for="item in data"
@@ -24,8 +24,22 @@
         />
       </div>
     </div>
-    <div class="bg-primary w-full h-[40px] lg:h-[45px] mt-[50px] lg:mt-[80px]">
-      <client-only placeholder="loading..."> </client-only>
+    <div
+      class="bg-primary w-full py-[16px] mt-[50px] lg:mt-[80px] overflow-hidden relative"
+    >
+      <div class="flex">
+        <div
+          v-for="i in 10"
+          :key="i"
+          class="flex items-center lg:text-base font-bold text-white uppercase whitespace-nowrap shrink-0 px-[20px] ticker-item"
+        >
+          Сделано своими руками
+          <font-awesome-icon
+            :icon="['fas', 'face-smile']"
+            class="fill-white h-[14px] w-[20px]"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,4 +57,22 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.ticker-item {
+  animation: ticker 5s linear infinite;
+}
+.ticker-item svg {
+  height: 23px;
+  width: 25px;
+  margin-left: 40px;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateZ(0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+</style>
