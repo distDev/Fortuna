@@ -14,7 +14,7 @@
               :key="i.id"
               class="swiper-slide h-[50px] lg:h-[50px]"
             >
-              <img :src="i.attributes.url" class="w-full h-full object-cover" />
+              <img :src="'http://localhost:1337' + i.attributes.url" class="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -33,8 +33,8 @@
             >
               <img
                 :key="i.id"
-                :src="i.attributes.url"
-                v-pswp="i.attributes.url"
+                :src="'http://localhost:1337' +  i.attributes.url"
+                v-pswp="'http://localhost:1337' +  i.attributes.url"
                 class="w-full h-full object-cover"
               />
             </div>

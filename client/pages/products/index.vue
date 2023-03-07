@@ -1,24 +1,25 @@
 <template>
-  <MainProductsContent :data="data" v-if="isProducts" />
-  <EmptyProductsContent v-else />
+  <div>
+   
+    <MainProductsContent :data="products.data" />
+    <!-- <EmptyProductsContent v-else /> -->
+  </div>
 </template>
 
 <script>
-import { realProducts } from "../../assets/data";
 import MainProductsContent from "../../components/product-page/MainProductsContent.vue";
 import EmptyProductsContent from "../../components/product-page/EmptyProductsContent.vue";
 import ProductCards from "../../components/ProductCards.vue";
 export default {
   data() {
     return {
-      data: realProducts,
+      products: [],
     };
   },
-  computed: {
-    isProducts() {
-      return this.data.length > 0 ? true : false;
-    },
-    
+  async fetch() {
+    this.products = await this.$axios.$get(
+      "http://localhost:1337/api/products?populate=*"
+    );
   },
   components: { ProductCards, MainProductsContent, EmptyProductsContent },
 };

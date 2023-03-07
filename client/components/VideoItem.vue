@@ -1,6 +1,10 @@
 <template>
   <div class="relative cursor-pointer" @click="handleShow({ url: link })">
-    <img :src="img" alt="" class="w-full h-full object-cover" />
+    <img
+      :src="'http://localhost:1337' + img"
+      alt=""
+      class="w-full h-full object-cover"
+    />
     <div class="absolute top-0 opacity-50 bg-black w-full h-full"></div>
     <div
       class="play-icon w-full h-full absolute top-0 flex justify-center items-center z-20"

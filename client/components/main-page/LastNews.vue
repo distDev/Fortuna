@@ -9,16 +9,16 @@
     </h2>
     <div class="flex flex-col">
       <div class="flex flex-col space-y-[25px] lg:space-y-[30px]">
-        <div v-for="item in data" :key="item.id">
+        <div v-for="item in articles" :key="item.id">
           <p
             class="text-gray-500 uppercase font-bold text-[10px] lg:text-sm mb-[7px] lg:mb-[15px]"
           >
-            {{ item.date }}
+            {{ item.attributes.publishedAt }}
           </p>
           <NuxtLink
             to="news/1"
             class="text-white uppercase font-bold text-base lg:text-[28px] hover:text-primary"
-            >{{ item.title.slice(0, 55) + "..." }}</NuxtLink
+            >{{ item.attributes.title.slice(0, 55) + "..." }}</NuxtLink
           >
         </div>
       </div>
@@ -35,6 +35,13 @@
 
 <script>
 export default {
+  computed: {
+    articles() {
+      if (this.data) {
+        return this.data.slice(0, 4);
+      }
+    },
+  },
   props: {
     data: Array,
   },

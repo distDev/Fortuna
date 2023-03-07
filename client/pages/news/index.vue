@@ -1,9 +1,10 @@
 <template>
   <div
+    v-if="!$fetchState.pending"
     class="grid grid-cols-1 gap-[15px] lg:gap-[20px] grid-custom mt-[0px] lg:pt-[60px] px-[0px] lg:px-[40px]"
   >
     <NuxtLink
-      v-for="item in newsData"
+      v-for="item in articles.data"
       :key="item.id"
       :to="'/news/' + item.id"
       class="grid-custom-item h-[260px] bg-slate-600 relative flex items-end"
@@ -12,7 +13,10 @@
         class="h-[120px] lg:h-[220px] w-full absolute bottom-0 z-30 linear-bg"
       ></div>
       <img
-        :src="item.img"
+        :src="
+          'http://localhost:1337' +
+          item.attributes.preview.data[0].attributes.url
+        "
         alt=""
         class="w-full h-full object-cover absolute z-0"
       />
@@ -23,10 +27,10 @@
         <h3
           class="text-white text-base lg:text-[28px] leading-6 lg:leading-10 font-bold mb-4 lg:mb-7"
         >
-          {{ item.title.slice(0, 90) + "..." }}
+          {{ item.attributes.title.slice(0, 90) + "..." }}
         </h3>
         <p class="text-[#BBBBBB] text-xs lg:text-sm font-medium">
-          {{ item.date }}
+          {{ item.attributes.publishedAt }}
         </p>
       </div>
     </NuxtLink>
@@ -38,7 +42,14 @@ import { newsData } from "../../assets/data";
 
 export default {
   data() {
-    return { newsData };
+    return {
+      articles: [],
+    };
+  },
+  async fetch() {
+    this.articles = await this.$axios.$get(
+      `http://localhost:1337/api/articles?populate=*`
+    );
   },
 };
 </script>

@@ -2,22 +2,23 @@
   <div class="h-auto flex flex-col">
     <MainBanner />
     <PopularPoducts
-      :data="popularProducts"
+      v-if="!$fetchState.pending"
+      :data="popularProducts.data.attributes.products.data"
       title="популярное"
       class="py-[50px] lg:py-[90px]"
     />
-    <LastNews :data="lastNews" />
+    <LastNews v-if="!$fetchState.pending" :data="articles.data" />
     <CustomProducts
-      :data="customProducts"
+      v-if="!$fetchState.pending"
+      :data="customProducts.data.attributes.products.data"
       title="своими руками"
       class="py-[50px] lg:py-[90px]"
     />
-    <NewVideos :data="newVideos" />
+    <NewVideos v-if="!$fetchState.pending" :data="videos.data" />
   </div>
 </template>
 
 <script>
-import { realProducts, newsData, videosData } from "../assets/data";
 import MainBanner from "../components/main-page/MainBanner.vue";
 import PopularPoducts from "../components/PopularPoducts.vue";
 import ProductCards from "../components/ProductCards.vue";
@@ -30,31 +31,27 @@ export default {
   head: {
     title: "Коллектив Фортуна",
   },
-
   data() {
     return {
-      realProducts: realProducts,
-      newsData,
-      videosData,
+      popularProducts: [],
+      customProducts: [],
+      articles: [],
+      videos: [],
     };
   },
-  computed: {
-    popularProducts() {
-      if (Array.isArray(this.realProducts)) {
-        return this.realProducts.slice(0, 4);
-      }
-    },
-    customProducts() {
-      if (Array.isArray(this.realProducts)) {
-        return this.realProducts.slice(0, 2);
-      }
-    },
-    lastNews() {
-      return this.newsData.slice(0, 4);
-    },
-    newVideos() {
-      return this.videosData.slice(0, 6);
-    },
+  async fetch() {
+    this.customProducts = await this.$axios.$get(
+      `http://localhost:1337/api/custom-products/1?populate[products][populate][0]=images`
+    );
+    this.popularProducts = await this.$axios.$get(
+      `http://localhost:1337/api/popular-products/1?populate[products][populate][0]=images`
+    );
+    this.articles = await this.$axios.$get(
+      `http://localhost:1337/api/articles?populate=*`
+    );
+    this.videos = await this.$axios.$get(
+      `http://localhost:1337/api/videos?populate=*`
+    );
   },
   components: {
     ProductCards,

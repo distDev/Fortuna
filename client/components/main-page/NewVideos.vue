@@ -16,10 +16,10 @@
         :space="20"
       >
         <VideoItem
-          v-for="item in data"
+          v-for="item in videos"
           :key="item.id"
-          :img="item.img"
-          :link="item.link"
+          :img="item.attributes.image.data[0].attributes.url"
+          :link="item.attributes.link"
           class="swiper-slide"
         />
       </Slider>
@@ -36,6 +36,13 @@ import VideoModal from "../VideoModal.vue";
 export default {
   props: {
     data: Array,
+  },
+  computed: {
+    videos() {
+      if (this.data.length > 0) {
+        return this.data.slice(0, 6);
+      }
+    },
   },
   components: { VideoItem, Slider, VideoModal },
 };

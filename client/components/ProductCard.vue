@@ -13,7 +13,7 @@
         :key="img.id"
       >
         <img
-          :src="img.attributes.url"
+          :src="'http://localhost:1337' + img.attributes.url"
           class="h-full w-full object-cover"
           alt=""
         />
@@ -49,32 +49,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      largeClass: {},
-      imagesTest: [
-        {
-          id: 8,
-          attributes: {
-            url: "https://static.street-beat.ru/upload/iblock/7a5/7a5382ea21c1b0c1a2cd7169195a69b5.jpg",
-          },
-        },
-        {
-          id: 9,
-          attributes: {
-            url: "https://static.street-beat.ru/upload/iblock/f21/f2192a90d4dee3dc69cbb4659caf2c5e.jpg",
-          },
-        },
-        {
-          id: 10,
-          attributes: {
-            url: "https://static.street-beat.ru/upload/iblock/f21/f2192a90d4dee3dc69cbb4659caf2c5e.jpg",
-          },
-        },
-      ],
-    };
-  },
-
   computed: {
     imgData() {
       if (Array.isArray(this.images)) {
@@ -82,7 +56,6 @@ export default {
       }
     },
   },
-
   props: {
     images: Array,
     price: String,
