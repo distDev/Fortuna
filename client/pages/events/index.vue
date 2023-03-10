@@ -1,26 +1,38 @@
 <template>
-  <MainEventsContent :data="eventsData" v-if="isEvents" />
-  <EmptyEventsContent v-else />
+  <div>
+    <Loader v-if="$fetchState.pending" />
+    <MainEventsContent
+      :data="events.data"
+      v-if="!$fetchState.pending && events.data.length > 0"
+    />
+    <EmptyEventsContent v-else />
+  </div>
 </template>
 
 <script>
-import { eventsData } from "../../assets/data";
 import EmptyEventsContent from "../../components/event-page/EmptyEventsContent.vue";
 import MainEventsContent from "../../components/event-page/MainEventsContent.vue";
 import EventItems from "../../components/EventItems.vue";
+import Loader from "../../components/Loader.vue";
 
 export default {
   data() {
     return {
-      eventsData,
+      events: [],
+      testEvent: [],
     };
+  },
+  async fetch() {
+    this.events = await this.$axios.$get(
+      `http://localhost:1337/api/events?populate=*`
+    );
   },
   computed: {
     isEvents() {
       return this.eventsData.length > 0 ? true : false;
     },
   },
-  components: { EventItems, MainEventsContent, EmptyEventsContent },
+  components: { EventItems, MainEventsContent, EmptyEventsContent, Loader },
 };
 </script>
 

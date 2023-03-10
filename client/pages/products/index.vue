@@ -1,8 +1,11 @@
 <template>
   <div>
-   
-    <MainProductsContent :data="products.data" />
-    <!-- <EmptyProductsContent v-else /> -->
+    <Loader v-if="$fetchState.pending" />
+    <MainProductsContent
+      :data="products.data"
+      v-if="!$fetchState.pending && products.data.length > 0"
+    />
+    <EmptyProductsContent v-else />
   </div>
 </template>
 
@@ -10,6 +13,7 @@
 import MainProductsContent from "../../components/product-page/MainProductsContent.vue";
 import EmptyProductsContent from "../../components/product-page/EmptyProductsContent.vue";
 import ProductCards from "../../components/ProductCards.vue";
+import Loader from "../../components/Loader.vue";
 export default {
   data() {
     return {
@@ -21,7 +25,12 @@ export default {
       "http://localhost:1337/api/products?populate=*"
     );
   },
-  components: { ProductCards, MainProductsContent, EmptyProductsContent },
+  components: {
+    ProductCards,
+    MainProductsContent,
+    EmptyProductsContent,
+    Loader,
+  },
 };
 </script>
 

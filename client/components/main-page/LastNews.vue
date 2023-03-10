@@ -9,18 +9,12 @@
     </h2>
     <div class="flex flex-col">
       <div class="flex flex-col space-y-[25px] lg:space-y-[30px]">
-        <div v-for="item in articles" :key="item.id">
-          <p
-            class="text-gray-500 uppercase font-bold text-[10px] lg:text-sm mb-[7px] lg:mb-[15px]"
-          >
-            {{ item.attributes.publishedAt }}
-          </p>
-          <NuxtLink
-            to="news/1"
-            class="text-white uppercase font-bold text-base lg:text-[28px] hover:text-primary"
-            >{{ item.attributes.title.slice(0, 55) + "..." }}</NuxtLink
-          >
-        </div>
+        <LastNewsItem
+          v-for="{ attributes, id } in articles"
+          :id="id"
+          :date="attributes.publishedAt"
+          :title="attributes.title"
+        />
       </div>
       <div class="flex justify-center">
         <button
@@ -34,6 +28,8 @@
 </template>
 
 <script>
+import LastNewsItem from "./LastNewsItem.vue";
+
 export default {
   computed: {
     articles() {
@@ -45,6 +41,7 @@ export default {
   props: {
     data: Array,
   },
+  components: { LastNewsItem },
 };
 </script>
 

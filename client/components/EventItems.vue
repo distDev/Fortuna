@@ -3,14 +3,16 @@
     class="grid grid-cols-1 lg:grid-cols-3 gap-[25px] lg:gap-x-[30px] lg:gap-y-[50px]"
   >
     <EventItem
-      v-for="item in data"
-      :key="item.id"
-      :date="item.date"
-      :name="item.name"
-      :price="item.price"
-      :location="item.location"
-      :id="item.id"
-      :tags="item.tags"
+      v-for="{ attributes, id } in data"
+      :key="id"
+      :id="id"
+      :adress="attributes.adress"
+      :date="attributes.date"
+      :poster="attributes.poster.data.attributes.formats.small.url"
+      :price="attributes.price"
+      :title="attributes.title"
+      :type="attributes.type"
+      :age-restriction="attributes.ageRestriction"
     />
   </div>
 </template>

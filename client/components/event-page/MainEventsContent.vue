@@ -17,10 +17,13 @@
 </template>
 
 <script>
+import EventItems from '../EventItems.vue';
+
 export default {
-  props: {
-    data: Array,
-  },
+    props: {
+        data: Array,
+    },
+    components: { EventItems }
 };
 </script>
 

@@ -5,40 +5,53 @@
         <div
           class="bg-black rounded-[40px] uppercase text-white text-[10px] lg:text-xs font-medium py-[7px] px-[10px]"
         >
-          {{ price > 0 ? price + " ₽" : "Бесплатно" }}
+          {{ Number(price) > 0 ? price + " ₽" : "Бесплатно" }}
         </div>
         <div
+          v-if="type"
           class="bg-black rounded-[40px] uppercase text-white text-[10px] lg:text-xs font-medium py-[7px] px-[10px]"
-          v-for="tag in tags"
         >
-          {{ tag }}
+          {{ type }}
+        </div>
+        <div
+          v-if="ageRestriction"
+          class="bg-black rounded-[40px] uppercase text-white text-[10px] lg:text-xs font-medium py-[7px] px-[10px]"
+        >
+          {{ ageRestriction + "+" }}
         </div>
       </div>
       <div class="absolute top-0 w-full h-full bg-black opacity-50 z-20"></div>
       <img
-        src="~assets/images/event.jpg"
+        :src="'http://localhost:1337' + poster"
         alt="event"
         class="absolute w-full h-full top-0 object-cover z-10"
       />
     </div>
     <div class="space-y-[5px] lg:space-y-[7px]">
-      <h3 class="uppercase text-base font-bold text-main-black">{{ name }}</h3>
-      <p class="uppercase text-xs text-grey">
-        {{ date }} * {{ location }}
-      </p>
+      <h3 class="uppercase text-base font-bold text-main-black">{{ title }}</h3>
+      <p class="uppercase text-xs text-grey">{{ formatDate }} * {{ adress }}</p>
     </div>
   </NuxtLink>
 </template>
 
 <script>
+import * as dayjs from "dayjs";
+
 export default {
+  computed: {
+    formatDate() {
+      return dayjs(this.date).locale("ru").format("D MMMM");
+    },
+  },
   props: {
-    name: String,
+    title: String,
     date: String,
-    price: Number,
-    tags: Array,
-    location: String,
+    adress: String,
+    price: String,
+    poster: String,
+    type: String,
     id: String,
+    ageRestriction: Number,
   },
 };
 </script>

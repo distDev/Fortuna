@@ -39,7 +39,6 @@
 
 <script>
 import * as dayjs from "dayjs";
-import * as locale from "dayjs/locale/ru";
 
 export default {
   data() {
