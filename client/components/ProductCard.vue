@@ -61,7 +61,7 @@ export default {
     price: String,
     name: String,
     large: Boolean,
-    id: String,
+    id: Number,
     newIn: {
       type: Boolean,
       required: false,

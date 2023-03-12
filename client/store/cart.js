@@ -1,15 +1,5 @@
 export const state = () => ({
-  list: [
-    {
-      countInCart: 1,
-      id: "12421fegweg",
-      image: "https://ir.ozone.ru/s3/multimedia-i/wc1000/6384659802.jpg",
-      name: "Сумка женская AFINA кросс боди через плечо",
-      price: 2121,
-      size: "S",
-      totalCount: 5,
-    },
-  ],
+  list: [],
   isOpen: false,
   shippingInfo: {
     cost: null,
@@ -20,8 +10,20 @@ export const state = () => ({
 export const mutations = {
   // Добавление в корзину
   addToCart(state, payload) {
+    let cart = JSON.parse(localStorage.getItem("cart"));
+
     // если товар с таким id есть в корзине - увеличивает число
     if (state.list.find((e) => e.id === payload.id)) {
+      let findItem = cart.find((e) => e.id === payload.id);
+
+      if (findItem) {
+        let newCart = cart.map((e) =>
+          e.id === payload.id ? { id: e.id, countInCart: e.countInCart + 1 } : e
+        );
+        localStorage.setItem("cart", JSON.stringify(newCart));
+      }
+
+      // Добавляем товара в корзину, если его там нет
       return state.list.map(
         (e) =>
           e.id === payload.id && {
@@ -31,14 +33,18 @@ export const mutations = {
     }
     // если товара с таким id нет в корзине - добавляет товар
     else {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(
+          cart
+            ? [...cart, { id: payload.id, countInCart: 1 }]
+            : [{ id: payload.id, countInCart: 1 }]
+        )
+      );
+
       state.list.push({
         id: payload.id,
-        price: Number(payload.price),
-        size: payload.size,
-        name: payload.name,
         countInCart: 1,
-        totalCount: Number(payload.totalCount),
-        image: payload.image,
       });
     }
   },
@@ -46,6 +52,10 @@ export const mutations = {
   // Удаление из корзины
   removeFromCart(state, payload) {
     return (state.list = state.list.filter((e) => e.id !== payload.id));
+  },
+
+  setItems(state, payload) {
+    return (state.list = payload);
   },
 
   // Увеличение числа товаров в корзине
@@ -89,32 +99,5 @@ export const mutations = {
         company: "CDEK",
       });
     }
-  },
-};
-
-export const getters = {
-  // Количество товаров в корзине
-  getCartValue(state) {
-    return state.list.length > 1
-      ? state.list.map((e) => e.countInCart).reduce((a, b) => a + b)
-      : state.list.length === 1
-      ? Number(state.list.map((e) => e.countInCart).join(""))
-      : 0;
-  },
-
-  // Сумма товаров в корзине
-  getCartTotalPrice(state) {
-    if (state.list.length > 1) {
-      return Number(
-        state.list
-          .map((e) => e.countInCart * e.price)
-          .reduce((acc, item) => acc + item)
-      );
-    }
-    if (state.list.length === 1) {
-      return Number(state.list.map((e) => e.price * e.countInCart).join(""));
-    }
-
-    return 0;
   },
 };

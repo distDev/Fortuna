@@ -50,7 +50,7 @@ export default {
     price: String,
     poster: String,
     type: String,
-    id: String,
+    id: Number,
     ageRestriction: Number,
   },
 };

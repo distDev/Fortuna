@@ -1,8 +1,10 @@
 <template>
   <div class="space-y-[15px] lg:space-y-[20px]">
-    <button :disabled="!inStock || checkAvailableCount"
+    <button
+      :disabled="!inStock || checkAvailableCount"
       class="uppercase text-white bg-black lg:text-base font-bold h-[50px] w-full lg:w-[75%] disabled:bg-grey"
-      @click="addProduct">
+      @click="addProduct"
+    >
       {{ isDisabled }}
     </button>
   </div>
@@ -10,7 +12,6 @@
 
 <script>
 import { mapMutations } from "vuex";
-
 export default {
   data() {
     return {
@@ -21,64 +22,46 @@ export default {
     addProduct() {
       this.addToCart({
         id: this.id,
-        name: this.name,
-        price: Number(this.price),
-        size: this.size,
-        totalCount: this.totalCount,
-        image: this.productImage,
       });
-      this.showCartModal();
+      // this.showCartModal();
     },
-
     ...mapMutations({
       addToCart: "cart/addToCart",
       showCartModal: "cart/handleShowCart",
+      setItems: "cart/setItems",
     }),
   },
-
   computed: {
     isDisabled() {
       if (!this.inStock || this.checkAvailableCount) {
-        return 'Нет в наличии'
+        return "Нет в наличии";
       }
-      return 'В корзину'
-      
-    
-    },
-    selectedSizeCount() {
-      return this.options
-        .filter((e) => e.size === this.selectedSize)
-        .map((e) => e.count)
-        .join("");
-    },
-    productImage() {
-      return this.images
-        .map((e) => e.attributes.url)
-        .slice(0, 1)
-        .join("");
+      return "В корзину";
     },
     checkAvailableCount() {
-      let check = this.products.filter((e) => e.id === this.$route.params.id)
+      let check = this.products.filter((e) => e.id === this.id);
       if (check.length > 0) {
         if (check[0].countInCart >= this.totalCount) {
-          return true
+          return true;
+        } else {
+          return false;
         }
-        else {
-          return false
-        }
-
+      } else {
+        return false;
       }
-      else {
-        return false
-      }
-
     },
     products() {
       return this.$store.state.cart.list;
     },
   },
 
-
+  mounted() {
+    if (JSON.parse(localStorage.getItem("cart"))) {
+      this.setItems(JSON.parse(localStorage.getItem("cart")));
+    } else {
+      this.setItems([]);
+    }
+  },
   props: {
     name: String,
     price: String,
@@ -91,6 +74,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

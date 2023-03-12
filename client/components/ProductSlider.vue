@@ -101,5 +101,4 @@ export default {
   background: black;
   opacity: 1;
 }
-
 </style>
