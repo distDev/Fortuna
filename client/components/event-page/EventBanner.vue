@@ -8,7 +8,7 @@
       class="bottom-gradient absolute bottom-0 w-full h-[170px] lg:h-[250px] z-[15]"
     ></div>
     <img
-      :src="poster.data.attributes.url"
+      :src="'http://localhost:1337' + poster"
       alt=""
       class="absolute right-0 h-full w-full lg:w-[73%] object-cover z-10"
     />

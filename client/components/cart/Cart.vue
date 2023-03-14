@@ -56,6 +56,7 @@ export default {
       incrementCount: "cart/incrementCount",
       decrementCount: "cart/decrementCount",
       removeFromCart: "cart/removeFromCart",
+      setItems: "cart/setItems",
     }),
   },
 
@@ -77,6 +78,11 @@ export default {
       this.pcView = true;
     } else {
       this.pcView = false;
+    }
+    if (JSON.parse(localStorage.getItem("cart"))) {
+      this.setItems(JSON.parse(localStorage.getItem("cart")));
+    } else {
+      this.setItems([]);
     }
   },
   components: { CartBody },

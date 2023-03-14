@@ -18,13 +18,13 @@
       <Photoswipe>
         <Slider :count="2.3" :lg-count="4" :space="30">
           <div
-            v-for="i in images.data"
+            v-for="i in images"
             :key="i.id"
             class="swiper-slide h-[120px] lg:h-[170px]"
           >
             <img
-              :src="i.attributes.url"
-              v-pswp="i.attributes.url"
+              :src="'http://localhost:1337' + i.attributes.formats.small.url"
+              v-pswp="'http://localhost:1337' + i.attributes.url"
               class="w-full h-full object-cover"
             />
           </div>

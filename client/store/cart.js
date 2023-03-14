@@ -8,44 +8,30 @@ export const state = () => ({
 });
 
 export const mutations = {
-  // Добавление в корзину
+  // Добавление товара в корзину
   addToCart(state, payload) {
-    let cart = JSON.parse(localStorage.getItem("cart"));
-
-    // если товар с таким id есть в корзине - увеличивает число
+    // если товар с таким id есть в корзине, увеличиваем число
     if (state.list.find((e) => e.id === payload.id)) {
-      let findItem = cart.find((e) => e.id === payload.id);
-
-      if (findItem) {
-        let newCart = cart.map((e) =>
-          e.id === payload.id ? { id: e.id, countInCart: e.countInCart + 1 } : e
-        );
-        localStorage.setItem("cart", JSON.stringify(newCart));
-      }
-
-      // Добавляем товара в корзину, если его там нет
-      return state.list.map(
+      let changeItem = state.list.map(
         (e) =>
           e.id === payload.id && {
             countInCart: e.countInCart++,
           }
       );
+      // добавляем изменения в localStorage
+      localStorage.setItem("cart", JSON.stringify(state.list));
+      return changeItem;
     }
+
     // если товара с таким id нет в корзине - добавляет товар
     else {
-      localStorage.setItem(
-        "cart",
-        JSON.stringify(
-          cart
-            ? [...cart, { id: payload.id, countInCart: 1 }]
-            : [{ id: payload.id, countInCart: 1 }]
-        )
-      );
-
       state.list.push({
         id: payload.id,
+        price: payload.price,
         countInCart: 1,
       });
+      // добавляем изменения в localStorage
+      localStorage.setItem("cart", JSON.stringify(state.list));
     }
   },
 
@@ -99,5 +85,32 @@ export const mutations = {
         company: "CDEK",
       });
     }
+  },
+};
+
+export const getters = {
+  // Количество товаров в корзине
+  getCartValue(state) {
+    return state.list.length > 1
+      ? state.list.map((e) => e.countInCart).reduce((a, b) => a + b)
+      : state.list.length === 1
+      ? Number(state.list.map((e) => e.countInCart).join(""))
+      : 0;
+  },
+
+  // Сумма товаров в корзине
+  getCartTotalPrice(state) {
+    if (state.list.length > 1) {
+      return Number(
+        state.list
+          .map((e) => e.countInCart * e.price)
+          .reduce((acc, item) => acc + item)
+      );
+    }
+    if (state.list.length === 1) {
+      return Number(state.list.map((e) => e.price * e.countInCart).join(""));
+    }
+
+    return 0;
   },
 };

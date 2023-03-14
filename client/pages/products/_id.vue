@@ -1,5 +1,5 @@
 <template>
-  <p v-if="$fetchState.pending">Fetching mountains...</p>
+  <Loader v-if="$fetchState.pending" />
   <p v-else-if="$fetchState.error">An error occurred :(</p>
   <div class="pt-[25px] lg:pt-[60px]" v-else>
     <div
@@ -51,7 +51,12 @@ export default {
     );
   },
 
-  components: { ProductSlider, ProductDetails, PopularPoducts, ProductTicker },
+  components: {
+    ProductSlider,
+    ProductDetails,
+    PopularPoducts,
+    ProductTicker,
+  },
 };
 </script>
 

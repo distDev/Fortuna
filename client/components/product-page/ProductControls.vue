@@ -22,13 +22,14 @@ export default {
     addProduct() {
       this.addToCart({
         id: this.id,
+        price: this.price
       });
       // this.showCartModal();
     },
     ...mapMutations({
       addToCart: "cart/addToCart",
       showCartModal: "cart/handleShowCart",
-      setItems: "cart/setItems",
+     
     }),
   },
   computed: {
@@ -55,13 +56,7 @@ export default {
     },
   },
 
-  mounted() {
-    if (JSON.parse(localStorage.getItem("cart"))) {
-      this.setItems(JSON.parse(localStorage.getItem("cart")));
-    } else {
-      this.setItems([]);
-    }
-  },
+
   props: {
     name: String,
     price: String,

@@ -1,33 +1,39 @@
 <template>
   <div>
-    <div v-for="{ id, attributes } in data" :key="id" class="event">
-      <EventBanner
-        class="mb-[40px] lg:mb-[60px]"
-        :title="attributes.title"
-        :age="attributes.ageRestriction"
-        :city="attributes.city"
-        :date="attributes.date"
-        :type="attributes.type"
-        :poster="attributes.poster"
-        :price="attributes.price"
-      />
-      <div class="px-[15px] lg:px-[160px] space-y-[40px] lg:space-y-[60px]">
-        <div class="flex flex-col space-y-[15px] lg:hidden">
-          <div class="flex space-x-[12px]">
-            <font-awesome-icon :icon="['fas', 'calendar']" />
-            <p class="text-sm">{{ formatDate }}</p>
-          </div>
-          <div class="flex space-x-[12px]">
-            <font-awesome-icon :icon="['fas', 'location-pin']" />
-            <p class="text-sm">{{ attributes.adress }}</p>
-          </div>
-        </div>
-        <EventDescription
-          :images="attributes.images"
-          :description="attributes.description"
+    <Loader v-if="$fetchState.pending" />
+    <div v-if="!$fetchState.pending">
+      <div class="event">
+        <EventBanner
+          class="mb-[40px] lg:mb-[60px]"
+          :title="eventData.data.attributes.title"
+          :age="eventData.data.attributes.ageRestriction"
+          :city="eventData.data.attributes.city"
+          :date="eventData.data.attributes.date"
+          :type="eventData.data.attributes.type"
+          :poster="eventData.data.attributes.poster.data.attributes.url"
+          :price="eventData.data.attributes.price"
         />
-        <EventArtists :artists="attributes.artists" />
-        <EventAddress />
+        <div class="px-[15px] lg:px-[160px] space-y-[40px] lg:space-y-[60px]">
+          <div class="flex flex-col space-y-[15px] lg:hidden">
+            <div class="flex space-x-[12px]">
+              <font-awesome-icon :icon="['fas', 'calendar']" />
+              <p class="text-sm">{{ eventData.data.attributes.date }}</p>
+            </div>
+            <div class="flex space-x-[12px]">
+              <font-awesome-icon :icon="['fas', 'location-pin']" />
+              <p class="text-sm">{{ eventData.data.attributes.adress }}</p>
+            </div>
+          </div>
+          <EventDescription
+            :images="eventData.data.attributes.images.data"
+            :description="eventData.data.attributes.description"
+          />
+          <EventArtists
+            v-if="eventData.data.attributes.artists.length > 0"
+            :artists="eventData.data.attributes.artists"
+          />
+          <EventAddress />
+        </div>
       </div>
     </div>
   </div>
@@ -44,16 +50,27 @@ import { realEvents } from "../../assets/data";
 export default {
   data() {
     return {
-      data: realEvents,
+      eventData: [],
     };
   },
+
   computed: {
-    formatDate() {
-      let date = this.data.map((e) => e.attributes.date).join("");
-      let formatDate = dayjs(date).locale("ru").format("D MMMM, h:mm").replace(",", " в");
-      return formatDate
-    },
+    // formatDate() {
+    //   let date = this.data.map((e) => e.attributes.date).join("");
+    //   let formatDate = dayjs(date)
+    //     .locale("ru")
+    //     .format("D MMMM, h:mm")
+    //     .replace(",", " в");
+    //   return formatDate;
+    // },
   },
+
+  async fetch() {
+    this.eventData = await this.$axios.$get(
+      `http://localhost:1337/api/events/1?populate=*`
+    );
+  },
+
   components: { EventBanner, EventDescription, EventArtists, EventAddress },
 };
 </script>

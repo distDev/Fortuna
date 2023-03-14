@@ -76,6 +76,7 @@ export default {
     name: String,
     size: String,
     image: String,
+    inStock: Boolean,
   },
 };
 </script>
