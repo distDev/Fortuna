@@ -22,16 +22,21 @@ export default {
     addProduct() {
       this.addToCart({
         id: this.id,
-        price: this.price
+        price: this.price,
+        name: this.name,
+        size: this.size,
+        image: this.productImage,
       });
-      // this.showCartModal();
+
+      this.showCartModal();
     },
+
     ...mapMutations({
       addToCart: "cart/addToCart",
       showCartModal: "cart/handleShowCart",
-     
     }),
   },
+
   computed: {
     isDisabled() {
       if (!this.inStock || this.checkAvailableCount) {
@@ -39,8 +44,14 @@ export default {
       }
       return "В корзину";
     },
+
     checkAvailableCount() {
+      if (!this.totalCount) {
+        return true;
+      }
+
       let check = this.products.filter((e) => e.id === this.id);
+
       if (check.length > 0) {
         if (check[0].countInCart >= this.totalCount) {
           return true;
@@ -51,11 +62,15 @@ export default {
         return false;
       }
     },
+
+    productImage() {
+      return this.images[0].attributes.formats.small.url;
+    },
+
     products() {
       return this.$store.state.cart.list;
     },
   },
-
 
   props: {
     name: String,

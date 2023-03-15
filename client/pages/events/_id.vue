@@ -32,7 +32,7 @@
             v-if="eventData.data.attributes.artists.length > 0"
             :artists="eventData.data.attributes.artists"
           />
-          <EventAddress />
+          <EventAddress :adressLink="eventData.data.attributes.adressLink" />
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ export default {
 
   async fetch() {
     this.eventData = await this.$axios.$get(
-      `http://localhost:1337/api/events/1?populate=*`
+      `http://localhost:1337/api/events/${this.$route.params.id}?populate=*`
     );
   },
 

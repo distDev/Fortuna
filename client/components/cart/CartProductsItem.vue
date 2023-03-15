@@ -1,7 +1,11 @@
 <template>
   <div class="flex space-x-[15px] w-full">
     <div class="h-[130px] w-[30%] xs:w-[40%] lg:w-[105px]">
-      <img :src="image" :alt="name" class="h-full w-full object-cover" />
+      <img
+        :src="'http://localhost:1337' + image"
+        :alt="name"
+        class="h-full w-full object-cover"
+      />
     </div>
     <div class="flex flex-col justify-between w-[60%] lg:w-[60%]">
       <div class="flex flex-col space-y-[5px]">
@@ -41,7 +45,7 @@
         <!-- увеличение количества -->
         <button
           class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
-          @click="() => incrementCount({ id: id })"
+          @click="() => addToCart({ id, price })"
           :disabled="Number(countInCart) === Number(totalCount)"
         >
           +
@@ -64,19 +68,39 @@ import { mapMutations } from "vuex";
 export default {
   methods: {
     ...mapMutations({
-      incrementCount: "cart/incrementCount",
+      addToCart: "cart/addToCart",
       decrementCount: "cart/decrementCount",
       removeFromCart: "cart/removeFromCart",
     }),
   },
 
+  computed: {
+    currentItem() {
+      if (this.products) {
+        return this.products.filter((e) => e.id === this.id)[0];
+      }
+    },
+
+    totalCount() {
+      if (this.currentItem) {
+        return this.currentItem.attributes.totalCount;
+      }
+    },
+
+    isDisabled() {
+      return this.countInCart === this.totalCount;
+    },
+  },
+
+
   props: {
     id: Number,
-    totalCount: String,
+    countInCart: Number,
+    price: String,
     name: String,
     size: String,
     image: String,
-    inStock: Boolean,
+    products: Array,
   },
 };
 </script>

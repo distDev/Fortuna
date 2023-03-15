@@ -44,7 +44,7 @@
     "city": {
       "type": "string"
     },
-    "coordinates": {
+    "adressLink": {
       "type": "string"
     },
     "images": {

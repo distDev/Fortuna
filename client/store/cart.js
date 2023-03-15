@@ -27,9 +27,13 @@ export const mutations = {
     else {
       state.list.push({
         id: payload.id,
+        name: payload.name,
         price: payload.price,
+        size: payload.size,
+        image: payload.image,
         countInCart: 1,
       });
+
       // добавляем изменения в localStorage
       localStorage.setItem("cart", JSON.stringify(state.list));
     }
@@ -37,33 +41,33 @@ export const mutations = {
 
   // Удаление из корзины
   removeFromCart(state, payload) {
-    return (state.list = state.list.filter((e) => e.id !== payload.id));
-  },
+    let removeItem = (state.list = state.list.filter(
+      (e) => e.id !== payload.id
+    ));
 
-  setItems(state, payload) {
-    return (state.list = payload);
-  },
-
-  // Увеличение числа товаров в корзине
-  incrementCount(state, payload) {
-    return state.list.map((e) => {
-      if (e.id === payload.id) {
-        return {
-          countInCart: e.countInCart++,
-        };
-      }
-    });
+    // добавляем изменения в localStorage
+    localStorage.setItem("cart", JSON.stringify(state.list));
+    return removeItem;
   },
 
   // Уменьшение числа товаров в корзине
   decrementCount(state, payload) {
-    return state.list.map((e) => {
+    let decrementItem = state.list.map((e) => {
       if (e.id === payload.id) {
         return {
           countInCart: (e.countInCart -= 1),
         };
       }
     });
+
+    // добавляем изменения в localStorage
+    localStorage.setItem("cart", JSON.stringify(state.list));
+    return decrementItem;
+  },
+
+  // Добавление товаров в store
+  setItems(state, payload) {
+    return (state.list = payload);
   },
 
   // Открытие/Закрытие корзины
@@ -86,6 +90,7 @@ export const mutations = {
       });
     }
   },
+
 };
 
 export const getters = {

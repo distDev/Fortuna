@@ -5,12 +5,12 @@
       <div class="flex items-center space-x-[10px]">
         <p class="uppercase text-base font-semibold">
           {{
-            cartTotal
-              ? "Корзина: &nbsp" + cartTotal + "₽"
+            totalPrice
+              ? "Корзина: &nbsp" + totalPrice + "₽"
               : "Ваша корзина пуста"
           }}
         </p>
-        <p class="uppercase text-grey text-sm font-semibold" v-if="cartTotal">
+        <p class="uppercase text-grey text-sm font-semibold" v-if="totalPrice">
           ({{ cartValue }} позиций)
         </p>
       </div>
@@ -22,9 +22,9 @@
     <!-- Кнопка оформления -->
     <button
       class="flex items-center justify-center w-full mt-[30px] bg-white text-main-black text-base font-medium uppercase py-[15px] box-border"
-      @click="cartTotal ? placeOrder() : handleSwitchShow()"
+      @click="totalPrice ? placeOrder() : handleSwitchShow()"
     >
-      {{ cartTotal ? "перейти к оформлению" : "продолжить покупки" }}
+      {{ totalPrice ? "перейти к оформлению" : "продолжить покупки" }}
     </button>
   </div>
 </template>
@@ -36,9 +36,9 @@ export default {
   computed: {
     ...mapGetters({
       cartValue: "cart/getCartValue",
-      cartTotal: "cart/getCartTotalPrice",
     }),
   },
+
   methods: {
     ...mapMutations({
       handleSwitchShow: "cart/handleShowCart",
@@ -48,17 +48,20 @@ export default {
       this.handleSwitchShow();
     },
   },
+
+  props: {
+    totalPrice: String,
+  },
 };
 </script>
 
 <style scoped>
-
 .burger-menu-close svg {
   width: 20px;
   height: 20px;
   color: white;
 }
 .burger-menu-close svg:hover {
-  color: #9671FF;
+  color: #9671ff;
 }
 </style>
