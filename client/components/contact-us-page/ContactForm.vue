@@ -27,16 +27,16 @@
         class="flex flex-col lg:flex-row space-y-[15px] lg:space-y-0 lg:space-x-[15px]"
       >
         <Input
-          @blur="$v.name.$touch()"
-          v-model.trim="$v.name.$model"
+          @change="$v.name.$touch()"
+          v-model.trim="name"
           placeholder="Ваше имя"
           type="text"
           :errors="nameErrors"
           :error-status="$v.name.$error"
         />
         <Input
-          @blur="$v.email.$touch()"
-          v-model.trim="$v.email.$model"
+          @change="$v.email.$touch()"
+          v-model.trim="email"
           placeholder="Ваш email"
           type="email"
           :errors="emailErrors"
@@ -47,8 +47,8 @@
     <div class="space-y-[15px]">
       <h3 class="font-medium text-lg">Тема</h3>
       <Input
-        @blur="$v.subject.touch()"
-        v-model.trim="$v.subject.$model"
+        @change="$v.subject.$touch()"
+        v-model.trim="subject"
         placeholder="Тема обращения"
         type="text"
         :errors="subjectErrors"
@@ -58,8 +58,8 @@
     <div class="space-y-[15px]">
       <h3 class="font-medium text-lg">Сообщение</h3>
       <Textarea
-        @blur="$v.message.touch()"
-        v-model.trim="$v.message.$model"
+        @change="$v.message.$touch()"
+        v-model.trim="message"
         :errors="messageErrors"
         :error-status="$v.message.$error"
       />
@@ -179,6 +179,7 @@ export default {
     name: {
       required,
       minLength: minLength(4),
+      $lazy: true,
     },
     email: {
       required,

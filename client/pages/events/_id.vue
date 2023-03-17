@@ -45,7 +45,6 @@ import EventDescription from "@/components/event-page/EventDescription.vue";
 import EventAddress from "@/components/event-page/EventAddress.vue";
 import EventArtists from "@/components/event-page/EventArtists.vue";
 import * as dayjs from "dayjs";
-import { realEvents } from "../../assets/data";
 
 export default {
   data() {

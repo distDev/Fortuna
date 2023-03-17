@@ -3,7 +3,7 @@
     class="w-full lg:w-[370px] h-full lg:h-auto lg:mt-[103px] lg:mr-[40px] px-[10px] py-[20px] lg:p-[15px] bg-black block z-40"
   >
     <div v-if="!$fetchState.pending">
-      <CartControls :total-price="totalPrice"/>
+      <CartControls :total-price="totalPrice" />
       <CartProducts :cart-data="cartData" />
     </div>
   </div>
@@ -21,16 +21,16 @@ export default {
     };
   },
   computed: {
+    products() {
+      return this.$store.state.cart.list;
+    },
+
     fetchParams() {
       if (process.browser && this.products) {
         return this.products
           .map((e, i) => `filters[id][$in][${i}]=${e.id}`)
           .join("&");
       }
-    },
-
-    products() {
-      return this.$store.state.cart.list;
     },
 
     // Получение id товаров, которые есть в наличии
@@ -62,7 +62,7 @@ export default {
       return 0;
     },
   },
-  
+
   async fetch() {
     if (this.fetchParams) {
       this.cartData = await this.$axios.$get(

@@ -2,6 +2,7 @@
   <div class="w-full space-y-[10px]">
     <input
       :value="value"
+      @change="() => $emit('change')"
       @input="$emit('input', $event.target.value)"
       class="w-full border-[1px] bg-transparent p-4 lg:text-sm placeholder:text-grey"
       :placeholder="placeholder"

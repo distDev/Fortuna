@@ -4,33 +4,13 @@
   >
     <OrderFormInfo
       v-if="step === 'info'"
-      :name="name"
-      @input-name="name = $event"
-      :phone="phone"
-      @input-phone="phone = $event"
-      :apart="apart"
-      @input-apart="apart = $event"
-      :city="city"
-      @input-city="city = $event"
-      :postal="postal"
-      @input-postal="postal = $event"
-      :region="region"
-      @input-region="region = $event"
-      :address="address"
-      @input-address="address = $event"
-      @next-step="handleNext"
+      @get-info="(info) => handleGetContactInfo(info)"
     />
     <OrderFormConfirm
       v-if="step === 'confirm'"
-      :name="name"
-      :apart="apart"
-      :city="city"
-      :phone="phone"
-      :postal="postal"
-      :region="region"
-      :address="address"
       @back="handleReturn"
       @submit-form="handleSubmit"
+      :contact-info="contactInfo"
     />
   </div>
 </template>
@@ -44,13 +24,7 @@ import OrderFormInfo from "./OrderFormInfo.vue";
 export default {
   data() {
     return {
-      name: "",
-      phone: "",
-      region: "",
-      city: "",
-      apart: "",
-      postal: "",
-      address: "",
+      contactInfo: null,
       step: "info",
     };
   },
@@ -68,14 +42,14 @@ export default {
       );
     },
 
+    handleGetContactInfo(info) {
+      this.contactInfo = info;
+      this.step = "confirm";
+    },
+
     // возврат к 1 шагу
     handleReturn() {
       this.step = "info";
-    },
-
-    // переход к 2 шагу
-    handleNext() {
-      this.step = "confirm";
     },
   },
 

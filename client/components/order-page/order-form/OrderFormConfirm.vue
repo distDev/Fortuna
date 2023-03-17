@@ -10,7 +10,7 @@
         >
           <div class="flex flex-col lg:flex-row w-[84%]">
             <p class="mb-[5px] lg:mb-0 w-[17%] text-sm text-grey">Контакт</p>
-            <p class="w-[83%] text-sm">{{ phone }}</p>
+            <p class="w-[83%] text-sm">{{ contactInfo.phone }}</p>
           </div>
           <div class="w-[16%] flex justify-end">
             <button @click="$emit('back')" class="text-xs text-grey">
@@ -23,15 +23,15 @@
             <p class="mb-[5px] lg:mb-0 w-[17%] text-sm text-grey">Адрес</p>
             <p class="w-[83%] text-sm">
               {{
-                region +
+                contactInfo.region +
                 ", " +
-                city +
+                contactInfo.city +
                 ", " +
-                address +
+                contactInfo.address +
                 ", " +
-                apart +
+                contactInfo.apart +
                 ", " +
-                postal
+                contactInfo.postal
               }}
             </p>
           </div>
@@ -120,14 +120,7 @@ export default {
   },
 
   props: {
-    name: String,
-    phone: String,
-    region: String,
-    city: String,
-    apart: String,
-    postal: String,
-    address: String,
-    shippingMethod: String,
+    contactInfo: Object,
   },
 
   emits: ["back", "submit-form"],
