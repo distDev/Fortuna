@@ -4,10 +4,10 @@
   >
     <VideoItem
       class="h-[260px] xs:h-[230px] lg:h-[405px] relative"
-      v-for="item in data"
-      :key="item.id"
-      :img="item.img"
-      :link="item.link"
+      v-for="{ attributes, id } in data"
+      :key="id"
+      :img="attributes.image.data[0].attributes.url"
+      :link="attributes.link"
     >
     </VideoItem>
     <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" />

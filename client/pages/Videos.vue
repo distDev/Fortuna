@@ -1,16 +1,21 @@
 <template>
-  <VideoItems :data="videosData" />
+  <Loader v-if="$fetchState.pending" />
+  <VideoItems v-else :data="videos.data" />
 </template>
 
 <script>
-import { videosData } from "../assets/data";
 import VideoItems from "../components/VideoItems.vue";
 
 export default {
   data() {
     return {
-      videosData,
+      videos: [],
     };
+  },
+  async fetch() {
+    this.videos = await this.$axios.$get(
+      `http://localhost:1337/api/videos?populate=*`
+    );
   },
   components: { VideoItems },
 };

@@ -3,7 +3,7 @@
     class="lg:w-[57%] w-full px-[15px] lg:px-0 py-[30px] lg:py-auto lg:h-[90vh] bg-[#FAF9FF] flex lg:justify-end lg:pt-[60px]"
   >
     <OrderFormInfo
-      v-if="step === 'info'"
+      v-show="step === 'info'"
       @get-info="(info) => handleGetContactInfo(info)"
     />
     <OrderFormConfirm
