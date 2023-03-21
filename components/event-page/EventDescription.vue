@@ -23,8 +23,8 @@
             class="swiper-slide h-[120px] lg:h-[170px]"
           >
             <img
-              :src="'http://localhost:1337' + i.attributes.formats.small.url"
-              v-pswp="'http://localhost:1337' + i.attributes.url"
+              :src="api + i.attributes.formats.small.url"
+              v-pswp="api + i.attributes.url"
               class="w-full h-full object-cover"
             />
           </div>
@@ -35,12 +35,14 @@
 </template>
 
 <script>
+import { prodApi } from "../../assets/api";
 import Slider from "../Slider.vue";
 
 export default {
   data() {
     return {
       showDescription: false,
+      api: prodApi
     };
   },
   components: { Slider },

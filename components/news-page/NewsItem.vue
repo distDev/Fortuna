@@ -7,7 +7,7 @@
       class="h-[120px] lg:h-[220px] w-full absolute bottom-0 z-30 linear-bg"
     ></div>
     <img
-      :src="'http://localhost:1337' + poster"
+      :src="api + poster"
       alt=""
       class="w-full h-full object-cover absolute z-0"
     />
@@ -29,9 +29,15 @@
 import * as dayjs from "dayjs";
 import * as locale from "dayjs/locale/ru";
 import * as relativeTime  from "dayjs/plugin/relativeTime";
+import { prodApi } from "../../assets/api";
 
 dayjs.extend(relativeTime)
 export default {
+  data() {
+    return {
+      api: prodApi,
+    };
+  },
   computed: {
     formatDate() {
       return dayjs(this.date).locale("ru").fromNow();

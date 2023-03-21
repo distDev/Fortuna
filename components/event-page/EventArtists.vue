@@ -11,7 +11,7 @@
           <div
             class="w-[58px] lg:w-[76px] h-full rounded-[50%] overflow-hidden"
           >
-            <img :src="image" alt="" class="w-full h-full object-cover" />
+            <img :src="api + image" alt="" class="w-full h-full object-cover" />
           </div>
           <p>{{ name }}</p>
         </div>
@@ -21,11 +21,14 @@
 </template>
 
 <script>
+import { prodApi } from "../../assets/api";
 import Slider from "../Slider.vue";
 
 export default {
   data() {
-    return {};
+    return {
+      api: prodApi
+    };
   },
   components: { Slider },
   props: {

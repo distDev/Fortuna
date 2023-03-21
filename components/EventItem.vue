@@ -22,7 +22,7 @@
       </div>
       <div class="absolute top-0 w-full h-full bg-black opacity-50 z-20"></div>
       <img
-        :src="'http://localhost:1337' + poster"
+        :src="api + poster"
         alt="event"
         class="absolute w-full h-full top-0 object-cover z-10"
       />
@@ -36,8 +36,14 @@
 
 <script>
 import * as dayjs from "dayjs";
+import { prodApi } from "../assets/api";
 
 export default {
+  data() {
+    return {
+      api: prodApi,
+    };
+  },
   computed: {
     formatDate() {
       return dayjs(this.date).locale("ru").format("D MMMM");
@@ -53,6 +59,7 @@ export default {
     id: Number,
     ageRestriction: Number,
   },
+
 };
 </script>
 

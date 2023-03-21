@@ -14,7 +14,10 @@
               :key="i.id"
               class="swiper-slide h-[50px] lg:h-[50px]"
             >
-              <img :src="'http://localhost:1337' + i.attributes.url" class="w-full h-full object-cover" />
+              <img
+                :src="api + i.attributes.url"
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -33,8 +36,8 @@
             >
               <img
                 :key="i.id"
-                :src="'http://localhost:1337' +  i.attributes.url"
-                v-pswp="'http://localhost:1337' +  i.attributes.url"
+                :src="api + i.attributes.url"
+                v-pswp="api + i.attributes.url"
                 class="w-full h-full object-cover"
               />
             </div>
@@ -48,9 +51,12 @@
 </template>
 
 <script>
+import { prodApi } from '../assets/api';
+
 export default {
   data() {
     return {
+      api: prodApi,
       optionsTop: {
         spaceBetween: 10,
         effect: "slide",

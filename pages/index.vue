@@ -25,34 +25,40 @@ import ProductCards from "../components/ProductCards.vue";
 import CustomProducts from "../components/main-page/CustomProducts.vue";
 import LastNews from "../components/main-page/LastNews.vue";
 import NewVideos from "../components/main-page/NewVideos.vue";
+import { prodApi } from "../assets/api";
 
 export default {
   name: "IndexPage",
+
   head: {
     title: "Коллектив Фортуна",
   },
+
   data() {
     return {
       popularProducts: [],
       customProducts: [],
       articles: [],
       videos: [],
+      api: prodApi
     };
   },
+
   async fetch() {
     this.customProducts = await this.$axios.$get(
-      `http://localhost:1337/api/custom-products/1?populate[products][populate][0]=images`
+      `${prodApi}/api/custom-products/1?populate[products][populate][0]=images`
     );
     this.popularProducts = await this.$axios.$get(
-      `http://localhost:1337/api/popular-products/1?populate[products][populate][0]=images`
+      `${prodApi}/api/popular-products/1?populate[products][populate][0]=images`
     );
     this.articles = await this.$axios.$get(
-      `http://localhost:1337/api/articles?populate=*`
+      `${prodApi}/api/articles?populate=*`
     );
     this.videos = await this.$axios.$get(
-      `http://localhost:1337/api/videos?populate=*`
+      `${prodApi}/api/videos?populate=*`
     );
   },
+
   components: {
     ProductCards,
     MainBanner,

@@ -8,13 +8,14 @@
       v-for="{ attributes, id } in articles.data"
       :id="id"
       :date="attributes.publishedAt"
-      :poster="attributes.preview.data[0].attributes.url"
+      :poster="attributes.preview.data.attributes.url"
       :title="attributes.title"
     />
   </div>
 </template>
 
 <script>
+import { prodApi } from "../../assets/api";
 import Loader from "../../components/Loader.vue";
 import NewsItem from "../../components/news-page/NewsItem.vue";
 
@@ -22,11 +23,12 @@ export default {
   data() {
     return {
       articles: [],
+      api: prodApi,
     };
   },
   async fetch() {
     this.articles = await this.$axios.$get(
-      `http://localhost:1337/api/articles?populate=*`
+      `${prodApi}/api/articles?populate=*`
     );
   },
   components: { NewsItem, Loader },

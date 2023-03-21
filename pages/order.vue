@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { prodApi } from "../assets/api";
 import OrderDetails from "../components/order-page/order-details/OrderDetails.vue";
 import OrderForm from "../components/order-page/order-form/OrderForm.vue";
 import Input from "../components/UI/Input.vue";
@@ -18,6 +19,7 @@ export default {
   data() {
     return {
       cartData: [],
+      api: prodApi
     };
   },
 
@@ -71,7 +73,7 @@ export default {
   async fetch() {
     if (this.fetchParams) {
       this.cartData = await this.$axios.$get(
-        `http://localhost:1337/api/products?${this.fetchParams}&populate=*`
+        `${prodApi}/api/products?${this.fetchParams}&populate=*`
       );
     } else {
       this.cartData = [];

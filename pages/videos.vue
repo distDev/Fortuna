@@ -4,17 +4,19 @@
 </template>
 
 <script>
+import { prodApi } from "../assets/api";
 import VideoItems from "../components/VideoItems.vue";
 
 export default {
   data() {
     return {
       videos: [],
+      api: prodApi
     };
   },
   async fetch() {
     this.videos = await this.$axios.$get(
-      `http://localhost:1337/api/videos?populate=*`
+      `${prodApi}/api/videos?populate=*`
     );
   },
   components: { VideoItems },

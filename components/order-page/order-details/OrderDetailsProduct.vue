@@ -5,7 +5,7 @@
         class="w-[65px] h-[65px] border-[1px] bg-primary border-[rgb(214,208,231)] rounded-[7px] relative"
       >
         <img
-          :src="'http://localhost:1337' + image"
+          :src="api + image"
           alt=""
           class="h-full w-full object-cover rounded-[7px]"
         />
@@ -26,7 +26,14 @@
 </template>
 
 <script>
+import { prodApi } from '../../../assets/api';
+
 export default {
+  data() {
+    return {
+      api: prodApi,
+    };
+  },
   props: {
     name: String,
     price: String,

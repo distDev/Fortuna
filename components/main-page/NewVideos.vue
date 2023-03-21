@@ -18,7 +18,7 @@
         <VideoItem
           v-for="item in videos"
           :key="item.id"
-          :img="item.attributes.image.data[0].attributes.url"
+          :img="item.attributes.image.data.attributes.url"
           :link="item.attributes.link"
           class="swiper-slide"
         />

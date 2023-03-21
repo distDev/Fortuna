@@ -8,7 +8,7 @@
       class="bottom-gradient absolute bottom-0 w-full h-[170px] lg:h-[250px] z-[15]"
     ></div>
     <img
-      :src="'http://localhost:1337' + poster"
+      :src="api + poster"
       alt=""
       class="absolute right-0 h-full w-full lg:w-[73%] object-cover z-10"
     />
@@ -39,11 +39,13 @@
 
 <script>
 import * as dayjs from "dayjs";
+import { prodApi } from "../../assets/api";
 
 export default {
   data() {
     return {
       arrData: ["Бесплатно", "Конкурс"],
+      api: prodApi,
     };
   },
   computed: {

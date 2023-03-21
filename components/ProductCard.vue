@@ -13,7 +13,7 @@
         :key="img.id"
       >
         <img
-          :src="'http://localhost:1337' + img.attributes.url"
+          :src="api + img.attributes.url"
           class="h-full w-full object-cover"
           alt=""
         />
@@ -48,7 +48,14 @@
 </template>
 
 <script>
+import { prodApi } from "../assets/api";
+
 export default {
+  data() {
+    return {
+      api: prodApi,
+    };
+  },
   computed: {
     imgData() {
       if (Array.isArray(this.images)) {

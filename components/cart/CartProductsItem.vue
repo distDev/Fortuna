@@ -1,11 +1,7 @@
 <template>
   <div class="flex space-x-[15px] w-full">
     <div class="h-[130px] w-[30%] xs:w-[40%] lg:w-[105px]">
-      <img
-        :src="'http://localhost:1337' + image"
-        :alt="name"
-        class="h-full w-full object-cover"
-      />
+      <img :src="api + image" :alt="name" class="h-full w-full object-cover" />
     </div>
     <div class="flex flex-col justify-between w-[60%] lg:w-[60%]">
       <div class="flex flex-col space-y-[5px]">
@@ -65,7 +61,13 @@
 
 <script>
 import { mapMutations } from "vuex";
+import { prodApi } from "../../assets/api";
 export default {
+  data() {
+    return {
+      api: prodApi,
+    };
+  },
   methods: {
     ...mapMutations({
       addToCart: "cart/addToCart",
@@ -91,7 +93,6 @@ export default {
       return this.countInCart === this.totalCount;
     },
   },
-
 
   props: {
     id: Number,
