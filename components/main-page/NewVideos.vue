@@ -23,7 +23,7 @@
           class="swiper-slide"
         />
       </Slider>
-      <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" />
+      <VideoModal/>
     </div>
   </div>
 </template>

@@ -6,11 +6,11 @@
       class="h-[260px] xs:h-[230px] lg:h-[405px] relative"
       v-for="{ attributes, id } in data"
       :key="id"
-      :img="attributes.image.data[0].attributes.url"
+      :img="attributes.image.data.attributes.url"
       :link="attributes.link"
     >
     </VideoItem>
-    <VideoModal link="https://www.youtube.com/embed/ZQFQfjtDE6k" />
+    <VideoModal/>
   </div>
 </template>
 
@@ -19,12 +19,6 @@ import VideoItem from "./VideoItem.vue";
 import VideoModal from "./VideoModal.vue";
 
 export default {
-  data() {
-    return {
-      link: "",
-      show: false,
-    };
-  },
   methods: {},
   components: { VideoItem, VideoModal },
   props: {

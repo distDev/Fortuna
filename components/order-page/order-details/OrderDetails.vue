@@ -10,27 +10,26 @@
       >
         <div v-if="!pcView ? isOpen : true" class="w-full lg:block">
           <OrderDetailsProducts :products="products" />
-          <OrderDetailsShipping
-            :cart-value="6"
+          <OrderDetailsInfo
+            :cart-value="cartValue"
             :order-total="totalCost"
             :shipping-cost="shippingCost"
           />
-          <OrderDetailsTotal
-            :open-status="OpenStatus"
-            :total-cost="totalCost"
-            :mobile="true"
-          />
         </div>
       </Transition>
-      <OrderDetailsTotal :total-cost="totalCost" />
+      <OrderDetailsTotal
+        :open-status="OpenStatus"
+        :total-cost="totalCost"
+        @is-open="handleChangeView"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import OrderDetailsProducts from "./OrderDetailsProducts.vue";
-import OrderDetailsShipping from "./OrderDetailsShipping.vue";
 import OrderDetailsTotal from "./OrderDetailsTotal.vue";
+import OrderDetailsInfo from "./OrderDetailsInfo.vue";
 
 export default {
   data() {
@@ -57,6 +56,12 @@ export default {
       return this.totalPrice;
     },
 
+    // число товаров в корзине
+    cartValue() {
+      return this.products.length;
+    },
+
+    // цена доставки
     shippingCost() {
       if (this.totalPrice > 5000) {
         return "Бесплатно";
@@ -69,6 +74,9 @@ export default {
   },
 
   methods: {
+    handleChangeView() {
+      this.isOpen = !this.isOpen;
+    },
     start(el) {
       el.style.height = el.scrollHeight + "px";
     },
@@ -92,7 +100,11 @@ export default {
 
   emits: ["submit-form"],
 
-  components: { OrderDetailsProducts, OrderDetailsShipping, OrderDetailsTotal },
+  components: {
+    OrderDetailsProducts,
+    OrderDetailsTotal,
+    OrderDetailsInfo,
+  },
 };
 </script>
 

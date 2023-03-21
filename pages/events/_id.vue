@@ -45,13 +45,13 @@ import EventDescription from "@/components/event-page/EventDescription.vue";
 import EventAddress from "@/components/event-page/EventAddress.vue";
 import EventArtists from "@/components/event-page/EventArtists.vue";
 import * as dayjs from "dayjs";
-import { prodApi } from "../../assets/api";
+import { devApi } from "../../assets/api";
 
 export default {
   data() {
     return {
       eventData: [],
-      api: prodApi
+      api: devApi
     };
   },
 
@@ -68,7 +68,7 @@ export default {
 
   async fetch() {
     this.eventData = await this.$axios.$get(
-      `${prodApi}/api/events/${this.$route.params.id}?populate=*`
+      `${devApi}/api/events/${this.$route.params.id}?populate=*`
     );
   },
 

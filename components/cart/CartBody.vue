@@ -11,7 +11,7 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { prodApi } from "../../assets/api";
+import { devApi } from "../../assets/api";
 import CartControls from "./CartControls.vue";
 import CartProducts from "./CartProducts.vue";
 
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       cartData: [],
-      api: prodApi
+      api: devApi
     };
   },
   computed: {
@@ -68,7 +68,7 @@ export default {
   async fetch() {
     if (this.fetchParams) {
       this.cartData = await this.$axios.$get(
-        `${prodApi}/api/products?${this.fetchParams}&populate=*`
+        `${devApi}/api/products?${this.fetchParams}&populate=*`
       );
     } else {
       this.cartData = [];

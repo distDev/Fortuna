@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { prodApi } from "../../assets/api";
+import { devApi } from "../../assets/api";
 import EmptyEventsContent from "../../components/event-page/EmptyEventsContent.vue";
 import MainEventsContent from "../../components/event-page/MainEventsContent.vue";
 import EventItems from "../../components/EventItems.vue";
@@ -21,12 +21,12 @@ export default {
     return {
       events: [],
       testEvent: [],
-      api: prodApi
+      api: devApi
     };
   },
   async fetch() {
     this.events = await this.$axios.$get(
-      `${prodApi}/api/events?populate=*`
+      `${devApi}/api/events?populate=*`
     );
   },
   computed: {

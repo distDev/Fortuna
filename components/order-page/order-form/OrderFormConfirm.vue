@@ -82,7 +82,7 @@ export default {
         {
           id: "12",
           value: "Почта России",
-          price: 150,
+          price: 250,
         },
         {
           id: "125",

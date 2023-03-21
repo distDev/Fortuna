@@ -12,12 +12,12 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { prodApi } from "../assets/api";
+import { devApi } from "../assets/api";
 
 export default {
   data() {
     return {
-      api: prodApi,
+      api: devApi,
     };
   },
   methods: {
