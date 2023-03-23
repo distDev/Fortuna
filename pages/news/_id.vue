@@ -1,106 +1,152 @@
 <template>
-  <div class="article pt-[25px] lg:pt-[60px]">
+  <Loader v-if="$fetchState.pending" />
+  <div v-else class="article pt-[25px] lg:pt-[60px]">
     <div class="w-full lg:w-[850px] m-auto">
       <Photoswipe>
         <h1
-          class="text-[22px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-bold lg:text-center mx-[15px] lg:mx-0 my-[24px]"
+          class="text-[22px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-bold lg:text-center mx-[15px] lg:mx-0 mb-[20px] lg:mb-[30px]"
         >
-          {{ articleTitle }}
+          {{ article.data.attributes.title }}
         </h1>
-        <div v-for="{ blocks, id } in data" :key="id" class="space-y-[12px]">
-          <div
-            v-for="block in blocks"
-            :key="block.id"
-            class="w-full lg:w-[640px] m-auto"
-          >
-            <!-- Заголовок 2 -->
-            <h2
-              v-if="block.type === 'header' && block.data.level === (1 || 2)"
-              class="text-[20px] lg:text-[20px] leading-[26px] lg:leading-[38px] font-bold mx-[15px] lg:mx-0 my-[24px]"
-            >
-              {{ block.data.text }}
-            </h2>
-
-            <!-- Заголовок 3 -->
-            <h2
-              v-if="block.type === 'header' && block.data.level === 3"
-              class="text-[17px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-semibold mx-[15px] my-[24px] lg:mx-0"
-            >
-              {{ block.data.text }}
-            </h2>
-
-            <!-- Параграф -->
-            <p
-              v-else-if="block.type === 'paragraph'"
-              class="text-base lg:text-lg leading-[26px] lg:leading-[30px] max-w-[640px] mx-[15px] lg:m-0"
-            >
-              {{ block.data.text }}
-            </p>
-
-            <!-- Список -->
-            <ul
-              v-else-if="
-                block.type === 'list' && block.data.style === 'unordered'
-              "
-            >
-              <li v-for="li in block.data.items">{{ li }}</li>
-            </ul>
-
-            <!-- Список нумерованный -->
-            <ul
-              v-else-if="
-                block.type === 'list' && block.data.style === 'ordered'
-              "
-            >
-              <li v-for="li in block.data.items">{{ li }}</li>
-            </ul>
-
-            <!-- Цитата -->
-            <blockquote v-else-if="block.type === 'quote'">
-              <div>
-                <p>{{ block.data.text }}</p>
-                <p>{{ block.data.caption }}</p>
-              </div>
-            </blockquote>
-
-            <!-- Изображение -->
-            <img
-              v-else-if="block.type === 'image'"
-              class="w-full lg:max-w-[640px] my-[24px]"
-              v-pswp="block.data.link"
-              :src="block.data.link"
-              alt=""
-            />
-          </div>
-        </div>
+        <p
+          class="text-grey lg:text-center text-sm lg:text-[17px] font-medium lg:mb-[30px] mb-[20px] mx-[15px] lg:mx-0"
+        >
+          {{ articlePublishDate }}
+        </p>
+        <div
+          class="w-full lg:w-[650px] m-auto article-content"
+          v-html="articleContent"
+        ></div>
       </Photoswipe>
     </div>
   </div>
 </template>
 
 <script>
-import { articleData } from "../../assets/data";
+import * as dayjs from "dayjs";
+import { devApi } from "../../assets/api";
+import { marked } from "marked";
 
 export default {
   data() {
     return {
-      data: articleData,
+      article: null,
+      api: devApi,
     };
   },
 
   computed: {
-    articleTitle() {
-      return articleData.map((e) => e.title).join("");
+    articleContent() {
+      if (process.browser && this.article) {
+        let str = this.article.data.attributes.content;
+        let newStr = str.replaceAll("/uploads", `${this.api}/uploads`);
+        return marked(newStr);
+      }
+    },
+
+    articlePublishDate() {
+      return dayjs(this.article.data.attributes.publishedAt)
+        .locale("ru")
+        .format("D MMMM YYYY");
     },
   },
-  mounted() {
-    console.log(this.$route);
+
+  async fetch() {
+    this.article = await this.$axios.$get(
+      `${devApi}/api/articles/${this.$route.params.id}?populate=*`
+    );
   },
 };
 </script>
 
-<style scoped>
+<style>
 .article {
   font-family: "Roboto", sans-serif;
+}
+
+.article-content p {
+  font-size: 18px;
+  line-height: 30px;
+  margin: 12px 0px;
+}
+
+.article-content h2 {
+  font-size: 32px;
+  margin: 24px 0;
+  line-height: 38px;
+  font-weight: 600;
+}
+
+.article-content h3 {
+}
+.article-content h4 {
+}
+.article-content img {
+  width: 100%;
+  height: auto;
+  margin: 30px 0;
+
+}
+.article-content ul {
+  list-style: inside;
+}
+.article-content ul li {
+  margin: 8px 0px;
+  font-size: 18px;
+}
+.article-content a {
+  color: #8B5CF6;
+}
+.article-content blockquote {
+  border-left: 4px solid #d4c1ff;
+  padding-left: 15px;
+  margin: 24px 0;
+}
+
+.article-content blockquote p {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 35px;
+  margin: 0;
+}
+
+@media (max-width: 475px) {
+  .article-content p {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 12px 15px;
+  }
+
+  .article-content h2 {
+    font-size: 17px;
+    margin: 24px 15px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+  .article-content img {
+    width: 100%;
+    height: auto;
+    margin: 24px 0;
+  }
+  .article-content ul {
+    list-style: inside;
+    margin: 0px 15px;
+  }
+  .article-content ul li {
+    margin: 8px 0px;
+    font-size: 16px;
+  }
+  .article-content blockquote {
+    border-left: 4px solid #d4c1ff;
+    padding-left: 15px;
+    margin: 24px 15px;
+  }
+
+  .article-content blockquote p {
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 29px;
+    margin: 0;
+  }
 }
 </style>
