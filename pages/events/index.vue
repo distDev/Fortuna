@@ -35,6 +35,10 @@ export default {
     },
   },
   components: { EventItems, MainEventsContent, EmptyEventsContent, Loader },
+
+  head: {
+    title: "Мерроприятия",
+  },
 };
 </script>
 

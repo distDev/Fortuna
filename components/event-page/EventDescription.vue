@@ -16,7 +16,7 @@
     </div>
     <div class="w-full">
       <Photoswipe>
-        <Slider :count="2.3" :lg-count="4" :space="30">
+        <Slider :count="2.3" :xs-count="2" :lg-count="4" :space="30">
           <div
             v-for="i in images"
             :key="i.id"

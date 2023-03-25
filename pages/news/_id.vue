@@ -56,6 +56,8 @@ export default {
       `${devApi}/api/articles/${this.$route.params.id}?populate=*`
     );
   },
+
+  
 };
 </script>
 
@@ -85,7 +87,6 @@ export default {
   width: 100%;
   height: auto;
   margin: 30px 0;
-
 }
 .article-content ul {
   list-style: inside;
@@ -95,7 +96,7 @@ export default {
   font-size: 18px;
 }
 .article-content a {
-  color: #8B5CF6;
+  color: #8b5cf6;
 }
 .article-content blockquote {
   border-left: 4px solid #d4c1ff;

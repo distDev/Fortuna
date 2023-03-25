@@ -1,6 +1,7 @@
 <template>
   <div class="space-y-[20px] lg:space-y-[25px]">
     <h3 class="font-bold text-xl lg:text-2xl">Адрес</h3>
+    <p class="text-[16px] lg:text-[18px]">{{ adress }}</p>
     <div class="lg:w-[80%] w-full overflow-hidden">
       <iframe
         :src="adressLink"
@@ -17,6 +18,7 @@
 export default {
   props: {
     adressLink: String,
+    adress: String,
   }
 };
 </script>

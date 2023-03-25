@@ -14,16 +14,10 @@
           :price="eventData.data.attributes.price"
         />
         <div class="px-[15px] lg:px-[160px] space-y-[40px] lg:space-y-[60px]">
-          <div class="flex flex-col space-y-[15px] lg:hidden">
-            <div class="flex space-x-[12px]">
-              <font-awesome-icon :icon="['fas', 'calendar']" />
-              <p class="text-sm">{{ eventData.data.attributes.date }}</p>
-            </div>
-            <div class="flex space-x-[12px]">
-              <font-awesome-icon :icon="['fas', 'location-pin']" />
-              <p class="text-sm">{{ eventData.data.attributes.adress }}</p>
-            </div>
-          </div>
+          <EventMobileInfo
+            :adress="eventData.data.attributes.adress"
+            :date="eventData.data.attributes.date"
+          />
           <EventDescription
             :images="eventData.data.attributes.images.data"
             :description="eventData.data.attributes.description"
@@ -32,7 +26,10 @@
             v-if="eventData.data.attributes.artists.length > 0"
             :artists="eventData.data.attributes.artists"
           />
-          <EventAddress :adressLink="eventData.data.attributes.adressLink" />
+          <EventAddress
+            :adressLink="eventData.data.attributes.adressLink"
+            :adress="eventData.data.attributes.adress"
+          />
         </div>
       </div>
     </div>
@@ -40,39 +37,34 @@
 </template>
 
 <script>
+import { devApi } from "../../assets/api";
 import EventBanner from "@/components/event-page/EventBanner.vue";
 import EventDescription from "@/components/event-page/EventDescription.vue";
 import EventAddress from "@/components/event-page/EventAddress.vue";
 import EventArtists from "@/components/event-page/EventArtists.vue";
-import * as dayjs from "dayjs";
-import { devApi } from "../../assets/api";
+import EventMobileInfo from "../../components/event-page/EventMobileInfo.vue";
 
 export default {
   data() {
     return {
       eventData: [],
-      api: devApi
+      api: devApi,
     };
-  },
-
-  computed: {
-    // formatDate() {
-    //   let date = this.data.map((e) => e.attributes.date).join("");
-    //   let formatDate = dayjs(date)
-    //     .locale("ru")
-    //     .format("D MMMM, h:mm")
-    //     .replace(",", " в");
-    //   return formatDate;
-    // },
   },
 
   async fetch() {
     this.eventData = await this.$axios.$get(
-      `${devApi}/api/events/${this.$route.params.id}?populate=*`
+      `${devApi}/api/events/${this.$route.params.id}?populate[0]=artists.image&populate[1]=images&populate[2]=poster`
     );
   },
 
-  components: { EventBanner, EventDescription, EventArtists, EventAddress },
+  components: {
+    EventBanner,
+    EventDescription,
+    EventArtists,
+    EventAddress,
+    EventMobileInfo,
+  },
 };
 </script>
 

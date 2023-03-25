@@ -1,6 +1,7 @@
 <template>
   <div
     class="space-y-[15px] mt-[15px] lg:max-h-[380px] overflow-y-scroll cart-body"
+    
   >
     <CartProductsItem
       v-for="{ name, price, size, countInCart, image, id } in products"
@@ -12,6 +13,7 @@
       :count-in-cart="countInCart"
       :products="cartData.data"
       :image="image"
+      :pending="pending"
     />
   </div>
 </template>
@@ -30,6 +32,7 @@ export default {
   
   props: {
     cartData: Array,
+    pending: Boolean,
   },
 };
 </script>

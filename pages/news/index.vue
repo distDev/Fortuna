@@ -26,12 +26,18 @@ export default {
       api: devApi,
     };
   },
+  
   async fetch() {
     this.articles = await this.$axios.$get(
       `${devApi}/api/articles?populate=*`
     );
   },
+  
   components: { NewsItem, Loader },
+  
+  head: {
+    title: "Новости коллектива 'Фортуна'",
+  },
 };
 </script>
 

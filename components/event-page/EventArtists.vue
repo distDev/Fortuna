@@ -11,7 +11,11 @@
           <div
             class="w-[58px] lg:w-[76px] h-full rounded-[50%] overflow-hidden"
           >
-            <img :src="api + image" alt="" class="w-full h-full object-cover" />
+            <img
+              :src="api + image.data.attributes.formats.small.url"
+              alt=""
+              class="w-full h-full object-cover"
+            />
           </div>
           <p>{{ name }}</p>
         </div>
@@ -27,7 +31,7 @@ import Slider from "../Slider.vue";
 export default {
   data() {
     return {
-      api: devApi
+      api: devApi,
     };
   },
   components: { Slider },

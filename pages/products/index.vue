@@ -33,6 +33,9 @@ export default {
     EmptyProductsContent,
     Loader,
   },
+  head: {
+    title: "Магазин коллектива 'Фортуна'",
+  },
 };
 </script>
 

@@ -21,13 +21,13 @@
 
       <div
         class="absolute top-[8px] left-[8px] flex justify-center items-center w-[auto] lg:w-[120px] bg-black px-[10px] lg:px-0 py-[5px] lg:py-[7px] text-white text-[8px] lg:text-xs font-medium lg:font-semibold uppercase"
-        v-if="!inStock"
+        v-if="!inStock || !totalCount"
       >
         распродано
       </div>
       <div
         class="absolute top-[8px] left-[8px] flex justify-center items-center w-[auto] lg:w-[120px] bg-primary py-[5px] px-[10px] lg:px-0 lg:py-[7px] text-white text-[8px] lg:text-xs font-medium lg:font-semibold uppercase"
-        v-if="newIn && inStock"
+        v-if="newIn && inStock && totalCount"
       >
         Новинка
       </div>
@@ -64,17 +64,36 @@ export default {
     },
   },
   props: {
-    images: Array,
-    price: String,
-    name: String,
-    large: Boolean,
-    id: Number,
+    images: {
+      type: Array,
+      required: true,
+    },
+    price: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    large: {
+      type: Boolean,
+      required: false,
+    },
+    id: {
+      type: Number,
+      required: true,
+    },
     newIn: {
       type: Boolean,
       required: false,
     },
     inStock: {
       type: Boolean,
+      required: false,
+    },
+    totalCount: {
+      type: Number,
       required: false,
     },
   },

@@ -20,6 +20,9 @@ export default {
     );
   },
   components: { VideoItems },
+  head: {
+    title: "Видео от Коллектива 'Фортуна'",
+  },
 };
 </script>
 

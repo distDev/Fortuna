@@ -2,9 +2,9 @@
   <div
     class="w-full lg:w-[370px] h-full lg:h-auto lg:mt-[103px] lg:mr-[40px] px-[10px] py-[20px] lg:p-[15px] bg-black block z-40"
   >
-    <div v-if="!$fetchState.pending">
-      <CartControls :total-price="totalPrice" />
-      <CartProducts :cart-data="cartData" />
+    <div>
+      <CartControls :total-price="totalPrice" :pending="$fetchState.pending"/>
+      <CartProducts :cart-data="cartData" :pending="$fetchState.pending"/>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       cartData: [],
-      api: devApi
+      api: devApi,
     };
   },
   computed: {
@@ -37,31 +37,39 @@ export default {
 
     // Получение id товаров, которые есть в наличии
     availableProducts() {
-      let itemsId = this.cartData.data
-        .filter((e) => e.attributes.totalCount > 0)
-        .map((e) => e.id);
+      if (!this.$fetchState.pending && this.cartData.data) {
+        let itemsId = this.cartData.data
+          .filter((e) => e.attributes.totalCount > 0)
+          .map((e) => e.id);
 
-      let filteredItems = this.products.filter((e) => itemsId.includes(e.id));
+        let filteredItems = this.products.filter((e) => itemsId.includes(e.id));
 
-      return filteredItems;
+        return filteredItems;
+      }
     },
 
     // Фильтр доступных товаров из store и получение итоговой суммы
     totalPrice() {
-      if (this.availableProducts.length > 1) {
-        return Number(
-          this.availableProducts
-            .map((e) => e.countInCart * e.price)
-            .reduce((acc, item) => acc + item)
-        );
+      if (
+        !this.$fetchState.pending &&
+        this.availableProducts &&
+        Array.isArray(this.availableProducts)
+      ) {
+        if (this.availableProducts.length > 1) {
+          return Number(
+            this.availableProducts
+              .map((e) => e.countInCart * e.price)
+              .reduce((acc, item) => acc + item)
+          );
+        }
+        if (this.availableProducts.length === 1) {
+          return Number(
+            this.availableProducts.map((e) => e.price * e.countInCart).join("")
+          );
+        } else {
+          return 0;
+        }
       }
-      if (this.availableProducts.length === 1) {
-        return Number(
-          this.availableProducts.map((e) => e.price * e.countInCart).join("")
-        );
-      }
-
-      return 0;
     },
   },
 
@@ -84,9 +92,7 @@ export default {
     }),
   },
 
-  props: {
-    products: Array,
-  },
+  props: {},
   components: { CartProducts, CartControls },
 };
 </script>

@@ -18,42 +18,50 @@
       </div>
 
       <!-- управление количеством -->
-      <div
-        class="flex items-center space-x-[10px]"
-        v-if="Number(totalCount) > 0"
-      >
-        <!-- уменьшение количества -->
-        <button
-          class="h-[30px] w-[30px] bg-grey text-main-black"
-          @click="
-            countInCart !== 1
-              ? decrementCount({ id: id })
-              : removeFromCart({ id: id })
-          "
+      <div v-if="!pending">
+        <div
+          class="flex items-center space-x-[10px]"
+          v-if="Number(totalCount) > 0"
         >
-          -
-        </button>
+          <!-- уменьшение -->
+          <button
+            class="h-[30px] w-[30px] bg-grey text-main-black"
+            @click="
+              countInCart !== 1
+                ? decrementCount({ id: id })
+                : removeFromCart({ id: id })
+            "
+          >
+            -
+          </button>
 
-        <p class="text-white text-base font-medium">
-          {{ countInCart }}
-        </p>
+          <p class="text-white text-base font-medium">
+            {{ countInCart }}
+          </p>
 
-        <!-- увеличение количества -->
-        <button
-          class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
-          @click="() => addToCart({ id, price })"
-          :disabled="Number(countInCart) === Number(totalCount)"
-        >
-          +
-        </button>
+          <!-- увеличение -->
+          <button
+            class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
+            @click="() => addToCart({ id, price })"
+            :disabled="Number(countInCart) === Number(totalCount)"
+          >
+            +
+          </button>
+        </div>
+
+        <!-- нет в наличии -->
+        <div v-else class="flex justify-between w-full items-end">
+          <p class="uppercase text-xs font-semibold text-grey">нет в наличии</p>
+          <div class="del-icon" @click="() => removeFromCart({ id: id })">
+            <font-awesome-icon :icon="('fas', 'trash')" />
+          </div>
+        </div>
       </div>
 
-      <!-- товара нет в наличии -->
-      <div v-else class="flex justify-between w-full items-end">
-        <p class="uppercase text-xs font-semibold text-grey">нет в наличии</p>
-        <div class="del-icon" @click="() => removeFromCart({ id: id })">
-          <font-awesome-icon :icon="('fas', 'trash')" />
-        </div>
+      <!-- скелетон управления количеством -->
+      <div v-else class="animate-pulse flex space-x-[20px]">
+        <div class="h-[30px] w-[30px] bg-[#2E3032]"></div>
+        <div class="h-[30px] w-[30px] bg-[#2E3032]"></div>
       </div>
     </div>
   </div>
@@ -102,6 +110,7 @@ export default {
     size: String,
     image: String,
     products: Array,
+    pending: Boolean,
   },
 };
 </script>

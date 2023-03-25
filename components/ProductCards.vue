@@ -9,6 +9,7 @@
       :inStock="item.attributes.inStock"
       :newIn="item.attributes.new"
       :images="item.attributes.images.data"
+      :totalCount="item.attributes.totalCount"
     />
   </div>
 </template>
@@ -21,10 +22,10 @@ export default {
     data: Array,
     large: Boolean,
   },
-  computed:  {
+  computed: {
     imgData() {
-      return this.data.map((e) => e.attributes.images.data).slice(0, 2)
-    }
+      return this.data.map((e) => e.attributes.images.data).slice(0, 2);
+    },
   },
 
   components: { ProductCard },
