@@ -5,7 +5,7 @@
       <div class="space-y-[15px]">
         <Input
           placeholder="Номер телефона"
-          type="number"
+          type="string"
           :error-status="$v.phone.$error"
           :errors="phoneErrors"
           v-model.trim.number="phone"

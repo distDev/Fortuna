@@ -116,7 +116,6 @@ export default {
 
   mounted() {
     this.shipping = "Почта России";
-    console.log(this.shippingData);
   },
 
   props: {

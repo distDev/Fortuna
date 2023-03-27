@@ -30,7 +30,9 @@ export default {
   props: {
     cartValue: Number,
     orderTotal: Number,
-    shippingCost: Number || String,
+    shippingCost: {
+      type: [Number, String],
+    },
   },
 };
 </script>

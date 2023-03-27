@@ -1,11 +1,13 @@
 <template>
-  <div class="flex flex-col-reverse lg:flex-row order">
-    <OrderForm />
-    <OrderDetails
+  <div>
+    <Loader v-if="$fetchState.pending" />
+    <div
       v-if="!$fetchState.pending"
-      :products="availableProducts"
-      :totalPrice="totalPrice"
-    />
+      class="flex flex-col-reverse lg:flex-row order"
+    >
+      <OrderForm :orderProducts="availableProducts" />
+      <OrderDetails :products="availableProducts" :totalPrice="totalPrice" />
+    </div>
   </div>
 </template>
 
@@ -19,10 +21,9 @@ export default {
   data() {
     return {
       cartData: [],
-      api: devApi
+      api: devApi,
     };
   },
-
   computed: {
     products() {
       return this.$store.state.cart.list;

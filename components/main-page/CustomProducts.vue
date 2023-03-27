@@ -20,6 +20,7 @@
           :inStock="item.attributes.inStock"
           :newIn="item.attributes.new"
           :images="item.attributes.images.data"
+          :totalCount="item.attributes.totalCount"
           class="basis-1/2 lg:basis-1/4 xs:basis-0"
         />
       </div>
@@ -31,12 +32,12 @@
         <div
           v-for="i in 10"
           :key="i"
-          class="flex items-center lg:text-base font-bold text-white uppercase whitespace-nowrap shrink-0 px-[20px] ticker-item"
+          class="flex items-center text-sm lg:text-base font-semibold lg:font-bold text-white uppercase whitespace-nowrap shrink-0 px-[20px] ticker-item"
         >
           Сделано своими руками
           <font-awesome-icon
             :icon="['fas', 'face-smile']"
-            class="fill-white h-[14px] w-[20px]"
+            class="fill-white  h-[12px] lg:h-[14px] w-[18px] lg:w-[20px]"
           />
         </div>
       </div>

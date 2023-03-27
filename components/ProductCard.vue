@@ -1,7 +1,7 @@
 <template>
   <NuxtLink :to="'/products/' + id">
     <div
-      class="h-[213px] xs:h-[300px] relative product-image-container"
+      class="h-[213px] xs:h-[300px] sm:h-[350px] relative product-image-container"
       :class="{
         'lg:h-[400px]': !large,
         'lg:h-[520px]': large,

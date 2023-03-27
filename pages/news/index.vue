@@ -2,7 +2,7 @@
   <Loader v-if="$fetchState.pending" />
   <div
     v-else
-    class="grid grid-cols-1 gap-[15px] lg:gap-[20px] grid-custom mt-[0px] lg:pt-[60px] px-[0px] lg:px-[40px]"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-[15px] lg:gap-[20px] grid-custom mt-[0px] sm:pt-[40px] lg:pt-[60px] px-[0px] sm:px-[15px] lg:px-[40px]"
   >
     <NewsItem
       v-for="{ attributes, id } in articles.data"

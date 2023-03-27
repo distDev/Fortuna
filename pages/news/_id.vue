@@ -3,6 +3,7 @@
   <div v-else class="article pt-[25px] lg:pt-[60px]">
     <div class="w-full lg:w-[850px] m-auto">
       <Photoswipe>
+        <div v-html="testImage"></div>
         <h1
           class="text-[22px] lg:text-[32px] leading-[26px] lg:leading-[38px] font-bold lg:text-center mx-[15px] lg:mx-0 mb-[20px] lg:mb-[30px]"
         >
@@ -16,6 +17,7 @@
         <div
           class="w-full lg:w-[650px] m-auto article-content"
           v-html="articleContent"
+          @click="(e) => handleZoom(e)"
         ></div>
       </Photoswipe>
     </div>
@@ -35,12 +37,27 @@ export default {
     };
   },
 
+  methods: {
+    // Добавление ссылки в data-pswp-src аттрибут, чтобы зум работал
+    handleZoom(e) {
+      if (e.target.localName === "img") {
+        e.target.setAttribute("data-pswp-src", e.target.src);
+      }
+    },
+  },
+
   computed: {
+    // Паринг Markdown
     articleContent() {
       if (process.browser && this.article) {
         let str = this.article.data.attributes.content;
-        let newStr = str.replaceAll("/uploads", `${this.api}/uploads`);
-        return marked(newStr);
+        // указываю валидный путь к изображению
+        let fullPath = str.replaceAll("/uploads", `${this.api}/uploads`);
+        let markedStr = marked(fullPath);
+        // добавляю аттрибут для зума
+        let zoomAttribute = markedStr.replaceAll("alt", "data-pswp-src='' alt");
+
+        return zoomAttribute;
       }
     },
 
@@ -56,8 +73,6 @@ export default {
       `${devApi}/api/articles/${this.$route.params.id}?populate=*`
     );
   },
-
-  
 };
 </script>
 
@@ -116,6 +131,9 @@ export default {
     font-size: 16px;
     line-height: 26px;
     margin: 12px 15px;
+  }
+  .article-content p:has(img) {
+    margin: 0;
   }
 
   .article-content h2 {

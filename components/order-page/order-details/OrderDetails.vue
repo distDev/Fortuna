@@ -48,14 +48,6 @@ export default {
       return this.isOpen === true ? "Скрыть заказ" : "Показать заказ";
     },
 
-    // итоговая цена с доставкой
-    totalCost() {
-      if (typeof this.shippingCost === "number") {
-        return this.totalPrice + this.shippingCost;
-      }
-      return this.totalPrice;
-    },
-
     // число товаров в корзине
     cartValue() {
       return this.products.length;
@@ -70,6 +62,14 @@ export default {
         return "Рассчитывается позже";
       }
       return this.$store.state.cart.shippingInfo.cost;
+    },
+
+    // итоговая сумма с доставкой
+    totalCost() {
+      if (typeof this.shippingCost === "number") {
+        return this.totalPrice + this.shippingCost;
+      }
+      return this.totalPrice;
     },
   },
 

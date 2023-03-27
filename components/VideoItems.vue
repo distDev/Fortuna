@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-1 lg:grid-cols-2 gap-[15px] lg:gap-[20px] mt-[0px] lg:pt-[60px] px-[0px] lg:px-[40px]"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-[15px] lg:gap-[20px] mt-[0px] sm:pt-[40px] lg:pt-[60px] px-[0px] sm:px-[15px] lg:px-[40px]"
   >
     <VideoItem
       class="h-[260px] xs:h-[230px] lg:h-[405px] relative"
@@ -10,7 +10,7 @@
       :link="attributes.link"
     >
     </VideoItem>
-    <VideoModal/>
+    <VideoModal />
   </div>
 </template>
 

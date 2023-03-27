@@ -28,28 +28,28 @@ export default {
       step: "info",
     };
   },
-
   methods: {
-    // отправка формы в tg и на сервер
+    // Отправка формы в tg и на сервер
     handleSubmit() {
-      console.log(
-        this.products,
-        this.totalCost,
-        this.name,
-        this.address,
-        this.phone,
-        this.region
-      );
+      this.tgMessage();
     },
 
+    // Получение данных и переход к следующему шагу
     handleGetContactInfo(info) {
       this.contactInfo = info;
       this.step = "confirm";
     },
 
-    // возврат к 1 шагу
+    // Возврат к 1 шагу
     handleReturn() {
       this.step = "info";
+    },
+
+    // отправка заявки в telegram
+    async tgMessage() {
+      await this.$axios.$post(
+        `https://api.telegram.org/bot6176433279:AAFpq3SOcEspecPhvgS4RB49WfvJxcxS1W0/sendMessage?chat_id=-631246612&text=Тип заявки: Заказ%0AИмя: ${this.contactInfo.name}%0AНомер телефона: ${this.contactInfo.phone}%0AСумма заказа: ${this.totalCost} ₽%0AГород: ${this.contactInfo.city}%0AОбласть: ${this.contactInfo.region}%0AАдрес: ${this.contactInfo.address}%0AКвартира: ${this.contactInfo.apart}%0AИндекс: ${this.contactInfo.postal}%0AМетод доставки: ${this.shippingMethod}%0AТовары: ${this.producrsForTelegram}`
+      );
     },
   },
 
@@ -57,11 +57,11 @@ export default {
     ...mapGetters({
       orderTotal: "cart/getCartTotalPrice",
     }),
-    products() {
-      return this.$store.state.cart.list;
-    },
     shippingCost() {
       return this.$store.state.cart.shippingInfo.cost;
+    },
+    shippingMethod() {
+      return this.$store.state.cart.shippingInfo.company;
     },
     totalCost() {
       if (typeof this.shippingCost === "number") {
@@ -69,6 +69,13 @@ export default {
       }
       return this.orderTotal;
     },
+    producrsForTelegram() {
+      return this.orderProducts.map((e) => e.name).join(", ");
+    },
+  },
+
+  props: {
+    orderProducts: Array,
   },
 
   components: { Input, OrderFormInfo, OrderFormConfirm },

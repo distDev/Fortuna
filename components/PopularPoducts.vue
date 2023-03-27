@@ -25,6 +25,7 @@
           :inStock="item.attributes.inStock"
           :newIn="item.attributes.new"
           :images="item.attributes.images.data"
+          :totalCount="item.attributes.totalCount"
           class="swiper-slide"
         />
       </Slider>

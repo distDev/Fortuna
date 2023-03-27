@@ -31,6 +31,7 @@
 import { mapGetters, mapMutations } from "vuex";
 import CartBody from "./CartBody.vue";
 
+
 export default {
   data() {
     return {
