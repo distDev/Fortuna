@@ -5,7 +5,10 @@
       v-if="!$fetchState.pending"
       class="flex flex-col-reverse lg:flex-row order"
     >
-      <OrderForm :orderProducts="availableProducts" />
+      <OrderForm
+        :orderProducts="availableProducts"
+        :actual-products-count="actualProductsCount"
+      />
       <OrderDetails :products="availableProducts" :totalPrice="totalPrice" />
     </div>
   </div>
@@ -24,6 +27,7 @@ export default {
       api: devApi,
     };
   },
+
   computed: {
     products() {
       return this.$store.state.cart.list;
@@ -39,7 +43,7 @@ export default {
 
     // Получение товаров, которые есть в наличии
     availableProducts() {
-      if (process.browser && this.cartData) {
+      if (process.browser && this.cartData.data) {
         let itemsId = this.cartData.data
           .filter((e) => e.attributes.totalCount > 0)
           .map((e) => e.id);
@@ -67,6 +71,22 @@ export default {
         }
 
         return 0;
+      }
+    },
+
+    actualProductsCount() {
+      if (process.browser && this.cartData.data) {
+        let availibleProducts = this.cartData.data.filter(
+          (e) => e.attributes.totalCount > 0
+        );
+        let actualCount = availibleProducts.map(({ attributes, id }) => {
+          return {
+            totalCount: attributes.totalCount,
+            id,
+          };
+        });
+
+        return actualCount;
       }
     },
   },

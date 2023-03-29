@@ -48,10 +48,16 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios'],
+  modules: ["@nuxtjs/axios"],
 
   axios: {
     // proxy: true
+  },
+
+  publicRuntimeConfig: {
+    tgApiKey: process.env.TELEGRAM_API_KEY,
+    tgChatId: process.env.TELEGRAM_CHAT_ID,
+    authToken: process.env.STRAPI_API_KEY,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -17,7 +17,9 @@ export default {
   props: {
     errors: Array,
     sucess: Boolean,
-    value: String,
+    value: {
+      type: [String, Number],
+    },
     errorStatus: Boolean,
     placeholder: String,
   },

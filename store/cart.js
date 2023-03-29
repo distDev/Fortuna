@@ -50,6 +50,24 @@ export const mutations = {
     return removeItem;
   },
 
+  // Очистка корзины
+  clearCart(state, payload) {
+    let clear = () => {
+      return (
+        (state.list = []),
+        (state.shippingInfo = {
+          cost: null,
+          company: null,
+        })
+      );
+    };
+
+    // добавляем изменения в localStorage
+    localStorage.removeItem("cart");
+    
+    return clear();
+  },
+
   // Уменьшение числа товаров в корзине
   decrementCount(state, payload) {
     let decrementItem = state.list.map((e) => {
@@ -90,7 +108,6 @@ export const mutations = {
       });
     }
   },
-
 };
 
 export const getters = {
