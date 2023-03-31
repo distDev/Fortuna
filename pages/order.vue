@@ -5,11 +5,8 @@
       v-if="!$fetchState.pending"
       class="flex flex-col-reverse lg:flex-row order"
     >
-      <OrderForm
-        :orderProducts="availableProducts"
-        :actual-products-count="actualProductsCount"
-      />
-      <OrderDetails :products="availableProducts" :totalPrice="totalPrice" />
+      <OrderForm :orderProducts="availableProducts" :total-price="totalPrice" />
+      <OrderDetails :products="availableProducts" :total-price="totalPrice" />
     </div>
   </div>
 </template>
@@ -43,50 +40,58 @@ export default {
 
     // Получение товаров, которые есть в наличии
     availableProducts() {
-      if (process.browser && this.cartData.data) {
+      if (!this.$fetchState.pending && this.cartData.data) {
+        // получение id доступных товаров
         let itemsId = this.cartData.data
           .filter((e) => e.attributes.totalCount > 0)
-          .map((e) => e.id);
+          .map((e) => ({ id: e.id, totalCount: e.attributes.totalCount }));
 
-        let filteredItems = this.products.filter((e) => itemsId.includes(e.id));
+        // фильтрация по id товаров из vuex store
+        let filteredItems = this.products.filter((e) =>
+          itemsId.some((item) => item.id === e.id)
+        );
 
-        return filteredItems;
+        // добавление totalCount товарам из vuex store
+        let mergedProduct = filteredItems.map((e) => ({
+          ...e,
+          totalCount: itemsId.find((item) => item.id === e.id).totalCount,
+        }));
+
+        return mergedProduct;
       }
     },
 
-    // Получение итоговой суммы
+    // Итоговая сумма заказа
     totalPrice() {
-      if (process.browser && this.availableProducts) {
+      if (
+        !this.$fetchState.pending &&
+        this.availableProducts &&
+        Array.isArray(this.availableProducts)
+      ) {
         if (this.availableProducts.length > 1) {
           return Number(
             this.availableProducts
-              .map((e) => e.countInCart * e.price)
+              .map((e) =>
+                e.countInCart > e.totalCount
+                  ? e.totalCount * e.price
+                  : e.countInCart * e.price
+              )
               .reduce((acc, item) => acc + item)
           );
         }
         if (this.availableProducts.length === 1) {
           return Number(
-            this.availableProducts.map((e) => e.price * e.countInCart).join("")
+            this.availableProducts
+              .map((e) =>
+                e.countInCart > e.totalCount
+                  ? e.totalCount * e.price
+                  : e.countInCart * e.price
+              )
+              .join("")
           );
+        } else {
+          return 0;
         }
-
-        return 0;
-      }
-    },
-
-    actualProductsCount() {
-      if (process.browser && this.cartData.data) {
-        let availibleProducts = this.cartData.data.filter(
-          (e) => e.attributes.totalCount > 0
-        );
-        let actualCount = availibleProducts.map(({ attributes, id }) => {
-          return {
-            totalCount: attributes.totalCount,
-            id,
-          };
-        });
-
-        return actualCount;
       }
     },
   },

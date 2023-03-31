@@ -10,7 +10,7 @@
         events
       </h3>
     </div>
-    <div class="pt-[25px] lg:pt-[60px] px-[15px] lg:px-[40px]">
+    <div class="pt-[25px] lg:pt-[60px] px-[15px] lg:px-[40px] max-w-[1440px] m-auto">
       <EventItems :data="data" />
     </div>
   </div>

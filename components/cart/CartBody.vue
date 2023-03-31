@@ -3,8 +3,11 @@
     class="w-full lg:w-[370px] h-full lg:h-auto lg:mt-[103px] lg:mr-[40px] px-[10px] py-[20px] lg:p-[15px] bg-black block z-40"
   >
     <div>
-      <CartControls :total-price="totalPrice" :pending="$fetchState.pending"/>
-      <CartProducts :cart-data="cartData" :pending="$fetchState.pending"/>
+      <CartControls :total-price="totalPrice" :pending="$fetchState.pending" />
+      <CartProducts
+        :products="availableProducts"
+        :pending="$fetchState.pending"
+      />
     </div>
   </div>
 </template>
@@ -35,20 +38,31 @@ export default {
       }
     },
 
-    // Получение id товаров, которые есть в наличии
+    // Получение товаров, которые есть в наличии
     availableProducts() {
       if (!this.$fetchState.pending && this.cartData.data) {
-        let itemsId = this.cartData.data
-          .filter((e) => e.attributes.totalCount > 0)
-          .map((e) => e.id);
+        // получение id доступных товаров
+        let itemsId = this.cartData.data.map((e) => ({
+          id: e.id,
+          totalCount: e.attributes.totalCount,
+        }));
 
-        let filteredItems = this.products.filter((e) => itemsId.includes(e.id));
+        // фильтрация по id товаров из vuex store
+        let filteredItems = this.products.filter((e) =>
+          itemsId.some((item) => item.id === e.id)
+        );
 
-        return filteredItems;
+        // добавление totalCount товарам из vuex store
+        let mergedProduct = filteredItems.map((e) => ({
+          ...e,
+          totalCount: itemsId.find((item) => item.id === e.id).totalCount,
+        }));
+
+        return mergedProduct;
       }
     },
 
-    // Фильтр доступных товаров из store и получение итоговой суммы
+    // Итоговая сумма заказа
     totalPrice() {
       if (
         !this.$fetchState.pending &&
@@ -58,13 +72,23 @@ export default {
         if (this.availableProducts.length > 1) {
           return Number(
             this.availableProducts
-              .map((e) => e.countInCart * e.price)
+              .map((e) =>
+                e.countInCart > e.totalCount
+                  ? e.totalCount * e.price
+                  : e.countInCart * e.price
+              )
               .reduce((acc, item) => acc + item)
           );
         }
         if (this.availableProducts.length === 1) {
           return Number(
-            this.availableProducts.map((e) => e.price * e.countInCart).join("")
+            this.availableProducts
+              .map((e) =>
+                e.countInCart > e.totalCount
+                  ? e.totalCount * e.price
+                  : e.countInCart * e.price
+              )
+              .join("")
           );
         } else {
           return 0;

@@ -36,14 +36,14 @@
           </button>
 
           <p class="text-white text-base font-medium">
-            {{ countInCart }}
+            {{ countInCart > totalCount ? totalCount : countInCart }}
           </p>
 
           <!-- увеличение -->
           <button
             class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
             @click="() => addToCart({ id, price })"
-            :disabled="Number(countInCart) === Number(totalCount)"
+            :disabled="Number(countInCart) >= Number(totalCount)"
           >
             +
           </button>
@@ -85,18 +85,6 @@ export default {
   },
 
   computed: {
-    currentItem() {
-      if (this.products) {
-        return this.products.filter((e) => e.id === this.id)[0];
-      }
-    },
-
-    totalCount() {
-      if (this.currentItem) {
-        return this.currentItem.attributes.totalCount;
-      }
-    },
-
     isDisabled() {
       return this.countInCart === this.totalCount;
     },
@@ -109,7 +97,7 @@ export default {
     name: String,
     size: String,
     image: String,
-    products: Array,
+    totalCount: Number,
     pending: Boolean,
   },
 };

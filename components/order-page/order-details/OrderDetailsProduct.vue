@@ -13,7 +13,7 @@
           class="px-[7px] py-[3px] rounded-[50%] bg-[#737373] text-white absolute right-[-8px] top-[-8px] z-70"
         >
           <p class="text-xs">
-            {{ countInCart }}
+            {{ countInCart > totalCount ? totalCount : countInCart }}
           </p>
         </div>
       </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { devApi } from '../../../assets/api';
+import { devApi } from "../../../assets/api";
 
 export default {
   data() {
@@ -38,6 +38,7 @@ export default {
     name: String,
     price: String,
     countInCart: Number,
+    totalCount: Number,
     image: String,
     size: String,
   },

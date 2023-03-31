@@ -1,17 +1,24 @@
 <template>
   <div
     class="space-y-[15px] mt-[15px] lg:max-h-[380px] overflow-y-scroll cart-body"
-    
   >
     <CartProductsItem
-      v-for="{ name, price, size, countInCart, image, id } in products"
+      v-for="{
+        name,
+        price,
+        size,
+        countInCart,
+        totalCount,
+        image,
+        id,
+      } in products"
       :key="id"
       :id="id"
       :price="price"
       :name="name"
       :size="size"
       :count-in-cart="countInCart"
-      :products="cartData.data"
+      :total-count="totalCount"
       :image="image"
       :pending="pending"
     />
@@ -22,16 +29,10 @@
 import CartProductsItem from "./CartProductsItem.vue";
 
 export default {
-  computed: {
-    products() {
-      return this.$store.state.cart.list;
-    },
-  },
-
   components: { CartProductsItem },
-  
+
   props: {
-    cartData: Array,
+    products: Array,
     pending: Boolean,
   },
 };

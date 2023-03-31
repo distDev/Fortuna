@@ -10,19 +10,21 @@
         store
       </h3>
     </div>
-    <div
-      class="mt-[15px] lg:mt-[30px] mx-[15px] lg:mx-[40px] space-y-[25px] lg:space-y-[40px]"
-    >
-      <div>
-        <p class="uppercase text-grey text-sm lg:text-base font-medium">
-         Всего товаров: {{ '6' }}
-        </p>
+    <div class="max-w-[1440px] flex justify-center m-auto">
+      <div
+        class="mt-[15px] lg:mt-[30px] mx-[15px] lg:mx-[40px] space-y-[25px] lg:space-y-[40px]"
+      >
+        <div>
+          <p class="uppercase text-grey text-sm lg:text-base font-medium">
+            Всего товаров: {{ "6" }}
+          </p>
+        </div>
+        <ProductCards
+          :data="data"
+          :large="true"
+          class="grid grid-cols-2 xs:grid-cols-1 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[70px]"
+        />
       </div>
-      <ProductCards
-        :data="data"
-        :large="true"
-        class="grid grid-cols-2 xs:grid-cols-1 lg:grid-cols-3 gap-x-[14px] lg:gap-x-[30px] gap-y-[30px] lg:gap-y-[70px]"
-      />
     </div>
   </div>
 </template>

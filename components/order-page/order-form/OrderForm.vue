@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 import { devApi } from "../../../assets/api";
 import Input from "../../UI/Input.vue";
 import OrderFormConfirm from "./OrderFormConfirm.vue";
@@ -33,10 +33,16 @@ export default {
   methods: {
     // Отправка формы в tg и на сервер
     handleSubmit() {
-      // this.orderCheckout();
-      // this.tgMessage();
+      this.orderCheckout();
+      this.changeProductCount();
+      this.tgMessage();
       this.$router.push({ path: "/order-success" });
-      this.clearCart();
+
+      setTimeout(() => {
+        this.clearCart();
+      }, 1000);
+
+      // this.$toast.warning("В данный момент нельзя сделать заказ");
     },
 
     // Отправка данных в telegram
@@ -53,15 +59,19 @@ export default {
           Authorization: `Bearer ${this.$config.authToken}`,
         },
       };
+
       const body = {
         data: {
           name: this.contactInfo.name,
-          phone: this.contactInfo.phone,
+          phone: String(this.contactInfo.phone),
           region: this.contactInfo.region,
           city: this.contactInfo.city,
           apart: this.contactInfo.apart,
-          postalCode: this.contactInfo.postalCode,
+          postalCode: this.contactInfo.postal,
           address: this.contactInfo.address,
+          shippingMethod: this.shippingMethod,
+          totalPrice: this.totalCost,
+          products: this.orderProducts,
         },
       };
 
@@ -78,15 +88,11 @@ export default {
 
       // перебираю массив товаров и возвращаю массив промисов
       let requests = () =>
-        this.actualProductsCount.map((item) => {
-          let countInCart = this.orderProducts.filter(
-            (e) => e.id === item.id
-          )[0].countInCart;
-
+        this.orderProducts.map((item) => {
           return this.$axios.$put(
             `${this.api}/api/products/${item.id}`,
             {
-              data: { totalCount: (item.totalCount -= countInCart) },
+              data: { totalCount: (item.totalCount -= item.countInCart) },
             },
             config
           );
@@ -112,9 +118,6 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      orderTotal: "cart/getCartTotalPrice",
-    }),
     shippingCost() {
       return this.$store.state.cart.shippingInfo.cost;
     },
@@ -123,9 +126,9 @@ export default {
     },
     totalCost() {
       if (typeof this.shippingCost === "number") {
-        return this.orderTotal + this.shippingCost;
+        return this.totalPrice + this.shippingCost;
       }
-      return this.orderTotal;
+      return this.totalPrice;
     },
     producrsForTelegram() {
       return this.orderProducts.map((e) => e.name).join(", ");
@@ -134,7 +137,7 @@ export default {
 
   props: {
     orderProducts: Array,
-    actualProductsCount: Array,
+    totalPrice: Number,
   },
 
   components: { Input, OrderFormInfo, OrderFormConfirm },

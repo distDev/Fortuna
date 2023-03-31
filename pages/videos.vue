@@ -11,13 +11,11 @@ export default {
   data() {
     return {
       videos: [],
-      api: devApi
+      api: devApi,
     };
   },
   async fetch() {
-    this.videos = await this.$axios.$get(
-      `${devApi}/api/videos?populate=*`
-    );
+    this.videos = await this.$axios.$get(`${devApi}/api/videos?populate=*`);
   },
   components: { VideoItems },
   head: {

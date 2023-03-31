@@ -1,16 +1,17 @@
 <template>
   <Loader v-if="$fetchState.pending" />
-  <div
-    v-else
-    class="grid grid-cols-1 sm:grid-cols-2 gap-[15px] lg:gap-[20px] grid-custom mt-[0px] sm:pt-[40px] lg:pt-[60px] px-[0px] sm:px-[15px] lg:px-[40px]"
-  >
-    <NewsItem
-      v-for="{ attributes, id } in articles.data"
-      :id="id"
-      :date="attributes.publishedAt"
-      :poster="attributes.preview.data.attributes.url"
-      :title="attributes.title"
-    />
+  <div v-else class="max-w-[1440px] flex justify-center m-auto">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 gap-[15px] lg:gap-[20px] grid-custom mt-[0px] sm:pt-[40px] lg:pt-[60px] px-[0px] sm:px-[15px] lg:px-[40px]"
+    >
+      <NewsItem
+        v-for="{ attributes, id } in articles.data"
+        :id="id"
+        :date="attributes.publishedAt"
+        :poster="attributes.preview.data.attributes.url"
+        :title="attributes.title"
+      />
+    </div>
   </div>
 </template>
 
@@ -26,15 +27,13 @@ export default {
       api: devApi,
     };
   },
-  
+
   async fetch() {
-    this.articles = await this.$axios.$get(
-      `${devApi}/api/articles?populate=*`
-    );
+    this.articles = await this.$axios.$get(`${devApi}/api/articles?populate=*`);
   },
-  
+
   components: { NewsItem, Loader },
-  
+
   head: {
     title: "Новости коллектива 'Фортуна'",
   },
