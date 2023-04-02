@@ -31,7 +31,6 @@
 import { mapGetters, mapMutations } from "vuex";
 import CartBody from "./CartBody.vue";
 
-
 export default {
   data() {
     return {
@@ -54,9 +53,6 @@ export default {
   methods: {
     ...mapMutations({
       handleShow: "cart/handleShowCart",
-      incrementCount: "cart/incrementCount",
-      decrementCount: "cart/decrementCount",
-      removeFromCart: "cart/removeFromCart",
       setItems: "cart/setItems",
     }),
   },

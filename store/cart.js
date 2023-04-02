@@ -64,7 +64,7 @@ export const mutations = {
 
     // добавляем изменения в localStorage
     localStorage.removeItem("cart");
-    
+
     return clear();
   },
 
@@ -81,6 +81,42 @@ export const mutations = {
     // добавляем изменения в localStorage
     localStorage.setItem("cart", JSON.stringify(state.list));
     return decrementItem;
+  },
+
+  // Добавление totalCount товарам
+  combineProducts(state, payload) {
+    // получение id доступных товаров
+    let itemsId = payload.cartData.data.map((e) => ({
+      id: e.id,
+      totalCount: e.attributes.totalCount,
+    }));
+
+    // фильтрация по id товаров
+    let filteredItems = state.list.filter((e) =>
+      itemsId.some((item) => item.id === e.id)
+    );
+
+    // добавление totalCount товарам из vuex store
+    let mergedProduct = filteredItems.map((e) => {
+      let totalCount = itemsId.find((item) => item.id === e.id).totalCount;
+      let countInCart =
+        e.countInCart < 1
+          ? (e.countInCart += 1)
+          : e.countInCart > totalCount
+          ? totalCount
+          : e.countInCart;
+
+      return {
+        ...e,
+        countInCart,
+        totalCount,
+      };
+    });
+
+    return (
+      (state.list = mergedProduct),
+      localStorage.setItem("cart", JSON.stringify(state.list))
+    );
   },
 
   // Добавление товаров в store
@@ -130,9 +166,8 @@ export const getters = {
       );
     }
     if (state.list.length === 1) {
-      return Number(state.list.map((e) => e.price * e.countInCart).join(""));
+      return Number(state.list.map((e) => e.countInCart * e.price).join(""));
     }
-
     return 0;
   },
 };

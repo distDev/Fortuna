@@ -36,14 +36,14 @@
           </button>
 
           <p class="text-white text-base font-medium">
-            {{ countInCart > totalCount ? totalCount : countInCart }}
+            {{ countInCart }}
           </p>
 
           <!-- увеличение -->
           <button
             class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
             @click="() => addToCart({ id, price })"
-            :disabled="Number(countInCart) >= Number(totalCount)"
+            :disabled="Number(countInCart) === Number(totalCount)"
           >
             +
           </button>
