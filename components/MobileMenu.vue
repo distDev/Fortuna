@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="burger-menu block lg:hidden" @click="isOpen = !isOpen">
+    <button class="burger-menu block lg:hidden" @click="isOpen = !isOpen">
       <font-awesome-icon
         :icon="['fas', 'bars']"
         class="fill-white h-[14px] w-[20px]"
       />
-    </div>
+    </button>
     <client-only>
       <Teleport to="body" name="menu">
         <Transition name="menu">

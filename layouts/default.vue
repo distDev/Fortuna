@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header />
-    <div class="lg:mt-[73px] mt-[97px]">
+    <main class="lg:mt-[73px] mt-[97px]">
       <Nuxt />
-    </div>
+    </main>
     <Footer />
   </div>
 </template>

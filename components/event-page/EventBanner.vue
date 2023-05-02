@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[300px] lg:h-[520px] flex items-end relative">
+  <div class="h-[300px] lg:h-[520px] flex items-end relative" tabindex="0">
     <div
       class="left-gradient absolute left-0 w-full lg:w-[65%] h-full z-20 hidden lg:block"
     ></div>

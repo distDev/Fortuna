@@ -1,5 +1,5 @@
 <template>
-  <div class="relative cursor-pointer" @click="handleShow({ url: link })">
+  <div class="relative cursor-pointer" tabindex="0" aria-label="видео" @click="handleShow({ url: link })">
     <img :src="api + img" alt="" class="w-full h-full object-cover" />
     <div class="absolute top-0 opacity-50 bg-black w-full h-full"></div>
     <div

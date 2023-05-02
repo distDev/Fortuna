@@ -1,5 +1,5 @@
 <template>
-  <div
+  <header
     class="w-full fixed top-0 bg-black text-white z-50 ease-out duration-200"
     :class="{ 'header-hidden': !showHeader }"
   >
@@ -9,15 +9,18 @@
     >
       <div class="flex flex-row items-center">
         <NuxtLink class="uppercase text-[22px] font-bold" to="/">FT</NuxtLink>
-        <div class="lg:flex space-x-9 lg:ml-[120px] hidden">
-          <NuxtLink
-            class="uppercase text-sm font-bold"
-            v-for="link in links"
-            :key="link.name"
-            :to="link.path"
-            >{{ link.name }}</NuxtLink
-          >
-        </div>
+        <nav>
+          <ul class="lg:flex space-x-9 lg:ml-[120px] hidden">
+            <li v-for="link in links">
+              <NuxtLink
+                class="uppercase text-sm font-bold"
+                :key="link.name"
+                :to="link.path"
+                >{{ link.name }}</NuxtLink
+              >
+            </li>
+          </ul>
+        </nav>
       </div>
       <div class="flex space-x-[15px]">
         <Cart />
@@ -25,19 +28,22 @@
       </div>
     </div>
 
-    <!-- Мобильное дополнение шапки -->
-    <div
-      class="custom-border h-[40px] flex items-center mx-[15px] xs:mx-[10px] lg:hidden"
-    >
-      <NuxtLink
-        class="uppercase text-[10px] font-medium px-[10px]"
-        v-for="link in links"
-        :key="link.name"
-        :to="link.path"
-        >{{ link.name }}</NuxtLink
+    <!-- Мобильная навигация в шапке -->
+    <nav>
+      <ul
+        class="custom-border h-[40px] flex items-center mx-[15px] xs:mx-[10px] lg:hidden"
       >
-    </div>
-  </div>
+        <li v-for="link in links">
+          <NuxtLink
+            class="uppercase text-[10px] font-medium px-[10px]"
+            :key="link.name"
+            :to="link.path"
+            >{{ link.name }}</NuxtLink
+          >
+        </li>
+      </ul>
+    </nav>
+  </header>
 </template>
 
 <script>

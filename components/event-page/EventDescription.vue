@@ -1,20 +1,25 @@
 <template>
   <div class="flex flex-col space-y-[25px] lg:space-y-[30px]">
-    <div class="space-y-[20px] lg:space-y-[25px]">
+    <div
+      class="space-y-[20px] lg:space-y-[25px]"
+      tabindex="0"
+      aria-label="информация о мерроприятии"
+    >
       <h3 class="font-bold text-xl lg:text-2xl">О событии</h3>
       <div>
-        <p class="text-base lg:text-lg lg:w-[80%]">
+        <p class="text-base lg:text-lg lg:w-[80%]" tabindex="0" >
           {{ eventDescription }}
         </p>
-        <p
+        <a
           class="text-sky-600 text-base lg:text-lg mt-[10px] cursor-pointer"
+          tabindex="0"
           @click="showDescription = !showDescription"
         >
           {{ descriptionStatus }}
-        </p>
+        </a>
       </div>
     </div>
-    <div class="w-full">
+    <div class="w-full" tabindex="0" aria-label="фотографии мерроприятия">
       <Photoswipe>
         <Slider :count="2.3" :xs-count="2" :lg-count="4" :space="30">
           <div
@@ -42,7 +47,7 @@ export default {
   data() {
     return {
       showDescription: false,
-      api: devApi
+      api: devApi,
     };
   },
   components: { Slider },

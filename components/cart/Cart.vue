@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div
+    <button
       class="h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-main-black cursor-pointer"
       :class="cartValue ? 'bg-primary' : 'bg-white'"
+      :aria-label="'Корзина:' + cartValue + 'товаров добавлено'"
+      aria-expanded="true"
       @click="handleShow"
     >
       <p class="text-sm" :class="countStyle">{{ cartValue }}</p>
-    </div>
+    </button>
 
     <!-- Корзина -->
     <Teleport to="body">

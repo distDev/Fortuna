@@ -1,5 +1,5 @@
 <template>
-  <div
+  <footer
     class="py-[40px] px-[15px] lg:px-[40px] mt-[80px] lg:mt-[150px] bg-black text-white"
   >
     <!-- Верхняя часть -->
@@ -78,7 +78,7 @@
       </div>
       <div></div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script>
