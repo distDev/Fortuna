@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-y-[25px] lg:space-y-[30px]">
+  <section class="flex flex-col space-y-[25px] lg:space-y-[30px]">
     <div
       class="space-y-[20px] lg:space-y-[25px]"
       tabindex="0"
@@ -36,7 +36,7 @@
         </Slider>
       </Photoswipe>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

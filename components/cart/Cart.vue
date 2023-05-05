@@ -4,7 +4,7 @@
       class="h-[20px] px-[6px] lg:px-1 flex justify-center items-center text-main-black cursor-pointer"
       :class="cartValue ? 'bg-primary' : 'bg-white'"
       :aria-label="'Корзина:' + cartValue + 'товаров добавлено'"
-      aria-expanded="true"
+      aria-haspopup="true"
       @click="handleShow"
     >
       <p class="text-sm" :class="countStyle">{{ cartValue }}</p>
@@ -15,6 +15,7 @@
       <Transition name="cart">
         <div
           v-if="isOpen"
+          :aria-expanded="isOpen ? 'true' : 'false'"
           class="flex flex-col items-end absolute top-0 right-0 w-[90%] lg:w-auto h-[100vh] lg:h-auto z-[150]"
         >
           <CartBody />

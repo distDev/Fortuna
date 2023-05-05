@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-y-[15px] lg:hidden event-info" tabindex="0" aria-label="информация о мерроприятии">
+  <section class="flex flex-col space-y-[15px] lg:hidden event-info" tabindex="0" aria-label="информация о мерроприятии">
     <div class="flex items-center space-x-[12px]" tabindex="0" aria-label="время начала">
       <font-awesome-icon :icon="['fas', 'clock']" class="fill-grey" />
       <p class="text-base font-medium">{{ formatDate }}</p>
@@ -8,7 +8,7 @@
       <font-awesome-icon :icon="['fas', 'location-pin']" class="fill-grey" />
       <p class="text-base font-medium">ДК Балашиха</p>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

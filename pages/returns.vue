@@ -1,27 +1,32 @@
 <template>
-    <div class="space-y-[20px] lg:space-y-[40px]">
-        <h2 class="uppercase lg:text-[40px] font-bold">{{ data.title }}</h2>
-        <div class="space-y-[20px]">
-            <p class="lg:text-[18px] font-medium" v-for="block in data.blocks" :key="block.id">
-                {{ block.desc }}
-            </p>
-        </div>
-    </div>
-</template>
-
-<script>
-import { customerServicesReturnsData } from '../assets/customer-services';
-
-export default {
-    layout: 'customer',
+    <Loader v-if="$fetchState.pending" />
+    <div v-else class="w-full policy-content" v-html="policyContent" />
+  </template>
+  
+  <script>
+  import { marked } from "marked";
+  import { devApi } from "../assets/api";
+  
+  export default {
+    layout: "customer",
     data() {
-        return {
-            data: customerServicesReturnsData,
-        }
+      return {
+        data: null,
+      };
     },
-}
-</script>
-
-<style  scoped>
-
-</style>
+  
+    computed: {
+      policyContent() {
+        if (this.data) {
+          return marked(this.data.data.attributes.content);
+        }
+      },
+    },
+  
+    async fetch() {
+      this.data = await this.$axios.$get(`${devApi}/api/returns-policy`);
+    },
+  };
+  </script>
+  
+  <style scoped></style>

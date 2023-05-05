@@ -1,40 +1,32 @@
 <template>
-    <div class="space-y-[40px]">
-        <div class="space-y-[20px]">
-            <h2 class="uppercase lg:text-[20px] font-bold">{{ data.title }}</h2>
-            <p class="lg:text-[18px] font-medium">{{ data.desc }}</p>
-        </div>
-        <div v-for="item in data.content" :key="item.id" class="space-y-[20px]">
-            <h2 class="uppercase lg:text-[20px] font-bold">{{ item.id + '. &nbsp' + item.title }}</h2>
-            <ul class="space-y-[20px]">
-                <li v-for="block in item.blocks" :key="block.id"
-                    class="lg:text-[18px] font-medium flex lg:space-x-[10px]">
-
-                    <div>
-                        <p>
-                            {{ block.id + '&nbsp &nbsp;' + block.desc }}
-                        </p>
-                    </div>
-
-                </li>
-            </ul>
-        </div>
-    </div>
+  <Loader v-if="$fetchState.pending" />
+  <div v-else class="w-full policy-content" v-html="policyContent" />
 </template>
 
 <script>
-import { customerServicesPublicData } from '../assets/customer-services';
+import { marked } from "marked";
+import { devApi } from "../assets/api";
 
 export default {
-    layout: 'customer',
-    data() {
-        return {
-            data: customerServicesPublicData,
-        }
+  layout: "customer",
+  data() {
+    return {
+      data: null,
+    };
+  },
+
+  computed: {
+    policyContent() {
+      if (this.data) {
+        return marked(this.data.data.attributes.content);
+      }
     },
-}
+  },
+
+  async fetch() {
+    this.data = await this.$axios.$get(`${devApi}/api/public-offer`);
+  },
+};
 </script>
 
-<style  scoped>
-
-</style>
+<style scoped></style>

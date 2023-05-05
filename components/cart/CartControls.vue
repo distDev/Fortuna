@@ -2,13 +2,18 @@
   <!-- Шапка корзины -->
   <div>
     <div class="flex justify-between">
-      <div v-if="!pending" class="flex items-center space-x-[10px]">
+      <div
+        v-if="!pending"
+        class="flex items-center space-x-[10px]"
+        tabindex="0"
+      >
         <p class="uppercase text-base font-semibold">
           {{ totalSum }}
         </p>
         <p
           class="uppercase text-grey text-sm font-semibold"
           v-if="totalPrice && totalPrice > 0"
+          :aria-label="'товаров в корзине' + cartValue"
         >
           ({{ cartValue }} позиций)
         </p>
@@ -19,9 +24,15 @@
         <div class="h-[20px] w-[60%] bg-[#2E3032]"></div>
         <div class="h-[20px] w-[40%] bg-[#2E3032]"></div>
       </div>
-      <div class="burger-menu-close cursor-pointer" @click="handleSwitchShow">
+
+      <!-- кнопка закрытия -->
+      <button
+        class="burger-menu-close cursor-pointer"
+        @click="handleSwitchShow"
+        aria-label="закрыть корзину"
+      >
         <font-awesome-icon :icon="['fas', 'xmark']" class="fill-white" />
-      </div>
+      </button>
     </div>
 
     <!-- Кнопка оформления -->
