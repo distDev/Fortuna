@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import { footerHelpLinks, headerLinks } from "../assets/nav-data";
+import { footerHelpLinks, headerLinks } from "../../assets/nav-data";
 
 export default {
   data() {

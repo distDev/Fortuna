@@ -11,7 +11,8 @@
     <CustomProducts
       v-if="!$fetchState.pending"
       :data="customProducts.data.attributes.products.data"
-      title="своими руками"
+      :title="customProducts.data.attributes.title"
+      :slider-title="customProducts.data.attributes.sliderTitle"
       class="py-[50px] lg:py-[90px]"
     />
     <NewVideos v-if="!$fetchState.pending" :data="videos.data" />

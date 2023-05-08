@@ -16,31 +16,18 @@
       @before-leave="start"
       @after-leave="end"
       >>
-      <div v-if="isVisible" class="flex flex-col space-y-[20px]">
-        <div
-          v-for="block in blocks"
-          :key="block.id"
-          class="space-y-[20px] flex flex-col"
-        >
-          <p class="text-lg xs:text-base">
-            {{ block.desc }}
-          </p>
-          <ul v-if="block.subBlocks" class="space-y-[10px]">
-            <li
-              v-for="subblock in block.subBlocks"
-              :key="subblock.id"
-              class="text-lg xs:text-base"
-            >
-              {{ subblock.desc }}
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div
+        v-if="isVisible"
+        class="flex flex-col space-y-[20px] faq-content"
+        v-html="faqContent"
+      />
     </Transition>
   </div>
 </template>
 
 <script>
+import { marked } from "marked";
+
 export default {
   data() {
     return {
@@ -66,15 +53,18 @@ export default {
     rotateStyle() {
       return !this.isVisible ? "rotate-0" : "rotate-180";
     },
+    faqContent() {
+      return marked(this.content);
+    },
   },
   props: {
     title: String,
-    blocks: Array,
+    content: String,
   },
 };
 </script>
 
-<style scoped>
+<style>
 .accordion-enter-active,
 .accordion-leave-active {
   will-change: height, opacity;
@@ -86,5 +76,23 @@ export default {
 .accordion-leave-to {
   height: 0 !important;
   opacity: 0;
+}
+
+.faq-content p {
+  font-size: 18px;
+  line-height: 30px;
+  margin: 12px 0px;
+  font-weight: 400;
+}
+
+.faq-content ul {
+  list-style: inside;
+}
+.faq-content ul li {
+  margin: 8px 0px;
+  font-size: 18px;
+}
+.faq-content a {
+  color: #8b5cf6;
 }
 </style>

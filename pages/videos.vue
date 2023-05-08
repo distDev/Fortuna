@@ -5,7 +5,7 @@
 
 <script>
 import { devApi } from "../assets/api";
-import VideoItems from "../components/VideoItems.vue";
+import VideoItems from "../components/video-items/VideoItems.vue";
 
 export default {
   data() {

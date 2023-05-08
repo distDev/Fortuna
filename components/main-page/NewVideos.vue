@@ -30,8 +30,8 @@
 
 <script>
 import Slider from "../Slider.vue";
-import VideoItem from "../VideoItem.vue";
-import VideoModal from "../VideoModal.vue";
+import VideoItem from "../video-items/VideoItem.vue";
+import VideoModal from "../video-items/VideoModal.vue";
 
 export default {
   props: {

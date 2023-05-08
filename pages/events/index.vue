@@ -13,7 +13,7 @@
 import { devApi } from "../../assets/api";
 import EmptyEventsContent from "../../components/event-page/EmptyEventsContent.vue";
 import MainEventsContent from "../../components/event-page/MainEventsContent.vue";
-import EventItems from "../../components/EventItems.vue";
+import EventItems from "../../components/event-page/EventItems.vue";
 import Loader from "../../components/Loader.vue";
 
 export default {

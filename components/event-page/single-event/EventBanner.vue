@@ -39,7 +39,7 @@
 
 <script>
 import * as dayjs from "dayjs";
-import { devApi } from "../../assets/api";
+import { devApi } from "@/assets/api";
 
 export default {
   data() {

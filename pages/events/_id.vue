@@ -1,7 +1,7 @@
 <template>
   <div>
     <Loader v-if="$fetchState.pending" />
-    <div v-if="!$fetchState.pending" class="event" >
+    <div v-if="!$fetchState.pending" class="event">
       <EventBanner
         class="mb-[40px] lg:mb-[60px]"
         :title="eventData.data.attributes.title"
@@ -11,7 +11,6 @@
         :type="eventData.data.attributes.type"
         :poster="eventData.data.attributes.poster.data.attributes.url"
         :price="eventData.data.attributes.price"
-        
       />
       <div class="px-[15px] lg:px-[160px] space-y-[40px] lg:space-y-[60px]">
         <EventMobileInfo
@@ -37,11 +36,11 @@
 
 <script>
 import { devApi } from "../../assets/api";
-import EventBanner from "@/components/event-page/EventBanner.vue";
-import EventDescription from "@/components/event-page/EventDescription.vue";
-import EventAddress from "@/components/event-page/EventAddress.vue";
-import EventArtists from "@/components/event-page/EventArtists.vue";
-import EventMobileInfo from "../../components/event-page/EventMobileInfo.vue";
+import EventBanner from "@/components/event-page/single-event/EventBanner.vue";
+import EventDescription from "@/components/event-page/single-event/EventDescription.vue";
+import EventAddress from "@/components/event-page/single-event/EventAddress.vue";
+import EventArtists from "@/components/event-page/single-event/EventArtists.vue";
+import EventMobileInfo from "../../components/event-page/single-event/EventMobileInfo.vue";
 
 export default {
   data() {

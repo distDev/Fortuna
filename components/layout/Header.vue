@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import { headerLinks } from "../assets/nav-data";
-import Cart from "./cart/Cart.vue";
+import { headerLinks } from "../../assets/nav-data";
+import Cart from "../cart/Cart.vue";
 
 export default {
   data() {

@@ -9,7 +9,7 @@ export const articleData = [
         id: "42121rqhthrqrq",
         type: "paragraph",
         data: {
-          text: "От «Даров смерти» до тайваньских игр на Dendy.",
+          text: "От «Даров смерти» до тайваньdских игр на Dendy.",
         },
       },
       {

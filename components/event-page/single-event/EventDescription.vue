@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import { devApi } from "../../assets/api";
-import Slider from "../Slider.vue";
+import { devApi } from "@/assets/api";
+import Slider from "../../Slider.vue";
 
 export default {
   data() {

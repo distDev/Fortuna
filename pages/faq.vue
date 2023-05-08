@@ -1,32 +1,36 @@
 <template>
-  <div class="flex flex-col space-y-[20px] w-full">
+  <Loader v-if="$fetchState.pending" />
+  <div v-else class="flex flex-col space-y-[20px] w-full">
     <FaqItem
+      v-for="item in data.data.attributes.faqItem"
       :visible="checkVisible"
-      v-for="item in data"
       :key="item.id"
-      :blocks="item.blocks"
+      :content="item.content"
       :title="item.title"
     />
   </div>
 </template>
 
 <script>
+import { devApi } from "../assets/api";
 import FaqItem from "../components/faq-page/FaqItem.vue";
-import { customerServicesFaqDara } from "../assets/customer-services";
 
 export default {
-  layout: "customer",
-  
-  data() {
-    return {
-      data: customerServicesFaqDara,
-    };
-  },
-  
-  components: { FaqItem },
-
   head: {
     title: "FAQ - Ответы на частозадаваемые вопросы",
   },
+  layout: "customer",
+
+  data() {
+    return {
+      data: null,
+    };
+  },
+
+  async fetch() {
+    this.data = await this.$axios.$get(`${devApi}/api/faq?populate=*`);
+  },
+
+  components: { FaqItem },
 };
 </script>

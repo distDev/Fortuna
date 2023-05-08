@@ -34,10 +34,10 @@
           :key="i"
           class="flex items-center text-sm lg:text-base font-semibold lg:font-bold text-white uppercase whitespace-nowrap shrink-0 px-[20px] ticker-item"
         >
-          Сделано своими руками
+          {{ sliderTitle }}
           <font-awesome-icon
             :icon="['fas', 'face-smile']"
-            class="fill-white  h-[12px] lg:h-[14px] w-[18px] lg:w-[20px]"
+            class="fill-white h-[12px] lg:h-[14px] w-[18px] lg:w-[20px]"
           />
         </div>
       </div>
@@ -54,6 +54,7 @@ export default {
   props: {
     data: Array,
     title: String,
+    sliderTitle: String,
   },
 };
 </script>

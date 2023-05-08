@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import EventItems from '../EventItems.vue';
+import EventItems from '../event-page/EventItems.vue';
 
 export default {
     props: {
