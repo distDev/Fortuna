@@ -14,17 +14,17 @@ import MainProductsContent from "../../components/product-page/MainProductsConte
 import EmptyProductsContent from "../../components/product-page/EmptyProductsContent.vue";
 import ProductCards from "../../components/ProductCards.vue";
 import Loader from "../../components/Loader.vue";
-import { devApi } from "../../assets/api";
+import { prodApi } from "../../assets/api";
 export default {
   data() {
     return {
       products: [],
-      api: devApi
+      api: prodApi
     };
   },
   async fetch() {
     this.products = await this.$axios.$get(
-      `${devApi}/api/products?populate=*`
+      `${prodApi}/api/products?populate=*`
     );
   },
   components: {

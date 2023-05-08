@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import { devApi } from "@/assets/api";
+import { prodApi } from "@/assets/api";
 import Slider from "../../Slider.vue";
 
 export default {
   data() {
     return {
-      api: devApi,
+      api: prodApi,
     };
   },
   components: { Slider },

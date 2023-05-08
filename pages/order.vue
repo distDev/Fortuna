@@ -13,7 +13,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { devApi } from "../assets/api";
+import { prodApi } from "../assets/api";
 import OrderDetails from "../components/order-page/order-details/OrderDetails.vue";
 import OrderForm from "../components/order-page/order-form/OrderForm.vue";
 import Input from "../components/UI/Input.vue";
@@ -21,7 +21,7 @@ import Input from "../components/UI/Input.vue";
 export default {
   data() {
     return {
-      api: devApi,
+      api: prodApi,
     };
   },
 
@@ -52,7 +52,7 @@ export default {
   async fetch() {
     if (this.fetchParams) {
       let data = await this.$axios.$get(
-        `${devApi}/api/products?${this.fetchParams}&populate=*`
+        `${prodApi}/api/products?${this.fetchParams}&populate=*`
       );
       this.combineProducts({ cartData: data });
     }

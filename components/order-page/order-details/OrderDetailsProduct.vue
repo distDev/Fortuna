@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import { devApi } from "../../../assets/api";
+import { prodApi } from "../../../assets/api";
 
 export default {
   data() {
     return {
-      api: devApi,
+      api: prodApi,
     };
   },
   props: {

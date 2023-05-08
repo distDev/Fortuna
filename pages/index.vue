@@ -26,7 +26,7 @@ import ProductCards from "../components/ProductCards.vue";
 import CustomProducts from "../components/main-page/CustomProducts.vue";
 import LastNews from "../components/main-page/LastNews.vue";
 import NewVideos from "../components/main-page/NewVideos.vue";
-import { devApi } from "../assets/api";
+import { prodApi } from "../assets/api";
 
 export default {
   name: "IndexPage",
@@ -41,22 +41,22 @@ export default {
       customProducts: [],
       articles: [],
       videos: [],
-      api: devApi
+      api: prodApi
     };
   },
 
   async fetch() {
     this.customProducts = await this.$axios.$get(
-      `${devApi}/api/custom-products/1?populate[products][populate][0]=images`
+      `${prodApi}/api/custom-products/1?populate[products][populate][0]=images`
     );
     this.popularProducts = await this.$axios.$get(
-      `${devApi}/api/popular-products/1?populate[products][populate][0]=images`
+      `${prodApi}/api/popular-products/1?populate[products][populate][0]=images`
     );
     this.articles = await this.$axios.$get(
-      `${devApi}/api/articles?populate=*`
+      `${prodApi}/api/articles?populate=*`
     );
     this.videos = await this.$axios.$get(
-      `${devApi}/api/videos?populate=*`
+      `${prodApi}/api/videos?populate=*`
     );
   },
 

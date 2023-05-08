@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { devApi } from "../../assets/api";
+import { prodApi } from "../../assets/api";
 import EventBanner from "@/components/event-page/single-event/EventBanner.vue";
 import EventDescription from "@/components/event-page/single-event/EventDescription.vue";
 import EventAddress from "@/components/event-page/single-event/EventAddress.vue";
@@ -46,13 +46,13 @@ export default {
   data() {
     return {
       eventData: [],
-      api: devApi,
+      api: prodApi,
     };
   },
 
   async fetch() {
     this.eventData = await this.$axios.$get(
-      `${devApi}/api/events/${this.$route.params.id}?populate[0]=artists.image&populate[1]=images&populate[2]=poster`
+      `${prodApi}/api/events/${this.$route.params.id}?populate[0]=artists.image&populate[1]=images&populate[2]=poster`
     );
   },
 
