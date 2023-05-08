@@ -33,16 +33,16 @@ export default {
   methods: {
     // Отправка формы в tg и на сервер
     handleSubmit() {
-      this.orderCheckout();
-      this.changeProductCount();
-      this.tgMessage();
-      this.$router.push({ path: "/order-success" });
+      // this.orderCheckout();
+      // this.changeProductCount();
+      // this.tgMessage();
+      // this.$router.push({ path: "/order-success" });
 
-      setTimeout(() => {
-        this.clearCart();
-      }, 1000);
+      // setTimeout(() => {
+      //   this.clearCart();
+      // }, 1000);
 
-      // this.$toast.warning("В данный момент нельзя сделать заказ");
+      this.$toast.warning("В данный момент нельзя сделать заказ");
     },
 
     // Отправка данных в telegram
