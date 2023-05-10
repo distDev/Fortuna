@@ -17,12 +17,11 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { prodApi } from "../../assets/api";
 
 export default {
   data() {
     return {
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
   methods: {

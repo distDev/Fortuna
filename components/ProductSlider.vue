@@ -51,12 +51,11 @@
 </template>
 
 <script>
-import { prodApi } from '../assets/api';
 
 export default {
   data() {
     return {
-      api: prodApi,
+      api: this.$config.apiPath,
       optionsTop: {
         spaceBetween: 10,
         effect: "slide",

@@ -58,6 +58,7 @@ export default {
     tgApiKey: process.env.TELEGRAM_API_KEY,
     tgChatId: process.env.TELEGRAM_CHAT_ID,
     authToken: process.env.STRAPI_API_KEY,
+    apiPath: process.env.API_PATH
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

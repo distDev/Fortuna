@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import { prodApi } from "../../assets/api";
 import Loader from "../../components/Loader.vue";
 import NewsItem from "../../components/news-page/NewsItem.vue";
 
@@ -24,12 +23,12 @@ export default {
   data() {
     return {
       articles: [],
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
 
   async fetch() {
-    this.articles = await this.$axios.$get(`${prodApi}/api/articles?populate=*`);
+    this.articles = await this.$axios.$get(`${this.$config.apiPath}/api/articles?populate=*`);
   },
 
   components: { NewsItem, Loader },

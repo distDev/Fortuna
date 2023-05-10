@@ -40,14 +40,13 @@
 </template>
 
 <script>
-import { prodApi } from "@/assets/api";
 import Slider from "../../Slider.vue";
 
 export default {
   data() {
     return {
       showDescription: false,
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
   components: { Slider },

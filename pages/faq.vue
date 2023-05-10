@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import { prodApi } from "../assets/api";
 import FaqItem from "../components/faq-page/FaqItem.vue";
 
 export default {
@@ -28,7 +27,7 @@ export default {
   },
 
   async fetch() {
-    this.data = await this.$axios.$get(`${prodApi}/api/faq?populate=*`);
+    this.data = await this.$axios.$get(`${this.$config.apiPath}/api/faq?populate=*`);
   },
 
   components: { FaqItem },

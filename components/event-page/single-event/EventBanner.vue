@@ -39,13 +39,12 @@
 
 <script>
 import * as dayjs from "dayjs";
-import { prodApi } from "@/assets/api";
 
 export default {
   data() {
     return {
       arrData: ["Бесплатно", "Конкурс"],
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
   computed: {

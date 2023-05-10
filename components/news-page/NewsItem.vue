@@ -29,13 +29,12 @@
 import * as dayjs from "dayjs";
 import * as locale from "dayjs/locale/ru";
 import * as relativeTime  from "dayjs/plugin/relativeTime";
-import { prodApi } from "../../assets/api";
 
 dayjs.extend(relativeTime)
 export default {
   data() {
     return {
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
   computed: {

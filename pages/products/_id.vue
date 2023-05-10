@@ -34,22 +34,21 @@ import ProductSlider from "@/components/ProductSlider.vue";
 import ProductDetails from "@/components/product-page/ProductDetails.vue";
 import PopularPoducts from "../../components/PopularPoducts.vue";
 import ProductTicker from "../../components/product-page/ProductTicker.vue";
-import { prodApi } from "../../assets/api";
 
 export default {
   data() {
     return {
       product: [],
       popularProducts: [],
-      api: prodApi
+      api: this.$config.apiPath
     };
   },
   async fetch() {
     this.product = await this.$axios.$get(
-      `${prodApi}/api/products/${this.$route.params.id}?populate=*`
+      `${this.$config.apiPath}/api/products/${this.$route.params.id}?populate=*`
     );
     this.popularProducts = await this.$axios.$get(
-      `${prodApi}/api/popular-products/1?populate[products][populate][0]=images`
+      `${this.$config.apiPath}/api/popular-products/1?populate[products][populate][0]=images`
     );
   },
 

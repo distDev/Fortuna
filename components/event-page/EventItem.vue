@@ -36,12 +36,11 @@
 
 <script>
 import * as dayjs from "dayjs";
-import { prodApi } from "../../assets/api";
 
 export default {
   data() {
     return {
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
   computed: {

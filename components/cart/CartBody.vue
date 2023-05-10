@@ -11,14 +11,13 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import { prodApi } from "../../assets/api";
 import CartControls from "./CartControls.vue";
 import CartProducts from "./CartProducts.vue";
 
 export default {
   data() {
     return {
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
 
@@ -41,7 +40,7 @@ export default {
   async fetch() {
     if (this.fetchParams) {
       let data = await this.$axios.$get(
-        `${prodApi}/api/products?${this.fetchParams}&populate=*`
+        `${this.$config.apiPath}/api/products?${this.fetchParams}&populate=*`
       );
 
       this.combineProducts({ cartData: data });

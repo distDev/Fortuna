@@ -26,14 +26,13 @@
 
 <script>
 import * as dayjs from "dayjs";
-import { prodApi } from "../../assets/api";
 import { marked } from "marked";
 
 export default {
   data() {
     return {
       article: null,
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
 
@@ -70,7 +69,7 @@ export default {
 
   async fetch() {
     this.article = await this.$axios.$get(
-      `${prodApi}/api/articles/${this.$route.params.id}?populate=*`
+      `${this.$config.apiPath}/api/articles/${this.$route.params.id}?populate=*`
     );
   },
 };

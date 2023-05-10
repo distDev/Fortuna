@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import { prodApi } from "../assets/api";
 import PolicyContent from "../components/PolicyContent.vue";
 
 export default {
@@ -16,7 +15,7 @@ export default {
   },
 
   async fetch() {
-    this.data = await this.$axios.$get(`${prodApi}/api/public-offer`);
+    this.data = await this.$axios.$get(`${this.$config.apiPath}/api/public-offer`);
   },
 
   components: { PolicyContent },

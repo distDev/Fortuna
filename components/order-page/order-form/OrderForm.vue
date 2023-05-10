@@ -17,7 +17,6 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { prodApi } from "../../../assets/api";
 import Input from "../../UI/Input.vue";
 import OrderFormConfirm from "./OrderFormConfirm.vue";
 import OrderFormInfo from "./OrderFormInfo.vue";
@@ -27,7 +26,7 @@ export default {
     return {
       contactInfo: null,
       step: "info",
-      api: prodApi,
+      api: this.$config.apiPath,
     };
   },
   methods: {
