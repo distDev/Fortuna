@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full flex flex-col justify-center px-[15px] lg:px-[40px] lg:items-center pb-[100px] lg:max-w-[1440px] lg:m-auto"
+    class="w-full flex flex-col justify-center px-[15px] lg:px-[40px] lg:items-center pb-[100px] lg:max-w-[1440px]  lg:m-auto "
   >
     <h2
       class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"
@@ -23,7 +23,7 @@
           class="swiper-slide"
         />
       </Slider>
-      <VideoModal />
+      <VideoModal/>
     </div>
   </div>
 </template>
