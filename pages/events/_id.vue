@@ -55,6 +55,21 @@ export default {
     );
   },
 
+  head() {
+    return {
+      title:
+        this.eventData?.data?.attributes.title +
+        ' - описание, фотографии и адрес мерроприятия - Коллектив "Фортуна"',
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.eventData?.data?.attributes.description,
+        },
+      ],
+    };
+  },
+
   components: {
     EventBanner,
     EventDescription,

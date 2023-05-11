@@ -1,9 +1,9 @@
 <template>
   <Loader v-if="$fetchState.pending" />
-  <p v-else-if="$fetchState.error">An error occurred :(</p>
+  <p v-else-if="$fetchState.error">Произошла ошибка :(</p>
   <div class="pt-[25px] lg:pt-[60px]" v-else>
     <div
-      class="flex flex-col lg:flex-row w-full px-[15px] lg:px-[40px] lg:space-x-[30px]"
+      class="max-w-[1440px] m-auto flex flex-col lg:flex-row w-full px-[15px] lg:px-[40px] lg:space-x-[30px]"
     >
       <ProductSlider
         class="w-full lg:w-[60%]"
@@ -38,11 +38,12 @@ import ProductTicker from "../../components/product-page/ProductTicker.vue";
 export default {
   data() {
     return {
-      product: [],
+      product: {},
       popularProducts: [],
-      api: this.$config.apiPath
+      api: this.$config.apiPath,
     };
   },
+
   async fetch() {
     this.product = await this.$axios.$get(
       `${this.$config.apiPath}/api/products/${this.$route.params.id}?populate=*`
@@ -57,6 +58,19 @@ export default {
     ProductDetails,
     PopularPoducts,
     ProductTicker,
+  },
+
+  head() {
+    return {
+      title: this.product?.data?.attributes.name + ' купить в магазине Коллектив "Фортуна"',
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.product?.data?.attributes.description,
+        },
+      ],
+    };
   },
 };
 </script>

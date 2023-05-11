@@ -20,7 +20,7 @@
       class="px-[15px] lg:px-0 lg:bg-transparent py-[20px] lg:py-0 lg:mt-[23px] flex items-center justify-between cursor-pointer lg:cursor-auto lg:hidden"
     >
       <p class="lg:text-xl font-semibold">Итого:</p>
-      <p class="lg:text-xl font-semibold">{{ totalCost }} ₽</p>
+      <p class="lg:text-xl font-semibold">{{ orderTotal }} ₽</p>
     </div>
   </div>
 </template>

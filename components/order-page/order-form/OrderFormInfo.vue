@@ -217,6 +217,7 @@ export default {
     postal: {
       required,
       minLength: minLength(6),
+      maxLength: maxLength(6)
     },
     address: {
       required,

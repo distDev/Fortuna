@@ -5,7 +5,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head: {
+    title: 'Заказ успешно оформлен - Коллектив "Фортуна"',
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

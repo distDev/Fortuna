@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex flex-col justify-center px-[15px] xs:px-[15px] lg:items-center lg:px-10 w-full"
+      class="max-w-[1440px] m-auto flex flex-col justify-center px-[15px] xs:px-[15px] lg:items-center lg:px-10 w-full"
     >
       <h2
         class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"

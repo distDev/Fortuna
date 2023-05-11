@@ -8,6 +8,9 @@
 import ContactForm from "../components/contact-us-page/ContactForm.vue";
 
 export default {
+  head: {
+    title: 'Связаться с нами - Коллектив "Фортуна"',
+  },
   layout: "customer",
   components: { ContactForm },
 };

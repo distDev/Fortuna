@@ -6,6 +6,9 @@
 import PolicyContent from "../components/PolicyContent.vue";
 
 export default {
+  head: {
+    title: 'Политика возвратов - Коллектив "Фортуна"',
+  },
   layout: "customer",
 
   data() {

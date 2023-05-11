@@ -28,14 +28,27 @@
             class="text-base font-medium text-grey"
           >
             {{ i.name
-            }}<span class="attributes-value text-base font-medium text-main-black">{{
-              i.value
-            }}</span>
+            }}<span
+              class="attributes-value text-base font-medium text-main-black"
+              >{{ i.value }}</span
+            >
           </li>
         </ul>
       </div>
-      <div v-else>
-        <p>Доставка бесплатная</p>
+      <div v-else class="space-y-5">
+        <p class="text-base">
+          CDEK — это наша стандартная служба доставки, вы можете выбрать между
+          экспресс-доставкой и эконом-классом. Выберите способ доставки посылки:
+          домой, в пункт выдачи или в другое место.
+        </p>
+        <p class="text-base">
+          Еще мы работаем с Почтой России, при оформлении вы можете выбрать
+          удобную для вас службу доставки
+        </p>
+        <div class="space-y-4">
+          <h4 class="lg:text-lg font-semibold">Время доставки</h4>
+          <p class="text-base">Экспресс: 3-4, Обычная 7-14: рабочих дней</p>
+        </div>
       </div>
     </div>
   </div>

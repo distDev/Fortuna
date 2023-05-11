@@ -36,6 +36,18 @@ export default {
     };
   },
 
+  async fetch() {
+    this.article = await this.$axios.$get(
+      `${this.$config.apiPath}/api/articles/${this.$route.params.id}?populate=*`
+    );
+  },
+
+  head() {
+    return {
+      title: this.article?.data?.attributes.title + ' - Коллектив "Фортуна"',
+    };
+  },
+
   methods: {
     // Добавление ссылки в data-pswp-src аттрибут, чтобы зум работал
     handleZoom(e) {
@@ -46,13 +58,15 @@ export default {
   },
 
   computed: {
-    // Паринг Markdown
+    // Парсинг Markdown
     articleContent() {
       if (process.browser && this.article) {
         let str = this.article.data.attributes.content;
-        // указываю валидный путь к изображению
+
+        // указывается валидный путь до фотографий и парсится
         let fullPath = str.replaceAll("/uploads", `${this.api}/uploads`);
         let markedStr = marked(fullPath);
+
         // добавляю аттрибут для зума
         let zoomAttribute = markedStr.replaceAll("alt", "data-pswp-src='' alt");
 
@@ -65,12 +79,6 @@ export default {
         .locale("ru")
         .format("D MMMM YYYY");
     },
-  },
-
-  async fetch() {
-    this.article = await this.$axios.$get(
-      `${this.$config.apiPath}/api/articles/${this.$route.params.id}?populate=*`
-    );
   },
 };
 </script>

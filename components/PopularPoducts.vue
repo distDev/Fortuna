@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="data.length > 0"
-    class="flex flex-col lg:items-center justify-center pl-[15px] lg:px-10"
+    class="max-w-[1440px] m-auto flex flex-col lg:items-center justify-center pl-[15px] lg:px-10"
   >
     <h2
       class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"

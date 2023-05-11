@@ -3,7 +3,7 @@
     class="py-[16px] lg:py-[20px] bg-black w-full mt-[80px] lg:mt-[130px] mb-[50px] lg:mb-[80px] overflow-hidden"
   >
     <div
-      class="flex items-center lg:justify-between lg:px-[130px] text-white ticker-item"
+      class="max-w-[1440px] m-auto flex items-center lg:justify-between lg:px-[130px] text-white ticker-item"
     >
       <p
         class="text-base xs:text-sm font-semibold xs:font-medium uppercase whitespace-nowrap shrink-0 px-[20px]"

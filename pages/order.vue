@@ -18,6 +18,9 @@ import OrderForm from "../components/order-page/order-form/OrderForm.vue";
 import Input from "../components/UI/Input.vue";
 
 export default {
+  head: {
+    title: 'Оформление заказа - Коллектив "Фортуна"',
+  },
   data() {
     return {
       api: this.$config.apiPath,

@@ -16,7 +16,7 @@
       >
         <div>
           <p class="uppercase text-grey text-sm lg:text-base font-medium">
-            Всего товаров: {{ "6" }}
+            Всего товаров: {{ data.length }}
           </p>
         </div>
         <ProductCards

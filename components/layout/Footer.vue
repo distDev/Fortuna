@@ -11,7 +11,7 @@
         <NuxtLink to="/" class="text-[22px] font-bold">FT</NuxtLink>
         <p class="text-grey text-sm lg:text-base">
           Официальный сайт <br />
-          Коллектива “Фортуна” 2022©
+          Коллектива “Фортуна” {{new Date().getFullYear()}}©
         </p>
       </div>
       <!-- Часть с ссылками -->
@@ -56,14 +56,15 @@
           </h3>
           <div class="flex flex-col space-y-[15px]">
             <a
-              href="/"
+              href="https://t.me/staverson"
+              target="_blank"
               class="uppercase text-xs text-white font-medium hover:text-primary"
               >@staverson</a
             >
             <a
-              href="/"
+              href="mailto:info-fortuna@mail.ru"
               class="uppercase text-xs text-white font-medium hover:text-primary"
-              >staver@bk.ru</a
+              >info-fortuna@mail.ru</a
             >
           </div>
         </div>
@@ -73,7 +74,7 @@
     <div class="flex lg:justify-between lg:items-center mt-[30px] lg:mt-[40px]">
       <div>
         <p class="text-grey text-sm lg:text-base">
-          Сайт разработан: <a class="text-primary" href="/">@Distcom</a>
+          Сайт разработан: <a class="text-primary" target="_blank" href="https://t.me/Distcom">@Distcom</a>
         </p>
       </div>
       <div></div>

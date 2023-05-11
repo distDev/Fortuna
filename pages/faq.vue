@@ -16,7 +16,7 @@ import FaqItem from "../components/faq-page/FaqItem.vue";
 
 export default {
   head: {
-    title: "FAQ - Ответы на частозадаваемые вопросы",
+    title: 'FAQ - Ответы на частозадаваемые вопросы - Коллектив "Фортуна"',
   },
   layout: "customer",
 

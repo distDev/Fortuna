@@ -7,6 +7,10 @@
 import VideoItems from "../components/video-items/VideoItems.vue";
 
 export default {
+  head: {
+    title: 'Видео - Коллектив "Фортуна"',
+  },
+
   data() {
     return {
       videos: [],
@@ -14,12 +18,11 @@ export default {
     };
   },
   async fetch() {
-    this.videos = await this.$axios.$get(`${this.$config.apiPath}/api/videos?populate=*`);
+    this.videos = await this.$axios.$get(
+      `${this.$config.apiPath}/api/videos?populate=*`
+    );
   },
   components: { VideoItems },
-  head: {
-    title: "Видео от Коллектива 'Фортуна'",
-  },
 };
 </script>
 

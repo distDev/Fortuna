@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col justify-center pl-[15px] lg:px-10 lg:items-center pb-[100px]"
+    class="max-w-[1440px] m-auto flex flex-col justify-center pl-[15px] lg:px-10 lg:items-center pb-[100px]"
   >
     <h2
       class="uppercase font-bold text-[20px] mb-[25px] lg:text-[36px] lg:mb-[50px]"
