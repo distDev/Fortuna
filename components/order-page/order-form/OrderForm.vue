@@ -9,22 +9,25 @@
     <OrderFormConfirm
       v-if="step === 'confirm'"
       @back="handleReturn"
-      @submit-form="handleSubmit"
+      @order-payment="handleSubmit"
       :contact-info="contactInfo"
     />
+    <!-- <OrderPay v-if="payFormIsVisible" @form-submit="handleSubmit" :total-cost="totalCost"/> -->
   </div>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
 import Input from "../../UI/Input.vue";
-import OrderFormConfirm from "./OrderFormConfirm.vue";
+import OrderFormConfirm from "./order-form-confirm/OrderFormConfirm.vue";
 import OrderFormInfo from "./OrderFormInfo.vue";
+// import OrderPay from "./OrderPay.vue";
 
 export default {
   data() {
     return {
       contactInfo: null,
+      payFormIsVisible: false,
       step: "info",
       api: this.$config.apiPath,
     };
@@ -35,11 +38,9 @@ export default {
       // this.orderCheckout();
       // this.changeProductCount();
       // this.tgMessage();
+      // this.changeVisiblePaymentForm();
       // this.$router.push({ path: "/order-success" });
-
-      // setTimeout(() => {
-      //   this.clearCart();
-      // }, 1000);
+      // this.clearCart();
 
       this.$toast.warning("В данный момент нельзя сделать заказ");
     },
@@ -86,18 +87,27 @@ export default {
       };
 
       // перебираю массив товаров и возвращаю массив промисов
-      let requests = () =>
-        this.orderProducts.map((item) => {
+      let requests = () => {
+        let newProducts = this.orderProducts.map((item) => {
+          let newCount = item.totalCount - item.countInCart;
+
           return this.$axios.$put(
             `${this.api}/api/products/${item.id}`,
             {
-              data: { totalCount: (item.totalCount -= item.countInCart) },
+              data: { totalCount: newCount },
             },
             config
           );
         });
 
+        return newProducts;
+      };
+
       await Promise.all(requests());
+    },
+
+    changeVisiblePaymentForm() {
+      this.payFormIsVisible = !this.payFormIsVisible;
     },
 
     // Получение данных и переход к следующему шагу
@@ -124,10 +134,7 @@ export default {
       return this.$store.state.cart.shippingInfo.company;
     },
     totalCost() {
-      if (typeof this.shippingCost === "number") {
-        return this.totalPrice + this.shippingCost;
-      }
-      return this.totalPrice;
+      return this.totalPrice + this.shippingCost;
     },
     producrsForTelegram() {
       return this.orderProducts.map((e) => e.name).join(", ");

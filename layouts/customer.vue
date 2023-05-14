@@ -8,7 +8,7 @@
       >
         <div class="overflow-x-scroll lg:overflow-auto my-[20px] lg:my-0">
           <div
-            class="flex flex-row lg:flex-col space-x-[15px] py-[20px] lg:py-0 lg:space-x-[0px] lg:space-y-[15px] w-[200%] xs:w-[250%] lg:w-auto"
+            class="flex flex-row lg:flex-col space-x-[15px] py-[20px] lg:py-0 lg:space-x-[0px] lg:space-y-[15px] w-[230%] xs:w-[280%] lg:w-auto"
           >
             <NuxtLink
               v-for="item in links"

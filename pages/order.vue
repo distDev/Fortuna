@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="products.length > 0">
     <Loader v-if="$fetchState.pending" />
     <div
       v-if="!$fetchState.pending"
@@ -8,6 +8,9 @@
       <OrderForm :orderProducts="products" :total-price="totalPrice" />
       <OrderDetails :products="products" :total-price="totalPrice" />
     </div>
+  </div>
+  <div v-else>
+    <h2>Ваша корзина пуста</h2>
   </div>
 </template>
 
@@ -20,6 +23,14 @@ import Input from "../components/UI/Input.vue";
 export default {
   head: {
     title: 'Оформление заказа - Коллектив "Фортуна"',
+    script: [
+      {
+        src: "https://www.payanyway.ru/assistant-builder",
+        type: "text/javascript",
+        async: true,
+        defer: true,
+      },
+    ],
   },
   data() {
     return {

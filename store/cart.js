@@ -2,7 +2,7 @@ export const state = () => ({
   list: [],
   isOpen: false,
   shippingInfo: {
-    cost: null,
+    cost: 0,
     company: null,
   },
 });
@@ -131,18 +131,10 @@ export const mutations = {
 
   // Изменение цены доставки и компании
   handleChangeShippingCost(state, payload) {
-    if (payload.info === "Почта России") {
-      return (state.shippingInfo = {
-        cost: 250,
-        company: "Почта России",
-      });
-    }
-    if (payload.info === "CDEK") {
-      return (state.shippingInfo = {
-        cost: 350,
-        company: "CDEK",
-      });
-    }
+    return (state.shippingInfo = {
+      cost: payload.cost,
+      company: payload.company,
+    });
   },
 };
 

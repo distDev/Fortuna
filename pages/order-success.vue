@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>Заявка успешно отправлена</h2>
+  <div class="h-[calc(100vh-73px)] w-full flex justify-center items-center">
+    <h2 class="text-xl font-semibold">Заявка успешно отправлена</h2>
   </div>
 </template>
 

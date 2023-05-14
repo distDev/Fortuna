@@ -41,7 +41,7 @@ export default {
 .policy-content h3 {
   font-size: 18px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin: 20px 0px;
   line-height: 38px;
   font-weight: 600;
 }
@@ -79,42 +79,24 @@ export default {
   .policy-content p {
     font-size: 16px;
     line-height: 26px;
-    margin: 12px 15px;
-  }
-  .policy-content p:has(img) {
-    margin: 0;
+    margin: 12px 0;
   }
 
   .policy-content h2 {
     font-size: 17px;
-    margin: 24px 15px;
+    margin-bottom: 20px;
     line-height: 26px;
     font-weight: 600;
   }
-  .policy-content img {
-    width: 100%;
-    height: auto;
-    margin: 24px 0;
-  }
+  
   .policy-content ul {
     list-style: inside;
-    margin: 0px 15px;
+    margin: 0px;
   }
   .policy-content ul li {
     margin: 8px 0px;
     font-size: 16px;
   }
-  .policy-content blockquote {
-    border-left: 4px solid #d4c1ff;
-    padding-left: 15px;
-    margin: 24px 15px;
-  }
-
-  .policy-content blockquote p {
-    font-size: 19px;
-    font-weight: 500;
-    line-height: 29px;
-    margin: 0;
-  }
+  
 }
 </style>

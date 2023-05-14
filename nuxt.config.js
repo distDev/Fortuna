@@ -24,6 +24,7 @@ export default {
     { src: "@/plugins/vue-photoswipe.js", ssr: false },
     { src: "@/plugins/vuelidate.js", ssr: true },
     { src: "@/plugins/click-outside-directive.js", ssr: false },
+    { src: '@/plugins/vue-nanoid.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -58,7 +59,8 @@ export default {
     tgApiKey: process.env.TELEGRAM_API_KEY,
     tgChatId: process.env.TELEGRAM_CHAT_ID,
     authToken: process.env.STRAPI_API_KEY,
-    apiPath: process.env.API_PATH
+    apiPath: process.env.API_PATH,
+    paymentAccountId: process.env.PAYMENT_ACCOUNT_ID,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

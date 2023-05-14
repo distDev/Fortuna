@@ -54,6 +54,10 @@ export const footerHelpLinks = [
     path: "/faq",
   },
   {
+    name: "Контакты",
+    path: "/our-contacts",
+  },
+  {
     name: "ДОСТАВКА",
     path: "/shipping",
   },
