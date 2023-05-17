@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <client-ony>
     <Teleport to="body" name="pay-form">
       <div
@@ -16,7 +16,7 @@ export default {
     const vm = this;
     const options = {
       account: this.$config.paymentAccountId,
-      amount: this.totalCost,
+      amount: 1,
       transactionId: this.$nanoid(),
       theme: "dark",
     };
@@ -25,7 +25,7 @@ export default {
 
     // платёж прошёл успешно
     assistant.setOnSuccessCallback(function (operationId, transactionId) {
-      vm.$emit("form-submit");
+      vm.$emit("form-submit", transactionId);
     });
 
     // платёж не прошёл
@@ -49,20 +49,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style> -->
+<style lang="scss" scoped></style>
 
-<template>
-  <div>
 
-  </div>
-</template>
 
-<script>
-  export default {
-    
-  }
-</script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -24,7 +24,7 @@ export default {
     { src: "@/plugins/vue-photoswipe.js", ssr: false },
     { src: "@/plugins/vuelidate.js", ssr: true },
     { src: "@/plugins/click-outside-directive.js", ssr: false },
-    { src: '@/plugins/vue-nanoid.js', ssr: false }
+    { src: '@/plugins/vue-nanoid.js', ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

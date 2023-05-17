@@ -9,10 +9,14 @@
     <OrderFormConfirm
       v-if="step === 'confirm'"
       @back="handleReturn"
-      @order-payment="handleSubmit"
+      @order-payment="changeVisiblePaymentForm"
       :contact-info="contactInfo"
     />
-    <!-- <OrderPay v-if="payFormIsVisible" @form-submit="handleSubmit" :total-cost="totalCost"/> -->
+    <OrderPay
+      v-if="payFormIsVisible"
+      @form-submit="handleSubmit"
+      :totalCost="totalCost"
+    />
   </div>
 </template>
 
@@ -21,7 +25,7 @@ import { mapMutations } from "vuex";
 import Input from "../../UI/Input.vue";
 import OrderFormConfirm from "./order-form-confirm/OrderFormConfirm.vue";
 import OrderFormInfo from "./OrderFormInfo.vue";
-// import OrderPay from "./OrderPay.vue";
+import OrderPay from "./OrderPay.vue";
 
 export default {
   data() {
@@ -34,22 +38,21 @@ export default {
   },
   methods: {
     // Отправка формы в tg и на сервер
-    handleSubmit() {
-      // this.orderCheckout();
-      // this.changeProductCount();
-      // this.tgMessage();
-      // this.changeVisiblePaymentForm();
-      // this.$router.push({ path: "/order-success" });
-      // this.clearCart();
+    async handleSubmit() {
+      try {
+        await Promise.all([
+          this.orderCheckout(),
+          this.changeProductCount(),
+          this.tgMessage(),
+        ]);
 
-      this.$toast.warning("В данный момент нельзя сделать заказ");
-    },
-
-    // Отправка данных в telegram
-    async tgMessage() {
-      await this.$axios.$post(
-        `https://api.telegram.org/bot${this.$config.tgApiKey}/sendMessage?chat_id=${this.$config.tgChatId}&text=Тип заявки: Заказ%0AИмя: ${this.contactInfo.name}%0AНомер телефона: ${this.contactInfo.phone}%0AСумма заказа: ${this.totalCost} ₽%0AГород: ${this.contactInfo.city}%0AОбласть: ${this.contactInfo.region}%0AАдрес: ${this.contactInfo.address}%0AКвартира: ${this.contactInfo.apart}%0AИндекс: ${this.contactInfo.postal}%0AМетод доставки: ${this.shippingMethod}%0AТовары: ${this.producrsForTelegram}`
-      );
+        this.changeVisiblePaymentForm();
+        this.$router.push({ path: "/order-success" });
+        this.clearCart();
+      } catch (error) {
+        console.error(error);
+      }
+      // this.$toast.warning("В данный момент нельзя сделать заказ");
     },
 
     // Отправка данных на сервер
@@ -75,42 +78,57 @@ export default {
         },
       };
 
-      await this.$axios.post(`${this.api}/api/orders`, body, config);
+      try {
+        await this.$axios.post(`${this.api}/api/orders`, body, config);
+      } catch (error) {
+        console.error(error);
+        throw new Error("Ошибка при отправке заказа на сервер");
+      }
     },
 
-    // Изменение количества доступного товара на сервере
+    // Изменение количества товара на сервере
     async changeProductCount() {
-      const config = {
+      const authConfig = {
         headers: {
           Authorization: `Bearer ${this.$config.authToken}`,
         },
       };
 
-      // перебираю массив товаров и возвращаю массив промисов
-      let requests = () => {
-        let newProducts = this.orderProducts.map((item) => {
-          let newCount = item.totalCount - item.countInCart;
+      try {
+        await Promise.all(
+          this.orderProducts.map(async (product) => {
+            const { id, totalCount, countInCart } = product;
+            const newCount = totalCount - countInCart;
+            await this.$axios.$put(
+              `${this.api}/api/products/${id}`,
+              { data: { totalCount: newCount } },
+              authConfig
+            );
+          })
+        );
+      } catch (error) {
+        console.error(error);
+        throw new Error("Ошибка при изменении количества товара на сервере");
+      }
+    },
 
-          return this.$axios.$put(
-            `${this.api}/api/products/${item.id}`,
-            {
-              data: { totalCount: newCount },
-            },
-            config
-          );
-        });
-
-        return newProducts;
-      };
-
-      await Promise.all(requests());
+    // Отправка данных в telegram
+    async tgMessage() {
+      try {
+        await this.$axios.$post(
+          `https://api.telegram.org/bot${this.$config.tgApiKey}/sendMessage?chat_id=${this.$config.tgChatId}&text=Тип заявки: Заказ%0AИмя: ${this.contactInfo.name}%0AНомер телефона: ${this.contactInfo.phone}%0AСумма заказа: ${this.totalCost} ₽%0AГород: ${this.contactInfo.city}%0AОбласть: ${this.contactInfo.region}%0AАдрес: ${this.contactInfo.address}%0AКвартира: ${this.contactInfo.apart}%0AИндекс: ${this.contactInfo.postal}%0AМетод доставки: ${this.shippingMethod}%0AТовары: ${this.producrsForTelegram}`
+        );
+      } catch (error) {
+        console.error(error);
+        throw new Error("Ошибка при отправке сообщения в Telegram");
+      }
     },
 
     changeVisiblePaymentForm() {
       this.payFormIsVisible = !this.payFormIsVisible;
     },
 
-    // Получение данных и переход к следующему шагу
+    // Получение данных 1 этапа формы и переход к следующему шагу
     handleGetContactInfo(info) {
       this.contactInfo = info;
       this.step = "confirm";
@@ -146,6 +164,6 @@ export default {
     totalPrice: Number,
   },
 
-  components: { Input, OrderFormInfo, OrderFormConfirm },
+  components: { Input, OrderFormInfo, OrderFormConfirm, OrderPay },
 };
 </script>
