@@ -24,7 +24,7 @@ export default {
     { src: "@/plugins/vue-photoswipe.js", ssr: false },
     { src: "@/plugins/vuelidate.js", ssr: true },
     { src: "@/plugins/click-outside-directive.js", ssr: false },
-    { src: '@/plugins/vue-nanoid.js', ssr: false },
+    { src: "@/plugins/vue-nanoid.js", ssr: false },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,7 +49,43 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios", "vue-toastification/nuxt"],
+  modules: [
+    "@nuxtjs/axios",
+    '@nuxtjs/sitemap',
+    "vue-toastification/nuxt",
+    [
+      "@nuxtjs/yandex-metrika",
+      {
+        id: process.env.YANDEX_METRIKA_ID,
+        webvisor: true,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+      },
+    ],
+  ],
+
+  sitemap: {
+    hostname: 'https://kollektiv-fortuna.ru',
+    routes:  () => {
+      const routes = []
+  
+      // Добавляем остальные страницы
+      routes.push('/contact-us')
+      routes.push('/faq')
+      routes.push('/')
+      routes.push('/order-success')
+      routes.push('/order')
+      routes.push('/our-contacts')
+      routes.push('/privacy-policy')
+      routes.push('/public-offer')
+      routes.push('/returns')
+      routes.push('/shipping')
+      routes.push('/videos')
+  
+      return routes
+    }
+  },
 
   axios: {
     // proxy: true

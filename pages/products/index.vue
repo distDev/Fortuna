@@ -33,7 +33,14 @@ export default {
     Loader,
   },
   head: {
-    title: "Магазин коллектива 'Фортуна'",
+    title: "Магазин - Коллектив 'Фортуна'",
+    meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: 'Купить товары ручной работы и мерч солнечного дуэта "Фортуна"',
+        },
+      ],
   },
 };
 </script>

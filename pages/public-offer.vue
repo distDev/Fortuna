@@ -8,6 +8,13 @@ import PolicyContent from "../components/PolicyContent.vue";
 export default {
   head: {
     title: 'Публичная оферта - Коллектив "Фортуна"',
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content: 'Публичная оферта - Коллектив "Фортуна"',
+      },
+    ],
   },
   layout: "customer",
 
@@ -18,13 +25,13 @@ export default {
   },
 
   async fetch() {
-    this.data = await this.$axios.$get(`${this.$config.apiPath}/api/public-offer`);
+    this.data = await this.$axios.$get(
+      `${this.$config.apiPath}/api/public-offer`
+    );
   },
 
   components: { PolicyContent },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

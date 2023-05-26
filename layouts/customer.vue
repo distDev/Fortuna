@@ -36,6 +36,11 @@ import Footer from "../components/layout/Footer.vue";
 import { customerServicesData } from "../assets/customer-services";
 
 export default {
+  head: {
+    htmlAttrs: {
+      lang: 'ru'
+    }
+  },
   data() {
     return {
       links: customerServicesData,

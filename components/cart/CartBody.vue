@@ -51,13 +51,16 @@ export default {
     checkClick() {
       console.log("Клик");
     },
+
     ...mapMutations({
       handleShow: "cart/handleShowCart",
       combineProducts: "cart/combineProducts",
     }),
   },
 
-  props: {},
+  props: {
+    isOpen: Boolean,
+  },
 
   components: { CartProducts, CartControls },
 };

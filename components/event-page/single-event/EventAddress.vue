@@ -6,7 +6,7 @@
   >
     <h2 class="font-bold text-xl lg:text-2xl">Адрес</h2>
     <p class="text-[16px] lg:text-[18px]" tabindex="0">{{ adress }}</p>
-    <YandexMap />
+    <YandexMap :coordinates="coordinates" />
   </section>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     };
   },
   props: {
-    adressLink: String,
+    coordinates: String,
     adress: String,
   },
   components: { YandexMap },

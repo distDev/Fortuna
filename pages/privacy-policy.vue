@@ -8,6 +8,13 @@ import PolicyContent from "../components/PolicyContent.vue";
 export default {
   head: {
     title: 'Политика конфиденциальности - Коллектив "Фортуна"',
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content: "Политика конфиденциальности - Коллектив Фортуна",
+      },
+    ],
   },
   layout: "customer",
 
@@ -18,13 +25,13 @@ export default {
   },
 
   async fetch() {
-    this.data = await this.$axios.$get(`${this.$config.apiPath}/api/privacy-policy`);
+    this.data = await this.$axios.$get(
+      `${this.$config.apiPath}/api/privacy-policy`
+    );
   },
 
   components: { PolicyContent },
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

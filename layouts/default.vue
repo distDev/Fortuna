@@ -13,6 +13,11 @@ import Header from "../components/layout/Header.vue";
 import Footer from "../components/layout/Footer.vue";
 
 export default {
+  head: {
+    htmlAttrs: {
+      lang: "ru",
+    },
+  },
   data() {
     return {};
   },

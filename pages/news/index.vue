@@ -34,7 +34,14 @@ export default {
   components: { NewsItem, Loader },
 
   head: {
-    title: "Новости коллектива 'Фортуна'",
+    title: "Новости - Коллектив 'Фортуна'",
+    meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: 'Читать новости солнечного дуэта "Фортуна". Читать коллектив "Фортуна" на Дзене',
+        },
+      ],
   },
 };
 </script>

@@ -36,7 +36,7 @@ export default {
   components: { EventItems, MainEventsContent, EmptyEventsContent, Loader },
 
   head: {
-    title: "Мерроприятия",
+    title: "Мерроприятия - Коллектив 'Фортуна'",
   },
 };
 </script>

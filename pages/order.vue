@@ -9,9 +9,7 @@
       <OrderDetails :products="products" :total-price="totalPrice" />
     </div>
   </div>
-  <div v-else>
-    <h2>Ваша корзина пуста</h2>
-  </div>
+  <div v-else></div>
 </template>
 
 <script>
@@ -22,7 +20,14 @@ import Input from "../components/UI/Input.vue";
 
 export default {
   head: {
-    title: 'Оформление заказа - Коллектив "Фортуна"',
+    title: 'Оформление заказа',
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content: 'Оформление заказа в магазине "Коллектив Фортуна"',
+      },
+    ],
     script: [
       {
         src: "https://www.payanyway.ru/assistant-builder",

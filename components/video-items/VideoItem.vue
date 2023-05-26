@@ -2,7 +2,8 @@
   <div
     class="relative cursor-pointer"
     tabindex="0"
-    aria-label="видео"
+    role="button"
+    aria-label="Открыть видео"
     @click="handleShow({ url: link })"
   >
     <img :src="api + img" alt="" class="w-full h-full object-cover" />

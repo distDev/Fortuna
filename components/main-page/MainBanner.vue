@@ -5,7 +5,7 @@
     <div class="w-full h-full absolute top-0 bg-black opacity-40 z-10"></div>
     <div class="h-[240px] w-full absolute bottom-0 z-30 linear-bg"></div>
     <img
-      src="~assets/images/main-banner.jpg"
+      src="~assets/images/main-banner.webp"
       alt=""
       class="w-full h-full object-cover absolute top-0 z-0"
     />

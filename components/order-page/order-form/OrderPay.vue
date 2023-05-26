@@ -2,9 +2,15 @@
   <client-ony>
     <Teleport to="body" name="pay-form">
       <div
-        class="fixed top-0 left-0 w-full h-[100vh] bg-black/60 flex justify-center items-center z-[200]"
+        class="fixed top-0 left-0 w-full h-[100vh] bg-black/70 flex justify-center items-center z-[200]"
       >
         <div id="payment-form"></div>
+        <button
+          class="absolute right-[60px] top-[60px] text-white hover:text-primary close-btn"
+          @click="$emit('close')"
+        >
+          <font-awesome-icon :icon="['fas', 'xmark']" heigth="50px" />
+        </button>
       </div>
     </Teleport>
   </client-ony>
@@ -16,7 +22,7 @@ export default {
     const vm = this;
     const options = {
       account: this.$config.paymentAccountId,
-      amount: 1,
+      amount: this.totalCost,
       transactionId: this.$nanoid(),
       theme: "dark",
     };
@@ -39,8 +45,6 @@ export default {
     assistant.build(options, "payment-form");
   },
 
-
-
   emits: ["form-submit"],
 
   props: {
@@ -49,7 +53,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
-
-
-
+<style scoped>
+.close-btn svg {
+  height: 35px;
+  width: 35px;
+}
+</style>

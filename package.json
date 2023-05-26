@@ -12,6 +12,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@nuxt/types": "^2.15.8",
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/sitemap": "^2.4.0",
+    "@nuxtjs/yandex-metrika": "^1.4.0",
     "core-js": "^3.25.3",
     "dayjs": "^1.11.7",
     "marked": "^4.3.0",

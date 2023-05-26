@@ -17,6 +17,14 @@ import FaqItem from "../components/faq-page/FaqItem.vue";
 export default {
   head: {
     title: 'FAQ - Ответы на частозадаваемые вопросы - Коллектив "Фортуна"',
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content:
+          'Ответы на частозадаваемые вопросы в магазине Коллектив "Фортуна"',
+      },
+    ],
   },
   layout: "customer",
 
@@ -27,7 +35,9 @@ export default {
   },
 
   async fetch() {
-    this.data = await this.$axios.$get(`${this.$config.apiPath}/api/faq?populate=*`);
+    this.data = await this.$axios.$get(
+      `${this.$config.apiPath}/api/faq?populate=*`
+    );
   },
 
   components: { FaqItem },

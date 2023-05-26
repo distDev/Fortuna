@@ -26,7 +26,7 @@
           :artists="eventData.data.attributes.artists"
         />
         <EventAddress
-          :adressLink="eventData.data.attributes.adressLink"
+          :coordinates="eventData.data.attributes.coordinates"
           :adress="eventData.data.attributes.adress"
         />
       </div>

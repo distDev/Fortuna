@@ -9,6 +9,14 @@ import VideoItems from "../components/video-items/VideoItems.vue";
 export default {
   head: {
     title: 'Видео - Коллектив "Фортуна"',
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content:
+          'Смотреть видео солнечного дуэта "Коллектив Фортуна". Саша и Сергей занимаются готовкой и танцами',
+      },
+    ],
   },
 
   data() {

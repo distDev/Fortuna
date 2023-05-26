@@ -8,6 +8,13 @@ import PolicyContent from "@/components/PolicyContent.vue";
 export default {
   head: {
     title: 'Наши контакты - Коллектив "Фортуна"',
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content: "Контакты для связи - Коллектив Фортуна",
+      },
+    ],
   },
   layout: "customer",
 

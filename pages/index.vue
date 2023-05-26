@@ -32,6 +32,14 @@ export default {
 
   head: {
     title: "Коллектив Фортуна",
+    meta: [
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "Коллектив 'Фортуна' - мы на своем примере доказываем, что нет ничего невозможного ",
+      },
+    ],
   },
 
   data() {
@@ -40,7 +48,7 @@ export default {
       customProducts: [],
       articles: [],
       videos: [],
-      api: this.$config.apiPath
+      api: this.$config.apiPath,
     };
   },
 

@@ -15,6 +15,7 @@
     <OrderPay
       v-if="payFormIsVisible"
       @form-submit="handleSubmit"
+      @close="changeVisiblePaymentForm"
       :totalCost="totalCost"
     />
   </div>

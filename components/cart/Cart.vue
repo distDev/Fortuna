@@ -18,7 +18,7 @@
           :aria-expanded="isOpen ? 'true' : 'false'"
           class="flex flex-col items-end absolute top-0 right-0 w-[90%] lg:w-auto h-[100vh] lg:h-auto z-[150]"
         >
-          <CartBody />
+          <CartBody :isOpen="isOpen"/>
         </div>
       </Transition>
       <div

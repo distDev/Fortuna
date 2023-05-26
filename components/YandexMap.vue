@@ -11,6 +11,7 @@ export default {
     };
   },
   mounted() {
+    let parsedCoordinates = this.coordinates.split(",").map((e) => Number(e));
     const script = document.createElement("script");
     script.src =
       "https://api-maps.yandex.ru/2.1/?apikey=cc9b1903-b97b-45c9-a49c-53497c481345&lang=ru_RU";
@@ -18,14 +19,14 @@ export default {
     script.onload = () => {
       ymaps.ready(() => {
         const myMap = new ymaps.Map("map", {
-          center: [55.799794, 37.935318],
+          center: [parsedCoordinates[0], parsedCoordinates[1]],
           zoom: 16,
         });
 
         const myGeoObject = new ymaps.GeoObject({
           geometry: {
             type: "Point",
-            coordinates: [55.799794, 37.935318],
+            coordinates: [parsedCoordinates[0], parsedCoordinates[1]],
           },
         });
 
@@ -34,6 +35,19 @@ export default {
     };
 
     document.head.appendChild(script);
+  },
+
+  computed: {
+    // parsedCoordinates() {
+    //   return this.coordinates.split(",").map((e) => Number(e));
+    // },
+  },
+
+  props: {
+    coordinates: {
+      required: true,
+      type: String,
+    },
   },
 };
 </script>

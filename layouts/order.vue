@@ -11,6 +11,12 @@
 import Header from "../components/layout/Header.vue";
 
 export default {
+  head: {
+    htmlAttrs: {
+      lang: 'ru'
+    }
+  },
+  
   data() {
     return {};
   },
