@@ -51,12 +51,12 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     "@nuxtjs/axios",
-    '@nuxtjs/sitemap',
+    "@nuxtjs/sitemap",
     "vue-toastification/nuxt",
     [
       "@nuxtjs/yandex-metrika",
       {
-        id: process.env.YANDEX_METRIKA_ID,
+        id: 93728226,
         webvisor: true,
         clickmap: true,
         trackLinks: true,
@@ -66,25 +66,25 @@ export default {
   ],
 
   sitemap: {
-    hostname: 'https://kollektiv-fortuna.ru',
-    routes:  () => {
-      const routes = []
-  
+    hostname: "https://kollektiv-fortuna.ru",
+    routes: () => {
+      const routes = [];
+
       // Добавляем остальные страницы
-      routes.push('/contact-us')
-      routes.push('/faq')
-      routes.push('/')
-      routes.push('/order-success')
-      routes.push('/order')
-      routes.push('/our-contacts')
-      routes.push('/privacy-policy')
-      routes.push('/public-offer')
-      routes.push('/returns')
-      routes.push('/shipping')
-      routes.push('/videos')
-  
-      return routes
-    }
+      routes.push("/contact-us");
+      routes.push("/faq");
+      routes.push("/");
+      routes.push("/order-success");
+      routes.push("/order");
+      routes.push("/our-contacts");
+      routes.push("/privacy-policy");
+      routes.push("/public-offer");
+      routes.push("/returns");
+      routes.push("/shipping");
+      routes.push("/videos");
+
+      return routes;
+    },
   },
 
   axios: {
