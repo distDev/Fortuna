@@ -17,11 +17,12 @@
         />
       </div>
       <div class="flex justify-center">
-        <button
+        <NuxtLink
+          to="news"
           class="uppercase text-white border-[1px] border-white text-xs lg:text-lg font-medium py-3 px-10 lg:py-4 lg:px-12 mt-[40px] lg:mt-[60px]"
         >
           Показать еще
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </div>

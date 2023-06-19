@@ -17,11 +17,12 @@
         солнечный дуэт <br />“Fortuna”
       </h1>
       <div class="flex justify-center z-40">
-        <button
+        <NuxtLink
+          to="news/9"
           class="uppercase text-xs lg:text-lg font-medium bg-white py-3 px-10 lg:py-4 lg:px-12 mt-[60px] lg:mt-[100px]"
         >
           Подробнее о нас
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </div>
