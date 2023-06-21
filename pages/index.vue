@@ -54,16 +54,16 @@ export default {
 
   async fetch() {
     this.customProducts = await this.$axios.$get(
-      `${this.$config.apiPath}/api/custom-products/1?populate[products][populate][0]=images`
+      `${this.$config.apiPath}/api/custom-products/1?populate[products][populate][0]=images&pagination[limit]=2`
     );
     this.popularProducts = await this.$axios.$get(
-      `${this.$config.apiPath}/api/popular-products/1?populate[products][populate][0]=images`
+      `${this.$config.apiPath}/api/popular-products/1?populate[products][populate][0]=images&pagination[limit]=3`
     );
     this.articles = await this.$axios.$get(
-      `${this.$config.apiPath}/api/articles?populate=*`
+      `${this.$config.apiPath}/api/articles?populate=*&sort=publishedAt:desc&pagination[limit]=4`
     );
     this.videos = await this.$axios.$get(
-      `${this.$config.apiPath}/api/videos?populate=*`
+      `${this.$config.apiPath}/api/videos?populate=*&sort=publishedAt:desc&pagination[limit]=6`
     );
   },
 

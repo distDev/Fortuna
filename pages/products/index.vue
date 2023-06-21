@@ -23,7 +23,7 @@ export default {
   },
   async fetch() {
     this.products = await this.$axios.$get(
-      `${this.$config.apiPath}/api/products?populate=*`
+      `${this.$config.apiPath}/api/products?populate=*&sort=publishedAt:desc`
     );
   },
   components: {

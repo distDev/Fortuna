@@ -27,7 +27,7 @@ export default {
   },
   async fetch() {
     this.videos = await this.$axios.$get(
-      `${this.$config.apiPath}/api/videos?populate=*`
+      `${this.$config.apiPath}/api/videos?populate=*&sort=publishedAt:desc`
     );
   },
   components: { VideoItems },

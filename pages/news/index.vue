@@ -28,7 +28,7 @@ export default {
   },
 
   async fetch() {
-    this.articles = await this.$axios.$get(`${this.$config.apiPath}/api/articles?populate=*`);
+    this.articles = await this.$axios.$get(`${this.$config.apiPath}/api/articles?populate=*&sort=publishedAt:desc`);
   },
 
   components: { NewsItem, Loader },

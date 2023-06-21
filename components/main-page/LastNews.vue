@@ -10,7 +10,7 @@
     <div class="flex flex-col">
       <div class="flex flex-col space-y-[25px] lg:space-y-[30px]">
         <LastNewsItem
-          v-for="{ attributes, id } in articles"
+          v-for="{ attributes, id } in data"
           :id="id"
           :date="attributes.publishedAt"
           :title="attributes.title"
@@ -32,13 +32,6 @@
 import LastNewsItem from "./LastNewsItem.vue";
 
 export default {
-  computed: {
-    articles() {
-      if (this.data) {
-        return this.data.slice(0, 4);
-      }
-    },
-  },
   props: {
     data: Array,
   },

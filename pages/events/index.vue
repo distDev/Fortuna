@@ -25,7 +25,7 @@ export default {
   },
   async fetch() {
     this.events = await this.$axios.$get(
-      `${this.$config.apiPath}/api/events?populate=*`
+      `${this.$config.apiPath}/api/events?populate=*&sort=date:asc`
     );
   },
   computed: {
