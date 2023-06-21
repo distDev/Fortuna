@@ -10,7 +10,7 @@
         store
       </h3>
     </div>
-    <div class="max-w-[1440px] flex justify-center m-auto">
+    <div class="w-full lg:max-w-[1440px] lg:flex lg:justify-center m-auto">
       <div
         class="mt-[15px] lg:mt-[30px] mx-[15px] lg:mx-[40px] space-y-[25px] lg:space-y-[40px]"
       >
