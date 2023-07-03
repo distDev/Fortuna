@@ -12,7 +12,7 @@
         <h3 class="text-lg lg:text-3xl mt-[40px] lg:mt-[60px] text-center font-medium uppercase">
           <span class="font-bold"
             >в ближайшее время <br />
-            мерроприятий нет</span
+            мероприятий нет</span
           >, но мы
           <br />
           над этим работаем!
