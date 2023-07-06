@@ -1,7 +1,7 @@
 <template>
   <Loader v-if="$fetchState.pending" />
   <p v-else-if="$fetchState.error">Произошла ошибка :(</p>
-  <div class="pt-[25px] lg:pt-[60px]" v-else>
+  <div class="pt-[15px] lg:pt-[60px]" v-else>
     <div
       class="max-w-[1440px] m-auto flex flex-col lg:flex-row w-full px-[15px] lg:px-[40px] lg:space-x-[30px]"
     >

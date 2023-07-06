@@ -1,17 +1,17 @@
 <template>
   <!-- Шапка корзины -->
   <div>
-    <div class="flex justify-between">
+    <div class="flex justify-between items-start">
       <div
         v-if="!pending"
-        class="flex items-center space-x-[10px]"
+        class="flex xxs:flex-col items-center xxs:items-start space-x-[10px] xxs:space-x-0"
         tabindex="0"
       >
-        <p class="uppercase text-base font-semibold">
+        <p class="uppercase text-base xxs:text-[14px] font-semibold text-white">
           {{ totalSum }}
         </p>
         <p
-          class="uppercase text-grey text-sm font-semibold"
+          class="uppercase text-grey text-sm xxs:text-[12px] font-semibold"
           v-if="totalPrice && totalPrice > 0"
           :aria-label="'товаров в корзине' + cartValue"
         >
@@ -38,7 +38,7 @@
     <!-- Кнопка оформления -->
     <button
       v-if="!pending"
-      class="flex items-center justify-center w-full mt-[30px] bg-white text-main-black text-base font-medium uppercase py-[15px] box-border"
+      class="flex items-center justify-center w-full mt-[30px] bg-white text-main-black text-base xxs:text-sm font-medium uppercase py-[15px] xxs:py-[10px] box-border"
       @click="
         () => (totalPrice && totalPrice > 0 ? placeOrder() : handleSwitchShow())
       "

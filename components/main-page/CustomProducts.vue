@@ -9,7 +9,7 @@
         {{ title }}
       </h2>
       <div
-        class="flex flex-row xs:flex-col justify-center space-x-[15px] xs:space-x-0 xs:space-y-[20px] w-full"
+        class="flex flex-row xxs:flex-col xs:flex-col justify-center space-x-[15px] xs:space-x-0 xs:space-y-[20px] xxs:space-x-0 xxs:space-y-[20px] w-full"
       >
         <ProductCard
           v-for="item in data"
@@ -21,23 +21,25 @@
           :newIn="item.attributes.new"
           :images="item.attributes.images.data"
           :totalCount="item.attributes.totalCount"
-          class="basis-1/2 lg:basis-1/4 xs:basis-0"
+          :xxsH="true"
+          :xsH="true"
+          class="basis-1/2 lg:basis-1/4 xs:basis-0 xxs:basis-0"
         />
       </div>
     </div>
     <div
-      class="bg-primary w-full py-[16px] mt-[50px] lg:mt-[80px] overflow-hidden relative"
+      class="bg-primary w-full xxs:py-[10px] py-[16px] mt-[50px] lg:mt-[80px] overflow-hidden relative"
     >
       <div class="flex">
         <div
           v-for="i in 10"
           :key="i"
-          class="flex items-center text-sm lg:text-base font-semibold lg:font-bold text-white uppercase whitespace-nowrap shrink-0 px-[20px] ticker-item"
+          class="flex items-center xxs:text-[12px] text-sm lg:text-base font-semibold lg:font-bold text-white uppercase whitespace-nowrap shrink-0 px-[20px] ticker-item"
         >
           {{ sliderTitle }}
           <font-awesome-icon
             :icon="['fas', 'face-smile']"
-            class="fill-white h-[12px] lg:h-[14px] w-[18px] lg:w-[20px]"
+            class="fill-white h-[12px] xxs:h-[10px] lg:h-[14px] w-[18px] xxs:w-[16px] lg:w-[20px]"
           />
         </div>
       </div>

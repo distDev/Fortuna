@@ -1,6 +1,8 @@
 <template>
   <div class="flex space-x-[15px] w-full">
-    <div class="h-[130px] w-[30%] xs:w-[40%] lg:w-[105px]">
+    <div
+      class="h-[130px] xxs:h-[110px] w-[30%] xxs:w-[40%] xs:w-[40%] lg:w-[105px]"
+    >
       <img :src="api + image" :alt="name" class="h-full w-full object-cover" />
     </div>
     <div class="flex flex-col justify-between w-[60%] lg:w-[60%]">
@@ -25,7 +27,7 @@
         >
           <!-- уменьшение -->
           <button
-            class="h-[30px] w-[30px] bg-grey text-main-black"
+            class="h-[30px] xxs:h-[25px] w-[30px] xxs:w-[25px] text-center bg-grey text-main-black"
             @click="
               countInCart !== 1
                 ? decrementCount({ id: id })
@@ -41,7 +43,7 @@
 
           <!-- увеличение -->
           <button
-            class="h-[30px] w-[30px] bg-grey text-main-black disabled:bg-[#666869]"
+            class="h-[30px] xxs:h-[25px] w-[30px] xxs:w-[25px] text-center bg-grey text-main-black disabled:bg-[#666869]"
             @click="() => addToCart({ id, price })"
             :disabled="Number(countInCart) === Number(totalCount)"
           >

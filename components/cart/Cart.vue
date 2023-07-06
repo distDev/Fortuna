@@ -11,12 +11,12 @@
     </button>
 
     <!-- Корзина -->
-    <Teleport to="body">
+    <portal to="destination">
       <Transition name="cart">
         <div
           v-if="isOpen"
           :aria-expanded="isOpen ? 'true' : 'false'"
-          class="flex flex-col items-end absolute top-0 right-0 w-[90%] lg:w-auto h-[100vh] lg:h-auto z-[150]"
+          class="flex flex-col items-end fixed top-0 right-0 w-[90%] lg:w-auto h-[100vh] lg:h-auto z-[150]"
         >
           <CartBody :isOpen="isOpen"/>
         </div>
@@ -24,9 +24,9 @@
       <div
         v-if="isOpen"
         @click="handleShow"
-        class="absolute left-0 top-0 w-full h-[100vh] bg-black opacity-50 z-20"
+        class="fixed left-0 top-0 w-full h-[100vh] bg-black opacity-50 z-20"
       ></div>
-    </Teleport>
+    </portal>
   </div>
 </template>
 

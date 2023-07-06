@@ -31,7 +31,7 @@
     <!-- Мобильная навигация в шапке -->
     <nav>
       <ul
-        class="custom-border h-[40px] flex items-center mx-[15px] xs:mx-[10px] lg:hidden"
+        class="custom-border h-[40px] flex items-center mx-[15px] xxs:mx-[10px] xs:mx-[10px] lg:hidden"
       >
         <li v-for="link in links">
           <NuxtLink

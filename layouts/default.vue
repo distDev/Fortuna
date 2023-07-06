@@ -5,6 +5,7 @@
       <Nuxt />
     </main>
     <Footer />
+    <portal-target name="destination"> </portal-target>
   </div>
 </template>
 

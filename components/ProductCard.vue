@@ -1,10 +1,13 @@
 <template>
   <NuxtLink :to="'/products/' + id">
     <div
-      class="h-[213px] xs:h-[300px] sm:h-[350px] relative product-image-container"
+      class="h-[213px] sm:h-[350px] relative product-image-container"
       :class="{
         'lg:h-[400px]': !large,
         'lg:h-[520px]': large,
+        'xxs:h-[300px]': xxsH,
+        'xs:h-[280px]': !xsH,
+        'xs:h-[350px]': xsH,
       }"
     >
       <div
@@ -48,7 +51,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -93,6 +95,14 @@ export default {
     },
     totalCount: {
       type: Number,
+      required: false,
+    },
+    xxsH: {
+      type: Boolean,
+      required: false,
+    },
+    xsH: {
+      type: Boolean,
       required: false,
     },
   },

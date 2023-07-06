@@ -1,4 +1,5 @@
 import Vue from "vue";
-import Teleport from "vue2-teleport";
+import PortalVue from "portal-vue";
 
-Vue.use(Teleport);
+Vue.use(PortalVue);
+

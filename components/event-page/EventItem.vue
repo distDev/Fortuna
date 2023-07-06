@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="'/events/' + id" class="space-y-[15px]">
-    <div class="flex items-end relative h-[230px] xs:h-[190px] lg:h-[250px]">
+    <div class="flex items-end relative h-[230px] xxs:h-[190px] xs:h-[190px] lg:h-[250px]">
       <div class="flex flex-row space-x-[5px] z-30 p-[10px] lg:p-[15px]">
         <div
           class="bg-black rounded-[40px] uppercase text-white text-[10px] lg:text-xs font-medium py-[7px] px-[10px]"
@@ -28,8 +28,8 @@
       />
     </div>
     <div class="space-y-[5px] lg:space-y-[7px]">
-      <h3 class="uppercase text-base xs:text-sm font-bold text-main-black">{{ title }}</h3>
-      <p class="uppercase text-xs xs:text-[12px] text-grey">{{ formatDate }} * {{ adress }}</p>
+      <h3 class="uppercase text-base xxs:text-sm xs:text-sm font-bold text-main-black">{{ title }}</h3>
+      <p class="uppercase text-xs xxs:text-[12px] xs:text-[12px] text-grey">{{ formatDate }} * {{ adress }}</p>
     </div>
   </NuxtLink>
 </template>

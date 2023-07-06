@@ -17,7 +17,8 @@ module.exports = {
         error: "#E33473",
       },
       screens: {
-        xs: { min: "320px", max: "376px" },
+        xs: { min: "340px", max: "376px" },
+        xxs: {min: '320px', max: '340px'}
       },
     },
   },

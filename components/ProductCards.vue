@@ -10,6 +10,8 @@
       :newIn="item.attributes.new"
       :images="item.attributes.images.data"
       :totalCount="item.attributes.totalCount"
+      :xxsH="true"
+      :xsH="true"
     />
   </div>
 </template>

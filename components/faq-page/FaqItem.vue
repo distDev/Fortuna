@@ -4,7 +4,7 @@
       @click="handleChangeVisible"
       class="flex justify-between items-center py-[10px] w-full hover:cursor-pointer hover:text-[#8B5CF6]"
     >
-      <h2 class="uppercase text-[18px] xs:text-[14px] font-bold">
+      <h2 class="uppercase text-[18px] xxs:text-[14px] xs:text-[14px] font-bold">
         {{ title }}
       </h2>
       <font-awesome-icon :class="rotateStyle" :icon="['fas', 'arrow-down']" />

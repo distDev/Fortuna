@@ -26,13 +26,13 @@
         <div
           v-swiper:mySwiperTop="optionsTop"
           ref="swiperTop"
-          class="w-full lg:w-[90%] h-[390px] xs:h-[320px] lg:h-[670px] relative"
+          class="w-full lg:w-[90%] h-[420px] xxs:h-[380px] xs:h-[420px] lg:h-[670px] relative"
         >
           <div class="swiper-wrapper">
             <div
               v-for="i in images"
               :key="i.id"
-              class="swiper-slide h-[120px] lg:h-[170px]"
+              class="swiper-slide lg:h-[170px]"
             >
               <img
                 :key="i.id"
