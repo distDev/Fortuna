@@ -53,7 +53,6 @@ export default {
       } catch (error) {
         console.error(error);
       }
-      // this.$toast.warning("В данный момент нельзя сделать заказ");
     },
 
     // Отправка данных на сервер

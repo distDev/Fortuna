@@ -6,11 +6,7 @@
   >
     <div class="space-y-[15px]">
       <h3 class="font-medium text-lg">Заявка</h3>
-      <Select
-        v-model="$v.request.$model"
-        :errors="requestErrors"
-        :error-status="$v.request.$error"
-      >
+      <Select v-model="$v.request.$model">
         <option
           v-for="req in reqData"
           :key="req.id"
@@ -31,16 +27,12 @@
           v-model.trim="name"
           placeholder="Ваше имя"
           type="text"
-          :errors="nameErrors"
-          :error-status="$v.name.$error"
         />
         <Input
           @change="$v.email.$touch()"
           v-model.trim="email"
           placeholder="Ваш email"
           type="email"
-          :errors="emailErrors"
-          :error-status="$v.email.$error"
         />
       </div>
     </div>
@@ -51,18 +43,11 @@
         v-model.trim="subject"
         placeholder="Тема обращения"
         type="text"
-        :errors="subjectErrors"
-        :error-status="$v.subject.$error"
       />
     </div>
     <div class="space-y-[15px]">
       <h3 class="font-medium text-lg">Сообщение</h3>
-      <Textarea
-        @change="$v.message.$touch()"
-        v-model.trim="message"
-        :errors="messageErrors"
-        :error-status="$v.message.$error"
-      />
+      <Textarea @change="$v.message.$touch()" v-model.trim="message" />
     </div>
     <div class="flex justify-center pt-[20px]">
       <button
@@ -120,10 +105,27 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      console.log(
-        `Заявка: ${this.request}, Имя: ${this.name}, Email: ${this.email}, Тема: ${this.subject}, Сообщение: ${this.message}, `
-      );
+    async handleSubmit() {
+      await this.tgMessage();
+      this.$toast.success("Заявка успешно отправлена");
+
+      this.request = "";
+      this.name = "";
+      this.email = "";
+      this.subject = "";
+      this.message = "";
+    },
+
+    // Отправка данных в telegram
+    async tgMessage() {
+      try {
+        await this.$axios.$post(
+          `https://api.telegram.org/bot${this.$config.tgApiKey}/sendMessage?chat_id=${this.$config.tgChatId}&text=Тип заявки: ${this.subject}%0AТема обращения: ${this.request}%0AИмя: ${this.name}%0AПочта: ${this.email}%0AСообщение: ${this.message}`
+        );
+      } catch (error) {
+        console.error(error);
+        throw new Error("Ошибка при отправке сообщения в Telegram");
+      }
     },
   },
   computed: {
